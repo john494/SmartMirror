@@ -1,27 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+	<head>
+		<title>Mirror</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="css/bootstrap.css">
+<!-- 		<link rel="stylesheet" href="css/bootsrap.min.css">
+ -->		<link rel="shortcut icon" href=""/>
+		
+	</head>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Smart Mirror Prototype">
-    <meta name="author" content="Team: Gemgineers">
-    <title>Smart Mirror Home</title>
-    <!-- <link rel="shortcut icon" href="img/favicon.png" /> -->
+	<body>
+	<!-- jQuery -->
+		<div class="container">
+			<div class="row">
+				<div id="clock" class="col-md-6">
+					<iframe src="http://free.timeanddate.com/clock/i4xqq1z9/n422/fn6/fs90/fcfff/tc000/pc000/ahl/ts1" frameborder="0" width="420" height="95"></iframe><br><!--Clock-->
+					<iframe src="http://free.timeanddate.com/clock/i4xqq1z9/n422/fn6/fs30/fcfff/tc000/pc000/tt1/tw0" frameborder="0" width="320" height="39"></iframe><!--Date-->
+				</div>
+				<div id="stock" class="col-md-6">
+					<script src="http://widgets.macroaxis.com/widgets/url.jsp?t=42"></script>
+				</div>
+			</div>
+			<div class="row">
+				<div id="weather" class="col-md-4">
+					<div id="temp">
+						<p id="tempp" style=""></p>
+					</div>
+					<div>
+						<p style="margin-top:-130px;font-size:25px;color:white;font-family:Ebrima;" id="descc"></p>
+					</div>
+					<div id="desc">
+						<p><span style="float:left;"id="high"></span>
 
+						<span style="float:right;margin-right:70px;"id="low"></span></p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div id="twitter" class="col-md-4">
+						<a class="twitter-timeline" href="https://twitter.com/John__IV/lists/hack" data-widget-id="665918681336168449">Tweets from https://twitter.com/John__IV/lists/hack</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				</div>
+				<div id="block">
+				</div>
+			</div>
+			<div id="text">
+				<p style="font-family:Ebrima;">Hey there!</p>
+			</div>
+			<div id="logo">
+				<img src="ublogo.png"/>
+			</div>
+		</div>
 
-    <!-- Custom CSS -->
-    <link href="css/main.css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="weather.js" ></script>
 
-    <!-- Bootstrap CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.css" rel="stylesheet">
-</head>
-
-<body>
-
-</body>
-    <!-- Bootstrap JS -->
-    <script src="js/bootstrap.js"></script>
-
+	</body>
 </html>

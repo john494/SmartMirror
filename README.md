@@ -1,2 +1,2 @@
 # SmartMirror
-CSE442 Project
+UB Hacking 2015

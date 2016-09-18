@@ -1,0 +1,96 @@
+html {
+	background-color: #000000;
+	font-family: Ebrima;
+}
+
+@font-face {
+    font-family: Ebrima;
+    src: url(font/ebrima.ttf);
+}
+
+#clock {
+	margin-left: -20px;
+}
+
+#stock {
+	height: 134px;
+	background-color: black;
+	width: 700px;
+	margin-left: -120px;
+	padding-top: 19px;
+
+}
+
+#weather {
+	margin-left: -20px;
+	background-color: black;
+	height: 410px;
+}
+
+#temp {
+	background-color: black;
+	color:white;
+	height:250px;
+	margin-top: 15px;
+	font-size: 90px;
+}
+
+#temp p{
+	padding-top:5px;
+}
+
+#rain {
+	background-color: black;
+	height:50px;
+	margin-top: 15px;
+	font-size: 33px;
+	color: white;
+}
+
+#rain {
+	background-color: black;
+	height:50px;
+	color: white;
+	margin-top: 15px;
+}
+
+#desc {
+	background-color: black;
+	height: 40px;
+	color: white;
+	margin-top: -15px;
+	font-size:28px;
+}
+
+#twitter {
+	margin-left: -20px;
+	background-color: black;
+	height: 600px;
+	margin-top: -150px;
+	width:400px;
+}
+
+#block {
+	background-color: #333333;
+	position: fixed;
+	height: 570px;
+	width:17px;
+	margin-top: -120px;
+	margin-left: 348px;
+}
+
+#text {
+	position: fixed;
+	left: 40%;
+	top: 50%;
+	color: white;
+	font-size: 90px;
+	text-decoration: thin;
+}
+
+#logo {
+	position: fixed;
+	left: 32%;
+	top: 35%;
+	opacity: .25;
+}
