@@ -13,3 +13,4 @@ CSE 442 Project, more details to be released as project continues.
 
 ### Current Status: *Sprint 2*
 - [x] Sprint 1
+- [x] Group Formation
