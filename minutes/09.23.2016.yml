@@ -1,5 +1,5 @@
-date: September 21, 2016
-meeting_type: Group # meeting_type can "group", "ta", or "instructor"
+date: September 23, 2016
+meeting_type: TA # meeting_type can "group", "ta", or "instructor"
 attendance: [johnmcki, ntkabala, grantwra, ajkirsch, mdkulbac]
 absent: []
 excused_absences: [ # Any legitimate excuses for absent team members
@@ -8,14 +8,14 @@ excused_absences: [ # Any legitimate excuses for absent team members
 task_progress: [ # All group members must be included here even if they haven't made any progress since the last meeting
   {ubit: johnmcki, progress: None},
   {ubit: mdkulbac, progress: None},
-  {ubit: ajkirsch, progress: None},
+  {ubit: ajkirsch, progress: Ordered TV},
   {ubit: grantwra, progress: None},
   {ubit: ntkabala, progress: None}
   ]
 issues: [ # Post any issues here. Issues that cannot be addressed by the group should especially be included
   #{ubit: <ubit2>, issue: Needs to contact customer to clarify requirements that have not yet been discussed.},
   ]
-tasks: [ #What were going to be doing by monday
+tasks: [ #What were going to be doing
   {ubit: ajkirsch, task: Find and buy hardware. Research google cards.},
   {ubit: johnmcki, task: Make raspberry pi boot directly to our app. Research electron and fetch weather data.},
   {ubit: grantwra, task: Save UI layout when user moves objects. Research electron and fetching calendar},
@@ -23,5 +23,5 @@ tasks: [ #What were going to be doing by monday
   {ubit: mdkulbac, task: Look at electron and begin UI development.}
   ]
 Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
-  -Add and discuss tasks to Trello board for sprint 2.
-  -Assign tasks.
+  -Discuss use of ionic for our app.
+  -Discuss progress of sprint 2.

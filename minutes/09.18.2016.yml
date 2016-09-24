@@ -1,8 +1,8 @@
 date: September 18, 2016
-meeting_type: TA # meeting_type can "group", "ta", or "instructor"
+meeting_type: Group # meeting_type can "group", "ta", or "instructor"
 attendance: [johnmcki, ajkirsch, mdkulbac]
 absent: [grantwra, ntkabala]
-excused_absences: [ # Any legitamite excuses for absent team members
+excused_absences: [ # Any legitimate excuses for absent team members
   {ubit: grantwra, : reason: In Toronto at time of meeting},
   {ubit: ntkabala, : reason: Not needed for this meeting}
   ]
@@ -14,7 +14,7 @@ task_progress: [ # All group members must be included here even if they haven't 
   {ubit: ntkabala, progress: None}
   ]
 issues: [ # Post any issues here. Issues that cannot be addressed by the group should especially be included
-  #{ubit: <ubit2>, issue: Needs to contact customer to clarify requirements that have not yet been dicussed.},
+  #{ubit: <ubit2>, issue: Needs to contact customer to clarify requirements that have not yet been discussed.},
   ]
 tasks: [ #What were going to be doing by monday
   {ubit: ajkirsch, task: None},
