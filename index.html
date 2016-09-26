@@ -3,34 +3,143 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Smart Mirror Prototype">
-    <meta name="author" content="Team: Gemgineers">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Smart Mirror">
+    <meta name="author" content="Team: Pied Piper">
     <title>Smart Mirror Home</title>
-    <!-- <link rel="shortcut icon" href="img/favicon.png" /> -->
 
     <!-- Custom CSS -->
     <link href="css/main.css" rel="stylesheet">
-
-    <!-- Bootstrap CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.css" rel="stylesheet">
+    <!-- Materialize CSS -->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
     <div class="container-fluid">
+
+        <!-- Row 1 -->
         <div class="row">
-            <div class="col-md-3" id="clock">
-                <p>12:36 PM</p>
+            <div class="col s3 white-text" id="clock">
+                <div>
+                    <p id="time">12:36 AM</p>
+                    <p id="date">September 26th, 2016</p>
+                </div>
             </div>
-            <div class="col-md-9" id="notify">
+            <div class="col s9 Vcenter" id="notify">
 
             </div>
         </div>
+
+        <!-- Row 2 -->
+        <div class="row">
+            <div class="col s3 white-text" id="weather">
+                <div class="row" style="margin-bottom:0px;">
+                    <div class="col s8">
+                        <h3 class="left-align" id="temp">60&#176; F</h3>
+                        <h6 class="left-align" id="location">Buffalo, NY</h6>
+                        <!-- <h6 class="left-align" id="conditions">Partly Cloudy</h6> -->
+                    </div>
+                    <div class="col s4">
+                        <!-- 185 px tall 150 px wide for all images
+                        link for possible icons https://github.com/janrode/materialized-webcomponent-playground/tree/master/bower_components/weather-icons/css -->
+                        <img src="img/cloudy.png" alt="cloudy" style="max-width:100%;padding-top:0.82rem;"/>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col s12">
+                        <table class="bordered centered">
+                        <thead>
+                            <tr>
+                                <th data-field="hour">Time</th>
+                                <th data-field="tempList">Temp</th>
+                                <th data-field="precip">Precip</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>12 AM</td>
+                                <td>60&#176; F</td>
+                                <td>10 %</td>
+                            </tr>
+                            <tr>
+                                <td>1 AM</td>
+                                <td>58&#176; F</td>
+                                <td>10 %</td>
+                            </tr>
+                            <tr>
+                                <td>2 AM</td>
+                                <td>59&#176; F</td>
+                                <td>12 %</td>
+                            </tr>
+                            <tr>
+                                <td>3 AM</td>
+                                <td>59&#176; F</td>
+                                <td>15 %</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col s3 offset-s6" id="calendar">
+                <h5 class="Vcenter white-text">Calendar</h5>
+                <div class="row">
+                    <div class="col s12 white-text">
+                        <table class="centered">
+                        <thead>
+                            <tr>
+                                <th data-field="cTime">Time</th>
+                                <th data-field="eventList">Event</th>
+                                <th data-field="cLocation">Place</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>12 AM</td>
+                                <td>CSE 489</td>
+                                <td>NSC 210</td>
+                            </tr>
+                            <tr>
+                                <td>1 PM</td>
+                                <td>CSE 410</td>
+                                <td>Norton 213</td>
+                            </tr>
+                            <tr>
+                                <td>2 PM</td>
+                                <td>CSE 442</td>
+                                <td>O'Brian 119</td>
+                            </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s3">
+                <div class="card-panel grey lighten-5">
+                    <div class="row valign-wrapper">
+                        <div class="col s4 m2">
+                            <img src="img/gem.jpg" alt="" class="circle responsive-img valign">
+                        </div>
+                        <div class="col s8 m10">
+                            <span class="black-text">
+                            This is a square image. Add the "circle" class to it to make it appear circular.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </body>
 
-    <!-- Bootstrap JS -->
-    <script src="js/bootstrap.js"></script>
+    <!-- JS -->
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.min.js"></script>
 
 </html>

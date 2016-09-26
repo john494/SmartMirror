@@ -1,24 +1,49 @@
 html {
 	background-color: #000;
+	color: #fff;
 }
 
+/* -- Row 1 -- */
 #clock {
-	background-color: blue;
-	height:300px;
+	height:75px;
+	font-size: 35px;
 }
 
-/* Stylying the clock text */
-#clock p{
-	color: white;
-	font-size: 100px;
-	position: absolute;
-	white-space: nowrap;
-  	top: 50%;
-  	left:50%;
-  	transform: translate(-50%,-50%);
+#clock p {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+#date {
+	font-size: 15px;
+	word-wrap:none;
 }
 
 #notify {
-	background-color: red;
-	height: 300px;
+	height: 75px;
 }
+
+/* -- Row 2 -- */
+#weather {
+	height: auto;
+	padding-bottom: 20px;
+}
+
+#weather h3 {
+	margin: 0.82rem 0 0.656rem 0;
+}
+
+#calendar {
+	height: auto;
+	padding-bottom: 20px;
+}
+
+/* -- Custom Classes -- */
+.Vcenter {
+	display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+/* -- Overwritting Materialize CSS -- */
+
