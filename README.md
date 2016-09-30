@@ -12,6 +12,7 @@ CSE 442 Project, more details to be released as project continues.
 - [Electron] (http://electron.atom.io/docs/)
 - [Weather Icons] (https://erikflowers.github.io/weather-icons/)
 - Compatible [API-List] (https://erikflowers.github.io/weather-icons/api-list.html) for the icons
+- [News Headlines] (http://hosted2.ap.org/APDEFAULT/APNewsFeeds)
 
 ### Current Status: *Sprint 2*
 - [x] Sprint 1
