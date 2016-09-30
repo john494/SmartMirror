@@ -143,5 +143,12 @@
     <!-- JS -->
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.min.js"></script>
+    <script>document.write(process.versions.node)</script>
+    <script>document.write(process.versions.chrome)</script>
+    <script>document.write(process.versions.electron)</script>
+    <script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
 
 </html>
