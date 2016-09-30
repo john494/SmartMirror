@@ -6,3 +6,6 @@
 ## Weather Docs
 - [Weather Icons] (https://erikflowers.github.io/weather-icons/)
 - Compatible [API-List] (https://erikflowers.github.io/weather-icons/api-list.html) for the icons
+
+## News
+- [News Headlines] (http://hosted2.ap.org/APDEFAULT/APNewsFeeds)
