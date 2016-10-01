@@ -1,14 +1,14 @@
 #!/bin/bash
 
 if [ $# -eq 0 ]; then
-	echo usage: $(basename $0) "on|off|status"
+	echo usage: $(basename $0) "on|off"
 	exit 1
 fi
 
 if [ $1 = "off" ]; then
-	vcgencmd display_power 0
+	echo 'standby 0' | cec-client -s RPI
 elif [ $1 = "on" ]; then
-	vcgencmd display_power 1
+	echo 'on 0' | cec-client -s RPI
 else
-	echo usage: $(basename $0) "on|off|status"
+	echo usage: $(basename $0) "on|off"
 fi
