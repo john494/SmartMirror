@@ -1,18 +1,28 @@
 {
-  "name": "SmartMirror",
-  "version": "0.0.0",
-  "description": "- This branch will be dedicated to the UI of the smart mirror - This will be the first branch to implement Materialize along with Electron - Michael Kulbacki and Nicholas Kabalan will primarily be collaborating on this branch",
-  "main": "index.js",
+  "name": "electron-quick-start",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron ."
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/john494/SmartMirror.git"
+    "url": "git+https://github.com/electron/electron-quick-start.git"
   },
-  "author": "",
-  "license": "BSD-2-Clause",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
   "bugs": {
-    "url": "https://github.com/john494/SmartMirror/issues"
+    "url": "https://github.com/electron/electron-quick-start/issues"
+  },
+  "homepage": "https://github.com/electron/electron-quick-start#readme",
+  "devDependencies": {
+    "electron": "^1.3.4"
   }
 }

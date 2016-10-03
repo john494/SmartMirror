@@ -5,7 +5,7 @@ html {
 
 /* -- Row 1 -- */
 #clock {
-	height:75px;
+	height:auto;
 	font-size: 35px;
 }
 
@@ -15,6 +15,11 @@ html {
 }
 
 #date {
+	font-size: 20px;
+	padding-left: 4px;
+}
+
+#day {
 	font-size: 22px;
 	padding-left: 4px;
 }
