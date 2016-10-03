@@ -3,7 +3,14 @@ html {
 	color: #fff;
 }
 
-/* -- Row 1 -- */
+#N1 {height:auto;background-color: red;}
+#N2 {height:auto;background-color: green;}
+#L1 {height:auto;background-color: purple;}
+#R1 {height:auto;background-color: blue;}
+#L2 {height:auto;background-color: yellow;}
+#R2 {height:auto;background-color: cyan;}
+
+/* -- Row 2 -- */
 #clock {
 	height:auto;
 	font-size: 35px;
@@ -28,18 +35,11 @@ html {
 	margin-top: -10px;
 }
 
-#notify {
-	height: auto;
-	color: white;
+#news {
 	padding-top: 10px;
 }
 
-/* -- Row 2 -- */
-#weather {
-	height: auto;
-	padding-bottom: 20px;
-}
-
+/* -- Row 1 -- */
 #weather h3 {
 	margin: 0.82rem 0 0.656rem 0;
 }
@@ -71,5 +71,7 @@ html {
 	padding-right: 5px;
 	text-align: left;
 }
+
+.undefined {height: 100px; background-color: cyan;}
 
 /* -- Overwritting Materialize CSS -- */
