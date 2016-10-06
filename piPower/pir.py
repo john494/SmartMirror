@@ -27,10 +27,10 @@ def main():
             time.sleep(0.1)
 
 def turn_on():
-    subprocess.call("sh /home/pi/git/SmartMirror/hardware/power.sh on", shell=True)
+    subprocess.call("sh /usr/local/sbin/SmartMirror/piPower/power.sh on", shell=True)
 
 def turn_off():
-    subprocess.call("sh /home/pi/git/SmartMirror/hardware/power.sh off", shell=True)
+    subprocess.call("sh /usr/local/sbin/SmartMirror/piPower/power.sh off", shell=True)
 
 if __name__ == '__main__':
     try:
