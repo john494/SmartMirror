@@ -1,0 +1,5 @@
+#!/bin/bash
+
+##This is just a placeholder temporarily unit we get the real executable file
+
+echo "HI WORLD IM A SMART MIRROR"
