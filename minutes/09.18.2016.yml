@@ -1,0 +1,29 @@
+date: September 18, 2016
+meeting_type: Group # meeting_type can "group", "ta", or "instructor"
+attendance: [johnmcki, ajkirsch, mdkulbac]
+absent: [grantwra, ntkabala]
+excused_absences: [ # Any legitimate excuses for absent team members
+  {ubit: grantwra, : reason: In Toronto at time of meeting},
+  {ubit: ntkabala, : reason: Not needed for this meeting}
+  ]
+task_progress: [ # All group members must be included here even if they haven't made any progress since the last meeting
+  {ubit: johnmcki, progress: None},
+  {ubit: mdkulbac, progress: None},
+  {ubit: ajkirsch, progress: Added hackathon branch with old code to repo},
+  {ubit: grantwra, progress: None},
+  {ubit: ntkabala, progress: None}
+  ]
+issues: [ # Post any issues here. Issues that cannot be addressed by the group should especially be included
+  #{ubit: <ubit2>, issue: Needs to contact customer to clarify requirements that have not yet been discussed.},
+  ]
+tasks: [ #What were going to be doing by monday
+  {ubit: ajkirsch, task: None},
+  {ubit: johnmcki, task: None},
+  {ubit: johnmcki, task: None},
+  {ubit: grantwra, task: None},
+  {ubit: ntkabala, task: None},
+  {ubit: mdkulbac, task: None}
+  ]
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+  -Made youtube video for Sprint 1.
+  -Tagged version 0.1.0 to master branch.
