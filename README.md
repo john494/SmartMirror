@@ -6,6 +6,7 @@ CSE 442 Project, more details to be released as project continues.
 - Alex Kirschner
 - Michael Kulbacki
 - Nicholas Kabalan
+- Grant Wrazen
 
 ## Documentation
 - [Materialize] (http://materializecss.com/getting-started.html)
