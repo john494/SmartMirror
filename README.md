@@ -10,3 +10,6 @@
 
 ## News
 - [News Headlines] (http://hosted2.ap.org/APDEFAULT/APNewsFeeds)
+
+## Layout
+![UI Layout](/img/layout.png)
