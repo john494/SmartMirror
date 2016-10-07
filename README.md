@@ -1,4 +1,9 @@
-# Develop Branch #
-- Merge into this branch once individual tasks are complete
-- This branch contains all of our meeting minutes
-- See readme on other branches for specifics of their functionality
+# Autoload Branch #
+
+## Power on
+- On power on pi will boot into app
+
+## Install
+- Install script to move necessary executable files to /usr/local/sbin/SmartMirror/
+
+### John McKissick primary person on branch
