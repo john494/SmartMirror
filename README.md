@@ -1,3 +1,8 @@
+# Develop Branch #
+- Merge into this branch once individual tasks are complete
+- This branch contains all of our meeting minutes
+- See readme on other branches for specifics of their functionality
+
 # UI Branch
 - This branch will be dedicated to the UI of the smart mirror
 - This will be the first branch to implement [Materialize] (http://materializecss.com/getting-started.html) along with [Electron] (http://electron.atom.io/docs/)
