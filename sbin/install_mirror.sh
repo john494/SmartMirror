@@ -31,7 +31,7 @@ if [ -f /etc/rc.local ];
 then	
 	sudo sed -i 's/\"exit 0/\"exit_0/g' /etc/rc.local
 	sudo sed -i '/\/usr\/local\/sbin\/SmartMirror\/piPower\/pir.py/d' /etc/rc.local
-	sudo sed -i 's"exit 0"pyton /usr/local/sbin/SmartMirror/piPower/pir.py\nexit 0"g' /etc/rc.local
+	sudo sed -i 's"exit 0"python /usr/local/sbin/SmartMirror/piPower/pir.py\nexit 0"g' /etc/rc.local
 	sudo sed -i '/\/usr\/local\/sbin\/SmartMirror\/smartmirror/d' /etc/rc.local
 	sudo sed -i 's"exit 0"/usr/local/sbin/SmartMirror/smartmirror\nexit 0"g' /etc/rc.local
 fi
