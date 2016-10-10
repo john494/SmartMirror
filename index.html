@@ -15,6 +15,9 @@
     <!-- Import Weather Icons -->
     <link rel="stylesheet" href="css/weather-icons.min.css" />
     <link rel="stylesheet" href="css/weather-icons-wind.min.css" />
+
+    <!-- Widget CSS -->
+    <link rel="stylesheet" href="widgets/weather/style.css" />
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
@@ -145,80 +148,73 @@
         <!-- Row 2 -->
         <div class="row">
             <div class="col s3 white-text" id="L2">
-                <div class="undefined">
-                    <section data-id="widget35" data-name="weather" data-size="variable" class="widget weather variable"><div class="handle"></div>
-<div class="settings"><svg width="16" height="16" viewBox="0 0 1792 1792" fill="currentColor"><path d="M448 1472q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm644-420l-682 682q-37 37-90 37-52 0-91-37l-106-108q-38-36-38-90 0-53 38-91l681-681q39 98 114.5 173.5t173.5 114.5zm634-435q0 39-23 106-47 134-164.5 217.5t-258.5 83.5q-185 0-316.5-131.5t-131.5-316.5 131.5-316.5 316.5-131.5q58 0 121.5 16.5t107.5 46.5q16 11 16 28t-16 28l-293 169v224l193 107q5-3 79-48.5t135.5-81 70.5-35.5q15 0 23.5 10t8.5 25z"></path></svg></div>
-<div class="content">   <div class="location" data-index="0">
-        <h2 class="header"><a href="https://www.google.com/search?q=weather%20San%20Francisco%2C%20CA">San Francisco, CA</a></h2>
-
-            <div class="current">
-                <div class="cond sunny"></div>
-
-                <span class="temp">
-                    69°<sup class="toggle">
-                        <span data-units="imperial" class="active">F</span>
-                        <span data-units="metric">C</span>
-                    </sup>
-                </span>
-
-                <div class="details">
-                    <div class="status">Sunny</div>
-
-                        <div class="wind">
-                            <span>Wind</span>
-
-                            <svg xmlns="http://www.w3.org/2000/svg" class="direction" viewBox="0 0 24 24">
-                                <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" style="transform: rotate(345deg)"></path>
-                            </svg>
-
-                            2 mph
-                        </div>
-                
-                    <div><span>Precip</span> 0%</div>
-
-                    
-                </div>
-
-                            </div>
-
-                <div class="forecast daily" tabindex="-1">
-                    <button type="button" class="material fab prev" data-direction="left" disabled=""></button>
-
-                    <div class="items">
-                        <div class="pull"></div>
-
-                            <div class="item" data-index="0">
-                                <div class="period">Sun</div>
-                                <div class="cond partlycloudy" title="Partly Sunny"></div>
-                                <span class="high">75°</span> / <span class="low">57°</span>
-                            </div>
-                            <div class="item" data-index="1">
-                                <div class="period">Mon</div>
-                                <div class="cond partlycloudy" title="Partly Sunny"></div>
-                                <span class="high">69°</span> / <span class="low">55°</span>
-                            </div>
-                            <div class="item" data-index="2">
-                                <div class="period">Tue</div>
-                                <div class="cond partlycloudy" title="Partly Sunny"></div>
-                                <span class="high">68°</span> / <span class="low">56°</span>
-                            </div>
-                            <div class="item" data-index="3">
-                                <div class="period">Wed</div>
-                                <div class="cond cloudy" title="Cloudy"></div>
-                                <span class="high">67°</span> / <span class="low">56°</span>
-                            </div>
-                            <div class="item" data-index="4">
-                                <div class="period">Thu</div>
-                                <div class="cond partlycloudy" title="Mostly Cloudy"></div>
-                                <span class="high">70°</span> / <span class="low">61°</span>
-                            </div>
-                    </div>
-
-                    <button type="button" class="material fab next" data-direction="right"></button>
-                </div>
-
-    </div>
-</div><div class="resize"></div></section>
+                <div class="">
+				<section data-id="widget75" data-name="weather" data-size="variable" class="widget weather variable">
+					<div class="handle"></div>
+					<div class="settings">
+						<svg width="16" height="16" viewBox="0 0 1792 1792" fill="currentColor">
+							<path d="M448 1472q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm644-420l-682 682q-37 37-90 37-52 0-91-37l-106-108q-38-36-38-90 0-53 38-91l681-681q39 98 114.5 173.5t173.5 114.5zm634-435q0 39-23 106-47 134-164.5 217.5t-258.5 83.5q-185 0-316.5-131.5t-131.5-316.5 131.5-316.5 316.5-131.5q58 0 121.5 16.5t107.5 46.5q16 11 16 28t-16 28l-293 169v224l193 107q5-3 79-48.5t135.5-81 70.5-35.5q15 0 23.5 10t8.5 25z"></path>
+						</svg>
+					</div>
+					<div class="content">
+						<div class="location" data-index="0">
+							<h6 class="header">Buffalo, NY</h6>
+							<div class="current">
+								<div class="cond partlycloudy-night"></div>
+								<span class="temp">
+									51°<sup class="toggle">
+										<span data-units="imperial" class="active">F</span>
+								<span data-units="metric">C</span>
+								</sup>
+								</span>
+								<div class="details">
+									<div class="status">Partly Cloudy</div>
+									<div class="wind">
+										<span>Wind</span>
+										<svg xmlns="http://www.w3.org/2000/svg" class="direction" viewBox="0 0 24 24">
+											<path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" style="transform: rotate(175deg)"></path>
+										</svg>
+										9 mph
+									</div>
+									<div><span>Precip</span> 0%</div>
+								</div>
+							</div>
+							<div class="forecast daily" tabindex="-1">
+								<button type="button" class="material fab prev" data-direction="left" disabled=""></button>
+								<div class="items">
+									<div class="pull"></div>
+									<div class="item" data-index="0">
+										<div class="period">Sun</div>
+										<div class="cond partlycloudy" title="Partly Sunny"></div>
+										<span class="high">56°</span> / <span class="low">40°</span>
+									</div>
+									<div class="item" data-index="1">
+										<div class="period">Mon</div>
+										<div class="cond sunny" title="Sunny"></div>
+										<span class="high">55°</span> / <span class="low">39°</span>
+									</div>
+									<div class="item" data-index="2">
+										<div class="period">Tue</div>
+										<div class="cond partlycloudy" title="Mostly Cloudy"></div>
+										<span class="high">64°</span> / <span class="low">50°</span>
+									</div>
+									<div class="item" data-index="3">
+										<div class="period">Wed</div>
+										<div class="cond sunny" title="Sunny"></div>
+										<span class="high">71°</span> / <span class="low">55°</span>
+									</div>
+									<div class="item" data-index="4">
+										<div class="period">Thu</div>
+										<div class="cond showers" title="Rain Showers"></div>
+										<span class="high">63°</span> / <span class="low">41°</span>
+									</div>
+								</div>
+								<button type="button" class="material fab next" data-direction="right"></button>
+							</div>
+						</div>
+					</div>
+					<div class="resize"></div>
+				</section>
                 </div>
             </div>
             <div class="col s3 offset-s6" id="R2">
@@ -247,6 +243,8 @@
     <!-- JS -->
     <script src="js/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.min.js"></script>
+    <script src="widgets/weather/model.js"></script>
+    <script src="widgets/weather/view.js"></script>
     <!-- <script>document.write(process.versions.node)</script>
     <script>document.write(process.versions.chrome)</script>
     <script>document.write(process.versions.electron)</script> -->

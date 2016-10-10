@@ -325,7 +325,7 @@ h2.header a {
 }
 
 .forecast .item {
-	color: #888;
+	color: white;
 	margin: 5px;
 	min-width: 50px;
 	font-size: 13px;
@@ -337,7 +337,7 @@ h2.header a {
 }
 
 .dark .forecast .item {
-	color: #CCC;
+	color: white;
 }
 
 .forecast.is-pro .item {
@@ -368,11 +368,11 @@ h2.header a {
 }
 
 .forecast .high {
-	color: #333;
+	color: white;
 }
 
 .dark .forecast .high {
-	color: #EEE;
+	color: white;
 }
 
 
