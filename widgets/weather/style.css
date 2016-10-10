@@ -2,7 +2,6 @@
 	/ Main Styles
 */
 :root {
-	padding: 15px;
 	overflow: visible!important;
 }
 
@@ -107,12 +106,12 @@ h2.header a {
 
 .temp .toggle span:hover,
 .temp .toggle span.active {
-	color: #333;
+	color: white;
 }
 
 .dark .temp .toggle span:hover,
 .dark .temp .toggle span.active {
-	color: #EEE;
+	color: white;
 }
 
 
