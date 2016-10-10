@@ -49,9 +49,12 @@ html {
 	font-size: 55px;
 }
 
+#weather {
+	padding-bottom:20px;
+}
+
 #calendar {
 	height: auto;
-	padding-bottom: 20px;
 }
 
 /* -- Custom Classes -- */
