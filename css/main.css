@@ -1,24 +1,80 @@
 html {
 	background-color: #000;
+	color: #fff;
 }
 
+#N1 {height:auto;background-color: red;}
+#N2 {height:auto;background-color: green;}
+#L1 {height:auto;background-color: purple;}
+#R1 {height:auto;background-color: blue;}
+#L2 {height:auto;color: white;}
+#R2 {height:auto;background-color: cyan;}
+
+/* -- Row 2 -- */
 #clock {
-	background-color: blue;
-	height:300px;
+	height:auto;
+	font-size: 35px;
 }
 
-/* Stylying the clock text */
-#clock p{
-	color: white;
-	font-size: 100px;
-	position: absolute;
-	white-space: nowrap;
-  	top: 50%;
-  	left:50%;
-  	transform: translate(-50%,-50%);
+#clock p {
+	margin-bottom: 0px;
+	margin-top: 0px;
 }
 
-#notify {
-	background-color: red;
-	height: 300px;
+#date {
+	font-size: 20px;
+	padding-left: 4px;
 }
+
+#day {
+	font-size: 22px;
+	padding-left: 4px;
+}
+
+#time {
+	margin-top: -10px;
+}
+
+#news {
+	padding-top: 10px;
+}
+
+/* -- Row 1 -- */
+#weather h3 {
+	margin: 0.82rem 0 0.656rem 0;
+}
+
+#weather-icon {
+	margin-top: 27px;
+	font-size: 55px;
+}
+
+#weather {
+	padding-bottom:20px;
+}
+
+#calendar {
+	height: auto;
+}
+
+/* -- Custom Classes -- */
+.Vcenter {
+	display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.vertical-divider {
+	border-left: 1px solid white;
+	height: 75px;
+}
+
+.headline-padding  p{
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: left;
+}
+
+.undefined {height: 100px; background-color: cyan;}
+
+/* -- Overwritting Materialize CSS -- */
