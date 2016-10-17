@@ -19,6 +19,7 @@ CSE 442 Project, more details to be released as project continues.
 ## Licenses
 - iChrome is licensed under a [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/deed.en_US).
 
-### Current Status: *Sprint 2*
+### Current Status: *Sprint 3*
+- [x] Sprint 2
 - [x] Sprint 1
 - [x] Group Formation
