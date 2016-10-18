@@ -1,0 +1,27 @@
+date: October 7, 2016
+meeting_type: TA # meeting_type can "group", "ta", or "instructor"
+attendance: [johnmcki, ntkabala, grantwra, ajkirsch, mdkulbac]
+absent: []
+excused_absences: [ # Any legitimate excuses for absent team members
+  #{ubit: <ubit5>, : reason: Had class. This was known through a Doodle poll before scheduling the meeting.},
+  ]
+task_progress: [ # All group members must be included here even if they haven't made any progress since the last meeting
+  {ubit: johnmcki, progress: Pi boots to app, install script},
+  {ubit: mdkulbac, progress: Added sections for widgets},
+  {ubit: ajkirsch, progress: Found iChrome github for google now cards},
+  {ubit: grantwra, progress: Set up the web server},
+  {ubit: ntkabala, progress: Got electron running for our app}
+  ]
+issues: [ # Post any issues here. Issues that cannot be addressed by the group should especially be included
+  #{ubit: <ubit2>, issue: Needs to contact customer to clarify requirements that have not yet been discussed.},
+  ]
+tasks: [ #What were going to be doing
+  {ubit: ajkirsch, task: Still need to get electron working. Make youtube video},
+  {ubit: johnmcki, task: Make youtube video},
+  {ubit: grantwra, task: Merge Mike's new code to save and restore},
+  {ubit: ntkabala, task: Get an API running (twitter or something)},
+  {ubit: mdkulbac, task: Finalize a list of widgets and research iChrome}
+  ]
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+  -Mike D helped us fix the repo.
+  -Discuss iChrome usage

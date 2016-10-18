@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Smart Mirror">
+    <meta name="author" content="Team: Pied Piper">
+    <title>Smart Mirror Home</title>
+
+    <!-- Custom CSS -->
+    <link href="css/main.css" rel="stylesheet">
+    <!-- Materialize CSS -->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <!-- Import Weather Icons -->
+    <link rel="stylesheet" href="css/weather-icons.min.css" />
+    <link rel="stylesheet" href="css/weather-icons-wind.min.css" />
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <!-- Row 0 -->
+        <div class="row">
+            <div class="col s3 white-text" id="N1">
+                
+            </div>
+            <div class="col s9 white-text" id="N2">
+               
+            </div>
+        </div>
+
+        <!-- Row 1 -->
+        <div class="row">
+            <div class="col s3 white-text" id="L1">
+                
+            </div>
+            <div class="col s3 offset-s6" id="R1">
+                
+            </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="row">
+            <div class="col s3 white-text" id="L2">
+                <div class="undefined">
+            
+                </div>
+            </div>
+            <div class="col s3 offset-s6" id="R2">
+                <div class="undefined">
+            
+                </div>
+            </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="row">
+            <div class="col s3 white-text" id="L3">
+                <div class="undefined">
+                    
+                </div>
+            </div>
+            <div class="col s3 offset-s6" id="R3">
+                <div class="undefined">
+            
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+    <!-- JS -->
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+    <!-- <script>document.write(process.versions.node)</script>
+    <script>document.write(process.versions.chrome)</script>
+    <script>document.write(process.versions.electron)</script> -->
+    <script>
+    // You can also require other files to run in this process
+    require('./renderer.js')
+  </script>
+
+</html>

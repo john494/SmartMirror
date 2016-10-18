@@ -55,6 +55,7 @@ html {
 
 #calendar {
 	height: auto;
+	padding-bottom: 20px;
 }
 
 /* -- Custom Classes -- */
