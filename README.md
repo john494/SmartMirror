@@ -11,5 +11,8 @@
 ## News
 - [News Headlines] (http://hosted2.ap.org/APDEFAULT/APNewsFeeds)
 
+## Clock/ Date
+- [DateJS] (http://www.datejs.com/) which is also protected under the MIT License
+
 ## Layout
 ![UI Layout](/img/layout.png)
