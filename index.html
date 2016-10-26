@@ -41,9 +41,9 @@
         <div class="row">
             <div class="col s3 white-text" id="N1">
                 <div id="clock" class="thin">
-                    <p id="time">9:25<span style="font-size:25px;">PM</span></p>
-                    <p id="day">Sunday</p>
-                    <p id="date">October 9th</p>
+                    <div id="time"></div>
+                    <!--<p id="time">9:25<span style="font-size:25px;">PM</span></p>-->
+                    <p id="when"></p>
                 </div>
             </div>
             <div class="col s9 white-text" id="N2">
@@ -208,8 +208,31 @@
     </div>
 </body>
 
-    <!-- JS
-    <script src="js/jquery-2.1.1.min.js"></script> -->
+    <!-- JS -->
+    <script type="text/javascript" src="http://www.datejs.com/build/date.js"></script>
+    <script><!-- Time -->
+        function startClock() {
+            var d = new Date()
+            var c = d.toString("h:mm tt");
+            document.getElementById('time').innerHTML = c;
+            var t = setTimeout(startClock, 500);
+        };
+        startClock();
+    </script>
+    <script><!-- Day, Month, Year -->
+        var mydate = new Date()
+        var year = mydate.getYear()
+        if (year < 1000)
+            year+=1900
+        var day   = mydate.getDay()
+        var month = mydate.getMonth()
+        var daym  = mydate.getDate()
+        if (daym < 10)
+            daym = "0" + daym
+        var dayarray = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+        var montharray = new Array("January","February","March","April","May","June","July","August","September","October","November","December")
+        document.getElementById('when').innerHTML = "<p id='day'><b>"+dayarray[day]+"</b></p><p id='date'>"+montharray[month]+" "+daym+", "+year+"</p>";
+    </script>
     <script data-main="js/materialize.min"src="http://requirejs.org/docs/release/2.3.2/comments/require.js"></script>
     <script data-main="widgets/weather/model.js"src="http://requirejs.org/docs/release/2.3.2/comments/require.js"></script>
     <script data-main="widgets/weather/view" src="http://requirejs.org/docs/release/2.3.2/comments/require.js"></script>
