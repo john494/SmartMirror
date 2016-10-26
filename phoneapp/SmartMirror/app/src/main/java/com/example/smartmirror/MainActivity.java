@@ -55,9 +55,9 @@ public class MainActivity extends AppCompatActivity {
         try {
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
 
-            nameValuePairs.add(new BasicNameValuePair("fname", "Grant Wrazen"));
-            nameValuePairs.add(new BasicNameValuePair("fphone", "(716) 123-4567"));
-            nameValuePairs.add(new BasicNameValuePair("femail", "mynameisgrant@buffalo.edu"));
+            nameValuePairs.add(new BasicNameValuePair("fname", "Alex Kirschner"));
+            nameValuePairs.add(new BasicNameValuePair("fphone", "(716) 456-4567"));
+            nameValuePairs.add(new BasicNameValuePair("femail", "mynameisalex@buffalo.edu"));
             nameValuePairs.add(new BasicNameValuePair("fcomment", "It worked!!!! Fuck yeah! :)"));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             httpclient.execute(httppost);
