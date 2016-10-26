@@ -48,26 +48,32 @@ public class MainActivity extends AppCompatActivity {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
+        
 
+    }
 
+    private int postToServer()
+    {
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost("http://jarvis.cse.buffalo.edu/mine/mypage.php");
         try {
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
 
-            nameValuePairs.add(new BasicNameValuePair("fname", "Grant Wrazen"));
-            nameValuePairs.add(new BasicNameValuePair("fphone", "(716) 123-4567"));
-            nameValuePairs.add(new BasicNameValuePair("femail", "mynameisgrant@buffalo.edu"));
-            nameValuePairs.add(new BasicNameValuePair("fcomment", "It worked!!!! Fuck yeah! :)"));
+            nameValuePairs.add(new BasicNameValuePair("fname", "John"));
+            nameValuePairs.add(new BasicNameValuePair("fphone", "no #"));
+            nameValuePairs.add(new BasicNameValuePair("femail", "mynameisJohn@buffalo.edu"));
+            nameValuePairs.add(new BasicNameValuePair("fcomment", "It worked!!!! :)"));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             httpclient.execute(httppost);
 
         } catch (ClientProtocolException e) {
             // TODO Auto-generated catch block
+            return 1;
         } catch (IOException e) {
             // TODO Auto-generated catch block
+            return 1;
         }
-
+        return 0;
     }
 
 
