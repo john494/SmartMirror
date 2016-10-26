@@ -68,24 +68,20 @@
                 <div id="weather">
                     <section data-id="widget37" data-name="weather" data-size="variable" class="widget weather variable">
                     <div class="handle"></div>
-                    <!-- <div class="settings">
-                        <svg width="16" height="16" viewBox="0 0 1792 1792" fill="currentColor">
-                            <path d="M448 1472q0-26-19-45t-45-19-45 19-19 45 19 45 45 19 45-19 19-45zm644-420l-682 682q-37 37-90 37-52 0-91-37l-106-108q-38-36-38-90 0-53 38-91l681-681q39 98 114.5 173.5t173.5 114.5zm634-435q0 39-23 106-47 134-164.5 217.5t-258.5 83.5q-185 0-316.5-131.5t-131.5-316.5 131.5-316.5 316.5-131.5q58 0 121.5 16.5t107.5 46.5q16 11 16 28t-16 28l-293 169v224l193 107q5-3 79-48.5t135.5-81 70.5-35.5q15 0 23.5 10t8.5 25z"></path>
-                        </svg>
-                    </div> -->
                     <div class="content">
                         <div class="location" data-index="0">
                             <h6 class="header">Buffalo, NY</h6>
                             <div class="current">
-                                <div class="cond partlycloudy"></div>
+                                <div id="currIcon"></div>
                                 <span class="temp">
-                                    <span id ="temp"></span><sup class="">
+                                    <span id ="temp"></span>
+                                    <sup class="">
                                         <span data-units="imperial" class="active" style="font-size:55%">°F</span>
                                     </sup>
                                 </span>
                                 <div class="details">
                                     <div class="status" id="description"></div>
-                                    <div>Precip: <span id="precipitation">Precip</span></div>
+                                    <div>Precip: <span id="precipitation"></span></div>
                                 </div>
                             </div>
 
@@ -102,30 +98,52 @@
                                 $.get("https://api.darksky.net/forecast/" + key + "/" + buff_lat + "," + buff_lon, function(data) {
                                   current = data['currently'];
                                   hourly = data['hourly'];
+                                  var currIcon = current['icon']; // make var for the hourly icons too
+                                  currIcon = checkIcon(currIcon);
                                   document.getElementById('temp').innerHTML = Math.round(current['apparentTemperature']);
                                   document.getElementById('description').innerHTML = hourly['summary'];
                                   document.getElementById('precipitation').innerHTML = (current['precipProbability'] * 100) + "%";
+                                  document.getElementById('currIcon').innerHTML = "<div class='cond " + currIcon + "'></div>";
+                                  console.log(currIcon);
 
+                                  // Calculating hour based on location
                                   var hour1 = (new Date(hourly['data'][1]['time'] * 1000)).getHours() - 12;
                                   var hour2 = (new Date(hourly['data'][2]['time'] * 1000)).getHours() - 12;
                                   var hour3 = (new Date(hourly['data'][3]['time'] * 1000)).getHours() - 12;
                                   var hour4 = (new Date(hourly['data'][4]['time'] * 1000)).getHours() - 12;
                                   var hour5 = (new Date(hourly['data'][5]['time'] * 1000)).getHours() - 12;
 
-                                  console.log(hour1);
-                                  console.log(Math.round(hourly['data'][1]['apparentTemperature']));
-                                  console.log(hour2);
-                                  console.log(Math.round(hourly['data'][2]['apparentTemperature']));
-                                  console.log(hour3);
-                                  console.log(Math.round(hourly['data'][3]['apparentTemperature']));
-                                  console.log(hour4);
-                                  console.log(Math.round(hourly['data'][4]['apparentTemperature']));
-                                  console.log(hour5);
-                                  console.log(Math.round(hourly['data'][5]['apparentTemperature']));
+                                  // Getting AM or PM
+                                  var d = new Date();
+                                  var ampm = d.toString("tt");
+                                  // Each hour
+                                  document.getElementById('hour1').innerHTML = hour1 +" "+ ampm;
+                                  document.getElementById('hour2').innerHTML = hour2 +" "+ ampm;
+                                  document.getElementById('hour3').innerHTML = hour3 +" "+ ampm;
+                                  document.getElementById('hour4').innerHTML = hour4 +" "+ ampm;
+                                  document.getElementById('hour5').innerHTML = hour5 +" "+ ampm;
+                                  // Temperature each hour
+                                  document.getElementById('temp1').innerHTML = Math.round(hourly['data'][1]['apparentTemperature'])+"°";
+                                  document.getElementById('temp2').innerHTML = Math.round(hourly['data'][2]['apparentTemperature'])+"°";
+                                  document.getElementById('temp3').innerHTML = Math.round(hourly['data'][3]['apparentTemperature'])+"°";
+                                  document.getElementById('temp4').innerHTML = Math.round(hourly['data'][4]['apparentTemperature'])+"°";
+                                  document.getElementById('temp5').innerHTML = Math.round(hourly['data'][5]['apparentTemperature'])+"°";
                                 });
                               }
+
+                              // will translate the icon from DarkSky to what we have locally
+                              // look at google keep to see available icons to be able to handle them all
+                              // consider giphy for current
+                              function checkIcon(darkskyname) {
+                                var icon = "";
+                                if(darkskyname == "partly-cloudy-day"){
+                                  icon = "partlycloudy";
+                                }
+                                return icon;
+                              }
                               weather(current);
-                              setInterval(weather,1000*6*5);
+                              // weather updates every 30 min or until reload of the page
+                              setInterval(weather,1800000);
 
                             </script>
 
@@ -134,29 +152,29 @@
                                 <div class="items">
                                     <div class="pull"></div>
                                     <div class="item" data-index="0">
-                                        <div class="period" id="hour0">Sun</div>
+                                        <div class="period" id="hour1"></div>
                                         <div class="cond partlycloudy" title="Partly Sunny"></div>
-                                        <span class="high">56°</span> / <span class="low">40°</span>
+                                        <span class="high" id="temp1">°</span>
                                     </div>
                                     <div class="item" data-index="1">
-                                        <div class="period" id="hour1">Mon</div>
+                                        <div class="period" id="hour2"></div>
                                         <div class="cond sunny" title="Sunny"></div>
-                                        <span class="high">55°</span> / <span class="low">39°</span>
+                                        <span class="high" id="temp2">°</span>
                                     </div>
                                     <div class="item" data-index="2">
-                                        <div class="period" id="hour2">Tue</div>
+                                        <div class="period" id="hour3"></div>
                                         <div class="cond partlycloudy" title="Mostly Cloudy"></div>
-                                        <span class="high">64°</span> / <span class="low">50°</span>
+                                        <span class="high" id="temp3">°</span>
                                     </div>
                                     <div class="item" data-index="3">
-                                        <div class="period" id="hour3">Wed</div>
+                                        <div class="period" id="hour4"></div>
                                         <div class="cond sunny" title="Sunny"></div>
-                                        <span class="high">71°</span> / <span class="low">55°</span>
+                                        <span class="high" id="temp4">°</span>
                                     </div>
                                     <div class="item" data-index="4">
-                                        <div class="period" id="hour4">Thu</div>
+                                        <div class="period" id="hour5"></div>
                                         <div class="cond showers" title="Rain Showers"></div>
-                                        <span class="high">63°</span> / <span class="low">41°</span>
+                                        <span class="high" id="temp5">°</span>
                                     </div>
                                 </div>
                                 <button type="button" class="material fab next" data-direction="right"></button>
