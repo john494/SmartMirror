@@ -113,6 +113,7 @@
                                   var hour4 = (new Date(hourly['data'][4]['time'] * 1000)).getHours() - 12;
                                   var hour5 = (new Date(hourly['data'][5]['time'] * 1000)).getHours() - 12;
 
+
                                   // Getting AM or PM
                                   var d = new Date();
                                   var ampm = d.toString("tt");
@@ -232,8 +233,39 @@
             <div class="col s3 black-text" id="L2">
                 <div class="undefined">
                     <div id="stockname"></div>
-                    <div id="currPrice"></div>
+                    <div id="curprice"></div>
                     <div id="shift"></div>
+
+                    <script>
+                      // using AAPL temporarily
+
+                      getStock("AAPL");
+
+                      function getStock(symbol) {
+                        $.get("http://finance.google.com/finance/info?client=iq&q=" + symbol, function(body) {
+                          body = body.slice(4);
+                          body = JSON.parse(body);
+
+                          // Current share price
+                          var companyname = body[0]['t'];
+                          var price = body[0]['l'];
+                          var pointchange = body[0]['c'];
+                          var percentchange = body[0]['cp'];
+
+                          document.getElementById('stockname').innerHTML = companyname;
+                          document.getElementById('curprice').innerHTML = price + " USD";
+
+                          // choose appropriate color
+                          if (pointchange < 0) {
+                            document.getElementById('shift').innerHTML = "<span style='color:red;'>"+ pointchange + " (" + percentchange + "%)</span>";
+                          } else {
+                            document.getElementById('shift').innerHTML = "<span style='color:green;'>"+ pointchange + " (" + percentchange + "%)</span>";
+                          };
+
+                        });
+
+                      }
+                    </script>
 
                 </div>
             </div>
