@@ -102,7 +102,7 @@
                                 $.get("https://api.darksky.net/forecast/" + key + "/" + buff_lat + "," + buff_lon, function(data) {
                                   current = data['currently'];
                                   hourly = data['hourly'];
-                                  document.getElementById('temp').innerHTML = Math.floor(current['apparentTemperature']) + '°F';
+                                  document.getElementById('temp').innerHTML = Math.round(current['apparentTemperature']);
                                   document.getElementById('description').innerHTML = hourly['summary'];
                                   document.getElementById('precipitation').innerHTML = (current['precipProbability'] * 100) + "%";
                                 });
