@@ -78,26 +78,40 @@
                             <h6 class="header">Buffalo, NY</h6>
                             <div class="current">
                                 <div class="cond partlycloudy"></div>
-                                <span class="temp">
-                                    51°
+                                <span class="temp" id="temp">
                                     <sup class="">
                                         <span data-units="imperial" class="active" style="font-size:55%">F</span>
-                                <!-- <span data-units="metric">C</span> -->
                                     </sup>
                                 </span>
                                 <div class="details">
-                                    <div class="status">Partly Cloudy</div>
-                                    <div class="wind">
-                                        <span>Wind</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="direction" viewBox="0 0 24 24">
-                                            <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" style="transform: rotate(175deg)"></path>
-                                        </svg>
-                                        9 mph
-                                    </div>
-                                    <div><span>Precip</span> 0%</div>
+                                    <div class="status" id="description"></div>
+                                    <div>Precip: <span id="precipitation">Precip</span></div>
                                 </div>
                             </div>
-                            <div class="forecast daily" tabindex="-1">
+
+                            <script>
+                              var key = "85f6ad9b4d64ca03f1e00f6775de0259";
+
+                              // Temporary values, make these dynamic later
+                              var buff_lat = "42.886447";
+                              var buff_lon = "-78.878369";
+
+                              var current;
+
+                              function weather() {
+                                $.get("https://api.darksky.net/forecast/" + key + "/" + buff_lat + "," + buff_lon, function(data) {
+                                  current = data['currently'];
+                                  hourly = data['hourly'];
+                                  document.getElementById('temp').innerHTML = Math.floor(current['apparentTemperature']) + '°F';
+                                  document.getElementById('description').innerHTML = hourly['summary'];
+                                  document.getElementById('precipitation').innerHTML = (current['precipProbability'] * 100) + "%";
+                                });
+                              }
+                              weather(current);
+
+                            </script>
+
+                            <!-- <div class="forecast daily" tabindex="-1">
                                 <button type="button" class="material fab prev" data-direction="left" disabled=""></button>
                                 <div class="items">
                                     <div class="pull"></div>
@@ -128,7 +142,7 @@
                                     </div>
                                 </div>
                                 <button type="button" class="material fab next" data-direction="right"></button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="resize"></div>
