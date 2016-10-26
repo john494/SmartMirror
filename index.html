@@ -78,9 +78,9 @@
                             <h6 class="header">Buffalo, NY</h6>
                             <div class="current">
                                 <div class="cond partlycloudy"></div>
-                                <span class="temp" id="temp">
-                                    <sup class="">
-                                        <span data-units="imperial" class="active" style="font-size:55%">F</span>
+                                <span class="temp">
+                                    <span id ="temp"></span><sup class="">
+                                        <span data-units="imperial" class="active" style="font-size:55%">°F</span>
                                     </sup>
                                 </span>
                                 <div class="details">
@@ -105,44 +105,62 @@
                                   document.getElementById('temp').innerHTML = Math.round(current['apparentTemperature']);
                                   document.getElementById('description').innerHTML = hourly['summary'];
                                   document.getElementById('precipitation').innerHTML = (current['precipProbability'] * 100) + "%";
+
+                                  var hour1 = (new Date(hourly['data'][1]['time'] * 1000)).getHours() - 12;
+                                  var hour2 = (new Date(hourly['data'][2]['time'] * 1000)).getHours() - 12;
+                                  var hour3 = (new Date(hourly['data'][3]['time'] * 1000)).getHours() - 12;
+                                  var hour4 = (new Date(hourly['data'][4]['time'] * 1000)).getHours() - 12;
+                                  var hour5 = (new Date(hourly['data'][5]['time'] * 1000)).getHours() - 12;
+
+                                  console.log(hour1);
+                                  console.log(Math.round(hourly['data'][1]['apparentTemperature']));
+                                  console.log(hour2);
+                                  console.log(Math.round(hourly['data'][2]['apparentTemperature']));
+                                  console.log(hour3);
+                                  console.log(Math.round(hourly['data'][3]['apparentTemperature']));
+                                  console.log(hour4);
+                                  console.log(Math.round(hourly['data'][4]['apparentTemperature']));
+                                  console.log(hour5);
+                                  console.log(Math.round(hourly['data'][5]['apparentTemperature']));
                                 });
                               }
                               weather(current);
+                              setInterval(weather,1000*6*5);
 
                             </script>
 
-                            <!-- <div class="forecast daily" tabindex="-1">
+                            <div class="forecast daily" tabindex="-1">
                                 <button type="button" class="material fab prev" data-direction="left" disabled=""></button>
                                 <div class="items">
                                     <div class="pull"></div>
                                     <div class="item" data-index="0">
-                                        <div class="period">Sun</div>
+                                        <div class="period" id="hour0">Sun</div>
                                         <div class="cond partlycloudy" title="Partly Sunny"></div>
                                         <span class="high">56°</span> / <span class="low">40°</span>
                                     </div>
                                     <div class="item" data-index="1">
-                                        <div class="period">Mon</div>
+                                        <div class="period" id="hour1">Mon</div>
                                         <div class="cond sunny" title="Sunny"></div>
                                         <span class="high">55°</span> / <span class="low">39°</span>
                                     </div>
                                     <div class="item" data-index="2">
-                                        <div class="period">Tue</div>
+                                        <div class="period" id="hour2">Tue</div>
                                         <div class="cond partlycloudy" title="Mostly Cloudy"></div>
                                         <span class="high">64°</span> / <span class="low">50°</span>
                                     </div>
                                     <div class="item" data-index="3">
-                                        <div class="period">Wed</div>
+                                        <div class="period" id="hour3">Wed</div>
                                         <div class="cond sunny" title="Sunny"></div>
                                         <span class="high">71°</span> / <span class="low">55°</span>
                                     </div>
                                     <div class="item" data-index="4">
-                                        <div class="period">Thu</div>
+                                        <div class="period" id="hour4">Thu</div>
                                         <div class="cond showers" title="Rain Showers"></div>
                                         <span class="high">63°</span> / <span class="low">41°</span>
                                     </div>
                                 </div>
                                 <button type="button" class="material fab next" data-direction="right"></button>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                     <div class="resize"></div>
