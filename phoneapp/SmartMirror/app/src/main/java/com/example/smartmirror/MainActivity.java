@@ -1,6 +1,7 @@
 package com.example.smartmirror;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -33,7 +34,7 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.facebook.FacebookSdk;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,9 +56,9 @@ public class MainActivity extends AppCompatActivity {
         try {
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
 
-            nameValuePairs.add(new BasicNameValuePair("fname", "Alex Kirschner"));
+            nameValuePairs.add(new BasicNameValuePair("fname", "TEST"));
             nameValuePairs.add(new BasicNameValuePair("fphone", "(716) 456-4567"));
-            nameValuePairs.add(new BasicNameValuePair("femail", "mynameisalex@buffalo.edu"));
+            nameValuePairs.add(new BasicNameValuePair("femail", "nope@buffalo.edu"));
             nameValuePairs.add(new BasicNameValuePair("fcomment", "It worked!!!! Fuck yeah! :)"));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             httpclient.execute(httppost);
@@ -68,6 +69,14 @@ public class MainActivity extends AppCompatActivity {
             // TODO Auto-generated catch block
         }
 
+        Facebook();
+
+    }
+
+    public void Facebook(){
+        FacebookSdk.sdkInitialize(this.getApplicationContext());
+        Intent intent = new Intent(MainActivity.this, FacebookActivity.class);
+        MainActivity.this.startActivity(intent);
     }
 
 
