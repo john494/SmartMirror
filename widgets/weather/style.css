@@ -153,15 +153,16 @@ h2.header a {
 .details .status {
 	float: left;
 	width: 100%;
-	font-weight: 500;
+	font-weight: 400;
 	text-align: left;
+	padding-top: 5px;
 }
 
 .details .precip {
 	float: right;
 	width: 100%;
 	padding-top: 8px;
-	font-weight: 500;
+	/*font-weight: 500;*/
 	text-align: left;
 }
 
@@ -172,8 +173,8 @@ h2.header a {
 }
 
 .details div {
-	font-size: 14px;
-	font-weight: 500;
+	font-size: 16px;
+	/*font-weight: 500;*/
 	text-align: right;
 	display: inline-block;
 	width: calc((100% - 128px) / 2);
@@ -188,7 +189,7 @@ h2.header a {
 
 .details div span {
 	color: #fff;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: 400;
 	padding-right: 5px;
 }

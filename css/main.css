@@ -36,7 +36,7 @@ html {
 }
 
 #news {
-	padding-top: 10px;
+
 }
 
 /* -- Row 1 -- */
@@ -54,7 +54,7 @@ html {
 }
 
 #precipitation {
-	padding-left: 6px;
+	padding-left: 4px;
 }
 
 #calendar {
@@ -69,8 +69,8 @@ html {
 }
 
 .vertical-divider {
-	border-left: 1px solid white;
-	height: 75px;
+	border-left: 1px solid #d1d1d1;
+	height: 100px;
 }
 
 .headline-padding  p{
