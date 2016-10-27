@@ -45,16 +45,16 @@ h2.header a {
 }
 
 .cond {
-	width: 128px;
-	height: 128px;
+	width: 75px;
+	height: 75px;
 	vertical-align: top;
 	display: inline-block;
-	background: url(icons/sunny.png) center/auto 110% no-repeat;
+	background: url(icons/sunny.png) center/auto 100% no-repeat;
 }
 
 .current .cond {
-	flex: 0 0 128px;
-	margin-left: 15px;
+	flex: 0 0 75px;
+	/*margin-left: 15px;*/
 }
 
 .current .cond.rain,
@@ -64,9 +64,9 @@ h2.header a {
 }
 
 .temp {
-	font-size: 95px;
+	font-size: 50px;
 	font-weight: 300;
-	line-height: 112px;
+	/*line-height: 112px;*/
 	white-space: nowrap;
 	vertical-align: top;
 	display: inline-block;
@@ -127,6 +127,7 @@ h2.header a {
 	This list is missing .cond.sunny because that's the default icon
 */
 .cond.rain				{ background-image: url(icons/rain.png); }
+.cond.wind				{ background-image: url(icons/wind.png); }
 .cond.snow				{ background-image: url(icons/snow.png); }
 .cond.cloudy			{ background-image: url(icons/cloudy.png); }
 .cond.tstorms			{ background-image: url(icons/tstorms.png); }
@@ -138,13 +139,6 @@ h2.header a {
 .cond.lightrain-snow	{ background-image: url(icons/lightrain-snow.png); }
 .cond.partlycloudy-night{ background-image: url(icons/partlycloudy-night.png); }
 
-
-
-
-
-
-
-
 /*---------------------------------------------
 	/ Details
 */
@@ -152,15 +146,22 @@ h2.header a {
 	flex: 1 100%;
 	font-size: 0;
 	display: block;
-	padding: 0 15px;
+	padding: 0 5px;
 	margin: 5px 0 20px;
 }
 
 .details .status {
 	float: left;
-	width: 182px;
+	width: 50%;
 	font-weight: 500;
 	text-align: left;
+}
+
+.details .precip {
+	float: right;
+	width: 50%;
+	font-weight: 500;
+	text-align: right;
 }
 
 .details button.more {
@@ -170,13 +171,13 @@ h2.header a {
 }
 
 .details div {
-	font-size: 15px;
+	font-size: 14px;
 	font-weight: 500;
 	text-align: right;
 	display: inline-block;
 	width: calc((100% - 128px) / 2);
 	float: right;
-	margin-right: 8px;
+	/*margin-right: 8px;*/
 }
 
 .dark .details div,
@@ -186,7 +187,7 @@ h2.header a {
 
 .details div span {
 	color: #fff;
-	font-size: 15px;
+	font-size: 14px;
 	font-weight: 400;
 	padding-right: 5px;
 }
@@ -325,15 +326,15 @@ h2.header a {
 	transition: margin-left .3s cubic-bezier(.4, 0, .2, 1);
 }
 
-.forecast .item {
+.forecast .item { // used to decide how many hours of forcast
 	color: white;
-	margin: 5px;
+	margin: 2px;
 	min-width: 50px;
-	font-size: 15px;
-	padding: 5px 8px;
+	font-size: 13px;
+	padding: 5px 3px;
 	text-align: center;
 	display: inline-block;
-	width: calc(20% - 10px);
+	width: calc(25% - 10px);
 	height: calc(100% - 10px);
 }
 
@@ -364,7 +365,7 @@ h2.header a {
 }
 
 .forecast .period {
-	font-size: 15px;
+	font-size: 13px;
 	text-transform: uppercase;
 }
 
