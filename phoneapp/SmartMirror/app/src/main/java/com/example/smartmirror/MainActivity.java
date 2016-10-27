@@ -37,26 +37,57 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button sumbit;
+    EditText username;
+    EditText password;
+    TextView pleaseSignIn;
+    final String TAG = "SmartMirror";
+
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        final String TAG = "SmartMirror";
-        Log.e(TAG, "Entering app");
+        Log.d(TAG, "App started on build version " + Build.VERSION.SDK_INT);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.sign_in);
+        //setContentView(R.layout.activity_main);
         if (android.os.Build.VERSION.SDK_INT > 9)
         {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
-        Log.d(TAG, "App started on build version " + Build.VERSION.SDK_INT);
+
+        Button button1 = (Button)findViewById(R.id.button);
+        EditText editText = (EditText) findViewById(R.id.editText);
+        EditText editText2 = (EditText) findViewById(R.id.editText2);
+        sumbit = button1;
+        username = editText;
+        password = editText2;
+
+        TextView textView = (TextView) findViewById(R.id.textView);
+        pleaseSignIn = textView;
 
     }
 
-    private int postToServer()
+    public void clicked(View v){
+        Log.d(TAG, "Button %s has been clicked");
+        login login = new login();
+        int test1 = login.start(username,password,this,pleaseSignIn);
+        if(test1 != 0){ return; }
+
+
+        int test = post();
+        if (test == 0){
+            setContentView(R.layout.activity_main);
+        }
+        else { return; }
+
+        //setContentView(R.layout.activity_main);
+        //return 0;
+    }
+
+    private int post()
     {
-        final String TAG = "SmartMirror";
         final String server = "http://jarvis.cse.buffalo.edu/mine/mypage.php";
         Log.d(TAG, "Post to server");
         HttpClient httpclient = new DefaultHttpClient();
@@ -83,8 +114,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return 0;
     }
-
-
 }
 
 
