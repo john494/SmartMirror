@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final String TAG = "SmartMirror";
+        Log.e(TAG, "Entering app");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if (android.os.Build.VERSION.SDK_INT > 9)
@@ -48,25 +50,31 @@ public class MainActivity extends AppCompatActivity {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
-        
+        Log.d(TAG, "App started on build version " + Build.VERSION.SDK_INT);
 
     }
 
     private int postToServer()
     {
+        final String TAG = "SmartMirror";
+        final String server = "http://jarvis.cse.buffalo.edu/mine/mypage.php";
+        Log.d(TAG, "Post to server");
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://jarvis.cse.buffalo.edu/mine/mypage.php");
+        HttpPost httppost = new HttpPost(server);
         try {
+            Log.i(TAG, "Attempting to post to: "+server);
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
 
             nameValuePairs.add(new BasicNameValuePair("fname", "John"));
             nameValuePairs.add(new BasicNameValuePair("fphone", "no #"));
             nameValuePairs.add(new BasicNameValuePair("femail", "mynameisJohn@buffalo.edu"));
             nameValuePairs.add(new BasicNameValuePair("fcomment", "It worked!!!! :)"));
+            Log.i(TAG, "Items: " + nameValuePairs);
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             httpclient.execute(httppost);
 
         } catch (ClientProtocolException e) {
+
             // TODO Auto-generated catch block
             return 1;
         } catch (IOException e) {
@@ -75,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return 0;
     }
-
 
 
 }
