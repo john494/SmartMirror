@@ -6,12 +6,7 @@ import android.os.Build;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.net.http.*;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -21,17 +16,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import com.facebook.FacebookSdk;
@@ -68,14 +53,14 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             // TODO Auto-generated catch block
         }
-
+        Log.i("main", "huh?");
         Facebook();
 
     }
 
     public void Facebook(){
         FacebookSdk.sdkInitialize(this.getApplicationContext());
-        Intent intent = new Intent(MainActivity.this, FacebookActivity.class);
+        Intent intent = new Intent(MainActivity.this, FacebookBackend.class);
         MainActivity.this.startActivity(intent);
     }
 
