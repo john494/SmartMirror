@@ -37,38 +37,79 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    Button sumbit;
+    EditText username;
+    EditText password;
+    TextView pleaseSignIn;
+
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.sign_in);
+        //setContentView(R.layout.activity_main);
         if (android.os.Build.VERSION.SDK_INT > 9)
         {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
 
+        Button button1 = (Button)findViewById(R.id.button);
+        EditText editText = (EditText) findViewById(R.id.editText);
+        EditText editText2 = (EditText) findViewById(R.id.editText2);
+        sumbit = button1;
+        username = editText;
+        password = editText2;
+
+        TextView textView = (TextView) findViewById(R.id.textView);
+        pleaseSignIn = textView;
+
+    }
+
+    public void clicked(View v){
+        login login = new login();
+        int test1 = login.start(username,password,this,pleaseSignIn);
+        if(test1 != 0){ return; }
+
+
+        int test = post();
+        if (test == 0){
+            setContentView(R.layout.activity_main);
+        }
+        else { return; }
+
+        //setContentView(R.layout.activity_main);
+        //return 0;
+    }
+
+    public int post(){
 
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost("http://jarvis.cse.buffalo.edu/mine/mypage.php");
         try {
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
 
-            nameValuePairs.add(new BasicNameValuePair("fname", "Grant Wrazen"));
+            nameValuePairs.add(new BasicNameValuePair("fname", "Grant is testing"));
             nameValuePairs.add(new BasicNameValuePair("fphone", "(716) 123-4567"));
             nameValuePairs.add(new BasicNameValuePair("femail", "mynameisgrant@buffalo.edu"));
-            nameValuePairs.add(new BasicNameValuePair("fcomment", "It worked!!!! Fuck yeah! :)"));
+            nameValuePairs.add(new BasicNameValuePair("fcomment", "hewwo mi amigo"));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             httpclient.execute(httppost);
 
         } catch (ClientProtocolException e) {
             // TODO Auto-generated catch block
+            return 1;
         } catch (IOException e) {
             // TODO Auto-generated catch block
+            return 1;
         }
 
+        return 0;
+
     }
+
+
 
 
 
