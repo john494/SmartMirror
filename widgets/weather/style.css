@@ -152,16 +152,17 @@ h2.header a {
 
 .details .status {
 	float: left;
-	width: 50%;
+	width: 100%;
 	font-weight: 500;
 	text-align: left;
 }
 
 .details .precip {
 	float: right;
-	width: 50%;
+	width: 100%;
+	padding-top: 8px;
 	font-weight: 500;
-	text-align: right;
+	text-align: left;
 }
 
 .details button.more {

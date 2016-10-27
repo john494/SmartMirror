@@ -3,17 +3,17 @@ html {
 	color: #fff;
 }
 
-#N1 {height:auto;background-color: red;}
-#N2 {height:auto;background-color: green;}
+#N1 {height:auto;background-color: ;}
+#N2 {height:auto;background-color: ;}
 #L1 {height:auto;background-color: ;}
-#R1 {height:auto;background-color: blue;}
-#L2 {height:auto;color: white;}
-#R2 {height:auto;background-color: cyan;}
+#R1 {height:auto;background-color: ;}
+#L2 {height:auto;color: ;}
+#R2 {height:auto;background-color: ;}
 
 /* -- Row 2 -- */
 #clock {
 	height:auto;
-	font-size: 35px;
+	font-size: 40px;
 }
 
 #clock p {
@@ -51,6 +51,10 @@ html {
 
 #weather {
 	padding-bottom:20px;
+}
+
+#precipitation {
+	padding-left: 6px;
 }
 
 #calendar {

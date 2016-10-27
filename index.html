@@ -81,9 +81,12 @@
                                         <span data-units="imperial" class="active" style="font-size:55%">°F</span>
                                     </sup>
                                 </div>
-                                <div class="details">
-                                    <div class="status" id="description"></div>
-                                    <div class="precip">Precip: <span id="precipitation"></span></div>
+                                <div class="details thin">
+                                    <div class="status thin" id="description"></div>
+                                    <div class="precip">
+                                      <img src="widgets/weather/icons/umbrella.png" width="20px" style=""/>
+                                      <span id="precipitation"></span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -91,8 +94,8 @@
                               var key = "85f6ad9b4d64ca03f1e00f6775de0259";
 
                               // Temporary values, make these dynamic later
-                              var buff_lat = "42.886447";
-                              var buff_lon = "-78.878369";
+                              var buff_lat = "42.998854";
+                              var buff_lon = "-78.800475";
 
                               var current;
 
@@ -169,6 +172,7 @@
                                 if(darkskyname == "rain"){return darkskyname;}
                                 if(darkskyname == "wind"){return darkskyname;}
                                 if(darkskyname == "fog"){return "cloudy";}
+                                if(darkskyname == "thunderstorms"){return "tstorms";}
                                 if(darkskyname == "snow"){return "lightsnow";}
                                 if(darkskyname == "sleet"){return "lightrain-snow";}
                               }
@@ -366,8 +370,9 @@
     <script><!-- Time -->
         function startClock() {
             var d = new Date()
-            var c = d.toString("h:mm tt");
-            document.getElementById('time').innerHTML = c;
+            var c = d.toString("h:mm");
+            var ampm = d.toString("tt");
+            document.getElementById('time').innerHTML = c +" <span style='font-size:20px;'>"+ ampm + "</span>";
             var t = setTimeout(startClock, 500);
         };
         startClock();
@@ -384,7 +389,7 @@
             daym = "0" + daym
         var dayarray = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
         var montharray = new Array("January","February","March","April","May","June","July","August","September","October","November","December")
-        document.getElementById('when').innerHTML = "<p id='day'><b>"+dayarray[day]+"</b></p><p id='date'>"+montharray[month]+" "+daym+", "+year+"</p>";
+        document.getElementById('when').innerHTML = "<p id='day'>"+dayarray[day]+"</p><p id='date'>"+montharray[month]+" "+daym+", "+year+"</p>";
     </script>
     <script src="js/materialize.min.js"></script>
     <!-- <script data-main="widgets/weather/view" src="http://requirejs.org/docs/release/2.3.2/comments/require.js"></script> -->
