@@ -44,6 +44,10 @@ html {
 	margin: 0.82rem 0 0.656rem 0;
 }
 
+#location {
+	font-weight: 400;
+}
+
 #weather-icon {
 	margin-top: 27px;
 	font-size: 55px;

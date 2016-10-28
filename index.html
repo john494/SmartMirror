@@ -65,152 +65,150 @@
         <div class="row">
             <div class="col s3 white-text" id="L1">
                 <div id="weather">
-                    <section data-id="widget37" data-name="weather" data-size="variable" class="widget weather variable">
-                    <div class="handle"></div>
-                    <div class="content">
-                        <div class="location" data-index="0">
-                            <h6 class="header">Buffalo, NY</h6>
-                            <div class="current thin">
-                                <div id="currIcon"></div>
-                                <div class="temp thin">
-                                    <span id ="temp"></span>
-                                    <sup>
-                                        <span data-units="imperial" class="active" style="font-size:55%">°F</span>
-                                    </sup>
-                                </div>
-                                <div class="details thin">
-                                    <div class="status thin" id="description"></div>
-                                    <div class="precip vertical-center center-vertical">
-                                      <img  id="umbrella" src="widgets/weather/icons/umbrella.png" width="15px"/>
-                                      <span id="precipitation"></span>
-                                    </div>
-                                </div>
-                            </div>
+                  <div class="content">
+                      <div class="location">
+                          <h6 class="header" id="location"></h6>
+                          <div class="current thin">
+                              <div id="currIcon"></div>
+                              <div class="temp thin">
+                                  <span id ="temp"></span>
+                                  <sup>
+                                      <span data-units="imperial" class="active" style="font-size:55%">°F</span>
+                                  </sup>
+                              </div>
+                              <div class="details thin">
+                                  <div class="status thin" id="description"></div>
+                                  <div class="precip vertical-center center-vertical">
+                                    <img  id="umbrella" src="widgets/weather/icons/umbrella.png" width="15px"/>
+                                    <span id="precipitation"></span>
+                                  </div>
+                              </div>
+                          </div>
 
-                            <script>
-                              var key = "85f6ad9b4d64ca03f1e00f6775de0259";
+                          <script>
+                            var key = "85f6ad9b4d64ca03f1e00f6775de0259";
+                            // Temporary values, make these dynamic later
+                            var buff_lat = "42.998854";
+                            var buff_lon = "-78.800475";
+                            var current;
 
-                              // Temporary values, make these dynamic later
-                              var buff_lat = "42.998854";
-                              var buff_lon = "-78.800475";
+                            function weather() {
+                              $.get("https://api.darksky.net/forecast/" + key + "/" + buff_lat + "," + buff_lon, function(data) {
+                                current = data['currently'];
+                                hourly = data['hourly'];
+                                var currIcon = current['icon'];
+                                currIcon = checkIcon(currIcon);
 
-                              var current;
+                                document.getElementById('temp').innerHTML          = Math.round(current['apparentTemperature']);
+                                document.getElementById('description').innerHTML   = (hourly['summary']).slice(0,-1);
+                                document.getElementById('precipitation').innerHTML = (current['precipProbability'] * 100) + "%";
+                                document.getElementById('currIcon').innerHTML      = "<div class='cond " + currIcon + "'></div>";
 
-                              function weather() {
-                                $.get("https://api.darksky.net/forecast/" + key + "/" + buff_lat + "," + buff_lon, function(data) {
-                                  current = data['currently'];
-                                  hourly = data['hourly'];
-                                  var currIcon = current['icon'];
-                                  currIcon = checkIcon(currIcon);
-                                  document.getElementById('temp').innerHTML = Math.round(current['apparentTemperature']);
-                                  document.getElementById('description').innerHTML = hourly['summary'];
-                                  document.getElementById('precipitation').innerHTML = (current['precipProbability'] * 100) + "%";
-                                  document.getElementById('currIcon').innerHTML = "<div class='cond " + currIcon + "'></div>";
+                                // Calculating hour based on location
+                                var icon1 =  hourly['data'][1]['icon']; icon1 = checkIcon(icon1);
+                                var hour1 = (new Date(hourly['data'][1]['time'] * 1000)).getHours() - 12;
+                                hour1 = checkTime(hour1);
 
-                                  // Calculating hour based on location
-                                  var icon1 = hourly['icon']; icon1 = checkIcon(icon1);
-                                  var hour1 = (new Date(hourly['data'][1]['time'] * 1000)).getHours() - 12;
-                                  hour1 = checkTime(hour1);
+                                var icon2 =  hourly['data'][2]['icon']; icon2 = checkIcon(icon2);
+                                var hour2 = (new Date(hourly['data'][2]['time'] * 1000)).getHours() - 12;
+                                hour2 = checkTime(hour2);
 
-                                  var icon2 = hourly['icon']; icon2 = checkIcon(icon2);
-                                  var hour2 = (new Date(hourly['data'][2]['time'] * 1000)).getHours() - 12;
-                                  hour2 = checkTime(hour2);
+                                var icon3 =  hourly['data'][3]['icon']; icon3 = checkIcon(icon3);
+                                var hour3 = (new Date(hourly['data'][3]['time'] * 1000)).getHours() - 12;
+                                hour3 = checkTime(hour3);
 
-                                  var icon3 = hourly['icon']; icon3 = checkIcon(icon3);
-                                  var hour3 = (new Date(hourly['data'][3]['time'] * 1000)).getHours() - 12;
-                                  hour3 = checkTime(hour3);
+                                var icon4 =  hourly['data'][4]['icon']; icon4 = checkIcon(icon4);
+                                var hour4 = (new Date(hourly['data'][4]['time'] * 1000)).getHours() - 12;
+                                hour4 = checkTime(hour4);
 
-                                  var icon4 = hourly['icon']; icon4 = checkIcon(icon4);
-                                  var hour4 = (new Date(hourly['data'][4]['time'] * 1000)).getHours() - 12;
-                                  hour4 = checkTime(hour4);
+                                function checkTime(hour) {
+                                  var newHour = 0;
+                                  if (hour < 0){
+                                    newHour = hour*-1;
+                                    return newHour;
+                                  }
+                                  return hour;
+                                };
 
-                                  function checkTime(hour) {
-                                    var newHour = 0;
-                                    if (hour < 0){
-                                      newHour = hour*-1;
-                                      return newHour;
-                                    }
-                                    return hour;
-                                  };
-
-                                  // Getting AM or PM
-                                  var d = new Date();
-                                  var ampm = d.toString("tt");
-                                  // Each hour
-                                  document.getElementById('hour1').innerHTML = hour1 +" "+ ampm;
-                                  document.getElementById('hour2').innerHTML = hour2 +" "+ ampm;
-                                  document.getElementById('hour3').innerHTML = hour3 +" "+ ampm;
-                                  document.getElementById('hour4').innerHTML = hour4 +" "+ ampm;
-
-                                  // Temperature each hour
-                                  document.getElementById('temp1').innerHTML = Math.round(hourly['data'][1]['apparentTemperature'])+"°";
-                                  document.getElementById('temp2').innerHTML = Math.round(hourly['data'][2]['apparentTemperature'])+"°";
-                                  document.getElementById('temp3').innerHTML = Math.round(hourly['data'][3]['apparentTemperature'])+"°";
-                                  document.getElementById('temp4').innerHTML = Math.round(hourly['data'][4]['apparentTemperature'])+"°";
-
-                                  // Icon each hour
-                                  document.getElementById('icon1').innerHTML = "<div class='cond " + icon1 + "'></div>";
-                                  document.getElementById('icon2').innerHTML = "<div class='cond " + icon2 + "'></div>";
-                                  document.getElementById('icon3').innerHTML = "<div class='cond " + icon3 + "'></div>";
-                                  document.getElementById('icon4').innerHTML = "<div class='cond " + icon4 + "'></div>";
-                                });
-                              }
-
-                              // will translate the icon from DarkSky to what we have locally
-                              // look at google keep to see available icons to be able to handle them all
-                              // consider giphy for current
-                              function checkIcon(darkskyname) {
+                                // Getting AM or PM
                                 var d = new Date();
-                                var hour = d.toString("h");
-                                var nightHour = 6;
-                                if(darkskyname == "cloudy"){ if(nightHour <= hour){ return "cloudy-night";} return darkskyname;}
-                                if(darkskyname == "partly-cloudy-day"){  return "partlycloudy";}
-                                if(darkskyname == "partly-cloudy-night"){return "partlycloudy-night";} 
-                                if(darkskyname == "clear-day"){          return darkskyname;}
-                                if(darkskyname == "clear-night"){        return darkskyname;}    
-                                if(darkskyname == "rain"){              if(nightHour <= hour){ return "rainy-night";}   return darkskyname;}
-                                if(darkskyname == "wind"){              if(nightHour <= hour){ return "windy-night";}   return darkskyname;}
-                                if(darkskyname == "fog") {              if(nightHour <= hour){ return "foggy-night";}   return darkskyname;}
-                                if(darkskyname == "thunderstorms"){     if(nightHour <= hour){ return "thunder-night";} return darkskyname;}
-                                if(darkskyname == "snow"){              if(nightHour <= hour){ return "snow-night";}    return darkskyname;}
-                                if(darkskyname == "sleet"){             if(nightHour <= hour){ return "sleet-night";}   return darkskyname;}
-                              }
-                              weather(current);
-                              // weather updates every 15 min or until reload of the page
-                              setInterval(weather,90000);
+                                var ampm = d.toString("tt");
+                                // Each hour
+                                document.getElementById('hour1').innerHTML = hour1 +" "+ ampm;
+                                document.getElementById('hour2').innerHTML = hour2 +" "+ ampm;
+                                document.getElementById('hour3').innerHTML = hour3 +" "+ ampm;
+                                document.getElementById('hour4').innerHTML = hour4 +" "+ ampm;
 
-                            </script>
+                                // Temperature/ Precip each hour
+                                document.getElementById('temp1').innerHTML   = Math.round(hourly['data'][1]['apparentTemperature'])+"°";
+                                document.getElementById('precip1').innerHTML = (hourly['data'][1]['precipProbability'] * 100) + "%";
+                                document.getElementById('temp2').innerHTML   = Math.round(hourly['data'][2]['apparentTemperature'])+"°";
+                                document.getElementById('precip2').innerHTML = (hourly['data'][2]['precipProbability'] * 100) + "%";
+                                document.getElementById('temp3').innerHTML   = Math.round(hourly['data'][3]['apparentTemperature'])+"°";
+                                document.getElementById('precip3').innerHTML = (hourly['data'][3]['precipProbability'] * 100) + "%";
+                                document.getElementById('temp4').innerHTML   = Math.round(hourly['data'][4]['apparentTemperature'])+"°";
+                                document.getElementById('precip4').innerHTML = (hourly['data'][4]['precipProbability'] * 100) + "%";
 
-                            <div class="forecast daily" tabindex="-1">
-                                <div class="items">
-                                    <div class="pull"></div>
-                                    <div class="item" data-index="0" style="margin-left:6px;">
-                                        <div class="period" id="hour1"></div>
-                                        <div id="icon1"></div>
-                                        <span class="high" id="temp1">°</span>
-                                    </div>
-                                    <div class="item" data-index="1">
-                                        <div class="period" id="hour2"></div>
-                                        <div id="icon2"></div>
-                                        <span class="high" id="temp2">°</span>
-                                    </div>
-                                    <div class="item" data-index="2">
-                                        <div class="period" id="hour3"></div>
-                                        <div id="icon3"></div>
-                                        <span class="high" id="temp3">°</span>
-                                    </div>
-                                    <div class="item" data-index="3">
-                                        <div class="period" id="hour4"></div>
-                                        <div id="icon4"></div>
-                                        <span class="high" id="temp4">°</span>
-                                    </div>
-                                    <!-- if we want 5 things see line 328 in weather style CSS, 20% -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="resize"></div>
-                </section>
+                                // Icon each hour
+                                document.getElementById('icon1').innerHTML = "<div class='cond " + icon1 + "'></div>";
+                                document.getElementById('icon2').innerHTML = "<div class='cond " + icon2 + "'></div>";
+                                document.getElementById('icon3').innerHTML = "<div class='cond " + icon3 + "'></div>";
+                                document.getElementById('icon4').innerHTML = "<div class='cond " + icon4 + "'></div>";
+                              });
+                            }
+
+                            // will translate the icon from DarkSky to what we have locally
+                            // consider giphy for current
+                            function checkIcon(darkskyname) {
+                              var d = new Date();
+                              var hour = d.toString("h");
+                              var nightHour = 6;
+                              if(darkskyname == "cloudy"){ if(nightHour <= hour){ return "cloudy-night";} return darkskyname;}
+                              if(darkskyname == "partly-cloudy-day"){  return "partlycloudy";}
+                              if(darkskyname == "partly-cloudy-night"){return "partlycloudy-night";}
+                              if(darkskyname == "clear-day"){          return darkskyname;}
+                              if(darkskyname == "clear-night"){        return darkskyname;}
+                              if(darkskyname == "rain"){               if(nightHour <= hour){ return "rainy-night";}   return darkskyname;}
+                              if(darkskyname == "wind"){               if(nightHour <= hour){ return "windy-night";}   return darkskyname;}
+                              if(darkskyname == "fog") {               if(nightHour <= hour){ return "foggy-night";}   return darkskyname;}
+                              if(darkskyname == "thunderstorms"){      if(nightHour <= hour){ return "thunder-night";} return darkskyname;}
+                              if(darkskyname == "snow"){               if(nightHour <= hour){ return "snow-night";}    return darkskyname;}
+                              if(darkskyname == "sleet"){              if(nightHour <= hour){ return "sleet-night";}   return darkskyname;}
+                            }
+                            weather(current);
+                            // weather updates every 15 min or until reload of the page
+                            setInterval(weather,90000);
+                          </script>
+
+                          <div class="forecast daily" tabindex="-1">
+                              <div class="items">
+                                  <div class="pull"></div>
+                                  <div class="item" style="margin-left:7px;">
+                                      <div class="period" id="hour1"></div>
+                                      <div id="icon1"></div>
+                                      <span class="high" id="temp1">°</span>/ <span id="precip1"></span>
+                                  </div>
+                                  <div class="item">
+                                      <div class="period" id="hour2"></div>
+                                      <div id="icon2"></div>
+                                      <span class="high" id="temp2">°</span>/ <span id="precip2"></span>
+                                  </div>
+                                  <div class="item">
+                                      <div class="period" id="hour3"></div>
+                                      <div id="icon3"></div>
+                                      <span class="high" id="temp3">°</span>/ <span id="precip3"></span>
+                                  </div>
+                                  <div class="item">
+                                      <div class="period" id="hour4"></div>
+                                      <div id="icon4"></div>
+                                      <span class="high" id="temp4">°</span>/ <span id="precip4"></span>
+                                  </div>
+                                  <!-- if we want 5 things see line 328 in weather style CSS, 20% -->
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="resize"></div>
                 </div>
             </div>
             <div class="col s3 offset-s6" id="R1">
@@ -392,6 +390,22 @@
         var dayarray = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
         var montharray = new Array("January","February","March","April","May","June","July","August","September","October","November","December")
         document.getElementById('when').innerHTML = "<p id='day'>"+dayarray[day]+"</p><p id='date'>"+montharray[month]+" "+daym+", "+year+"</p>";
+    </script>
+    <script><!-- Location -->
+      // Temporary values, make these dynamic later
+      var buff_lat = "42.998854";
+      var buff_lon = "-78.800475";
+
+      function getLocation() {
+        $.get("http://maps.googleapis.com/maps/api/geocode/json?latlng="+ buff_lat + "," + buff_lon + "&sensor=true", function(body) {
+          // KEY for 'address_components'
+          // [1] Street name, [2] City Name, [3] Town, [4] County, [5] State, [6] Country, [7] Zip Code
+          var town = body['results'][0]['address_components'][3]['long_name'];
+          var state = body['results'][0]['address_components'][5]['short_name']; // long_name is full name
+          document.getElementById('location').innerHTML = town +" ," + state;
+        });
+      }
+      getLocation();
     </script>
     <script src="js/materialize.min.js"></script>
     <!-- <script data-main="widgets/weather/view" src="http://requirejs.org/docs/release/2.3.2/comments/require.js"></script> -->
