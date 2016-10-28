@@ -104,23 +104,31 @@
                                 document.getElementById('precipitation').innerHTML = (current['precipProbability'] * 100) + "%";
                                 document.getElementById('currIcon').innerHTML      = "<div class='cond " + currIcon + "'></div>";
 
-                                // Calculating hour based on location
-                                var icon1 =  hourly['data'][1]['icon']; icon1 = checkIcon(icon1);
-                                var hour1 = (new Date(hourly['data'][1]['time'] * 1000)).getHours() - 12;
-                                hour1 = checkTime(hour1);
+                                // Getting AM or PM
+                                var d = new Date();
+                                var ampm = d.toString("tt");
 
-                                var icon2 =  hourly['data'][2]['icon']; icon2 = checkIcon(icon2);
-                                var hour2 = (new Date(hourly['data'][2]['time'] * 1000)).getHours() - 12;
-                                hour2 = checkTime(hour2);
+                                // Icon per hour
+                                for(i = 1; i <= 4; i ++){
+                                  var icon = hourly['data'][i]['icon'];
+                                  icon = checkIcon(icon);
+                                  document.getElementById('icon'+i).innerHTML = "<div class='cond " + icon + "'></div>";
+                                }
 
-                                var icon3 =  hourly['data'][3]['icon']; icon3 = checkIcon(icon3);
-                                var hour3 = (new Date(hourly['data'][3]['time'] * 1000)).getHours() - 12;
-                                hour3 = checkTime(hour3);
+                                // Each actual hour
+                                for(i = 1; i <= 4; i++){
+                                  var hour = (new Date(hourly['data'][i]['time'] * 1000)).getHours() - 12;
+                                  hour = checkTime(hour);
+                                  document.getElementById('hour'+i).innerHTML = hour +" "+ ampm;
+                                }
 
-                                var icon4 =  hourly['data'][4]['icon']; icon4 = checkIcon(icon4);
-                                var hour4 = (new Date(hourly['data'][4]['time'] * 1000)).getHours() - 12;
-                                hour4 = checkTime(hour4);
+                                // Temperature/ Precip each hour
+                                for(i = 1; i <= 4; i ++){
+                                  document.getElementById('temp'+i).innerHTML   = Math.round(hourly['data'][i]['apparentTemperature'])+"°";
+                                  document.getElementById('precip'+i).innerHTML = (hourly['data'][i]['precipProbability'] * 100) + "%";
+                                }
 
+                                // Fixes negative times, but still not accurate clock
                                 function checkTime(hour) {
                                   var newHour = 0;
                                   if (hour < 0){
@@ -130,30 +138,6 @@
                                   return hour;
                                 };
 
-                                // Getting AM or PM
-                                var d = new Date();
-                                var ampm = d.toString("tt");
-                                // Each hour
-                                document.getElementById('hour1').innerHTML = hour1 +" "+ ampm;
-                                document.getElementById('hour2').innerHTML = hour2 +" "+ ampm;
-                                document.getElementById('hour3').innerHTML = hour3 +" "+ ampm;
-                                document.getElementById('hour4').innerHTML = hour4 +" "+ ampm;
-
-                                // Temperature/ Precip each hour
-                                document.getElementById('temp1').innerHTML   = Math.round(hourly['data'][1]['apparentTemperature'])+"°";
-                                document.getElementById('precip1').innerHTML = (hourly['data'][1]['precipProbability'] * 100) + "%";
-                                document.getElementById('temp2').innerHTML   = Math.round(hourly['data'][2]['apparentTemperature'])+"°";
-                                document.getElementById('precip2').innerHTML = (hourly['data'][2]['precipProbability'] * 100) + "%";
-                                document.getElementById('temp3').innerHTML   = Math.round(hourly['data'][3]['apparentTemperature'])+"°";
-                                document.getElementById('precip3').innerHTML = (hourly['data'][3]['precipProbability'] * 100) + "%";
-                                document.getElementById('temp4').innerHTML   = Math.round(hourly['data'][4]['apparentTemperature'])+"°";
-                                document.getElementById('precip4').innerHTML = (hourly['data'][4]['precipProbability'] * 100) + "%";
-
-                                // Icon each hour
-                                document.getElementById('icon1').innerHTML = "<div class='cond " + icon1 + "'></div>";
-                                document.getElementById('icon2').innerHTML = "<div class='cond " + icon2 + "'></div>";
-                                document.getElementById('icon3').innerHTML = "<div class='cond " + icon3 + "'></div>";
-                                document.getElementById('icon4').innerHTML = "<div class='cond " + icon4 + "'></div>";
                               });
                             }
 
