@@ -3,17 +3,17 @@ html {
 	color: #fff;
 }
 
-#N1 {height:auto;background-color: red;}
-#N2 {height:auto;background-color: green;}
-#L1 {height:auto;background-color: purple;}
-#R1 {height:auto;background-color: blue;}
-#L2 {height:auto;color: white;}
-#R2 {height:auto;background-color: cyan;}
+#N1 {height:auto;background-color: ;}
+#N2 {height:auto;background-color: ;}
+#L1 {height:auto;background-color: ;}
+#R1 {height:auto;background-color: ;}
+#L2 {height:auto;color: ;}
+#R2 {height:auto;background-color: ;}
 
 /* -- Row 2 -- */
 #clock {
 	height:auto;
-	font-size: 35px;
+	font-size: 40px;
 }
 
 #clock p {
@@ -36,15 +36,23 @@ html {
 }
 
 #news {
+<<<<<<< HEAD
 	padding-top: 10px;
 	padding-left: 50px;
 	padding-right: 50px;
 	font-size: 11px;
+=======
+
+>>>>>>> 7c0751d1809c8bbbc2685524e1c4a4399b3d9c7d
 }
 
 /* -- Row 1 -- */
 #weather h3 {
 	margin: 0.82rem 0 0.656rem 0;
+}
+
+#location {
+	font-weight: 400;
 }
 
 #weather-icon {
@@ -54,6 +62,10 @@ html {
 
 #weather {
 	padding-bottom:20px;
+}
+
+#precipitation {
+	padding-left: 4px;
 }
 
 #calendar {
@@ -68,8 +80,8 @@ html {
 }
 
 .vertical-divider {
-	border-left: 1px solid white;
-	height: 75px;
+	border-left: 1px solid #d1d1d1;
+	height: 100px;
 }
 
 .headline-padding  p{

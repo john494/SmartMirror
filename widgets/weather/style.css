@@ -45,16 +45,16 @@ h2.header a {
 }
 
 .cond {
-	width: 128px;
-	height: 128px;
+	width: 75px;
+	height: 75px;
 	vertical-align: top;
 	display: inline-block;
-	background: url(icons/sunny.png) center/auto 110% no-repeat;
+	background: url(icons/clear-day.png) center/auto 100% no-repeat;
 }
 
 .current .cond {
-	flex: 0 0 128px;
-	margin-left: 15px;
+	flex: 0 0 75px;
+	/*margin-left: 15px;*/
 }
 
 .current .cond.rain,
@@ -64,9 +64,9 @@ h2.header a {
 }
 
 .temp {
-	font-size: 95px;
+	font-size: 50px;
 	font-weight: 300;
-	line-height: 112px;
+	/*line-height: 112px;*/
 	white-space: nowrap;
 	vertical-align: top;
 	display: inline-block;
@@ -114,36 +114,30 @@ h2.header a {
 	color: white;
 }
 
-
-
-
-
-
-
-
 /*---------------------------------------------
 	/ Conditions
 
 	This list is missing .cond.sunny because that's the default icon
 */
 .cond.rain				{ background-image: url(icons/rain.png); }
+.cond.rain-night		{ background-image: url(icons/rainy-night.png); }
+.cond.wind				{ background-image: url(icons/wind.png); }
+.cond.windy-night		{ background-image: url(icons/windy-night.png); }
+.cond.fog				{ background-image: url(icons/fog.png); }
+.cond.foggy-night		{ background-image: url(icons/foggy-night.png); }
 .cond.snow				{ background-image: url(icons/snow.png); }
 .cond.cloudy			{ background-image: url(icons/cloudy.png); }
-.cond.tstorms			{ background-image: url(icons/tstorms.png); }
-.cond.showers			{ background-image: url(icons/showers.png); }
-.cond.lightsnow			{ background-image: url(icons/lightsnow.png); }
-.cond.lightrain			{ background-image: url(icons/lightrain.png); }
+.cond.cloudy-night		{ background-image: url(icons/cloudy-night.png); }
+.cond.thunderstorms		{ background-image: url(icons/thunderstorms.png); }
+.cond.thunder-night		{ background-image: url(icons/thunder-night.png); }
+.cond.snow				{ background-image: url(icons/snow.png); }
+.cond.snow-night		{ background-image: url(icons/snow-night.png); }
+.cond.sleet				{ background-image: url(icons/sleet.png); }
+.cond.sleet-night		{ background-image: url(icons/sleet-night.png); }
 .cond.clear-night		{ background-image: url(icons/clear-night.png); }
+.cond.clear-day		    { background-image: url(icons/clear-day.png); }
 .cond.partlycloudy		{ background-image: url(icons/partlycloudy.png); }
-.cond.lightrain-snow	{ background-image: url(icons/lightrain-snow.png); }
 .cond.partlycloudy-night{ background-image: url(icons/partlycloudy-night.png); }
-
-
-
-
-
-
-
 
 /*---------------------------------------------
 	/ Details
@@ -152,14 +146,23 @@ h2.header a {
 	flex: 1 100%;
 	font-size: 0;
 	display: block;
-	padding: 0 15px;
+	padding: 0 5px;
 	margin: 5px 0 20px;
 }
 
 .details .status {
 	float: left;
-	width: 182px;
-	font-weight: 500;
+	width: 100%;
+	font-weight: 400;
+	text-align: left;
+	padding-top: 5px;
+}
+
+.details .precip {
+	float: right;
+	width: 100%;
+	padding-top: 8px;
+	/*font-weight: 500;*/
 	text-align: left;
 }
 
@@ -171,12 +174,12 @@ h2.header a {
 
 .details div {
 	font-size: 15px;
-	font-weight: 500;
+	/*font-weight: 500;*/
 	text-align: right;
 	display: inline-block;
 	width: calc((100% - 128px) / 2);
 	float: right;
-	margin-right: 8px;
+	/*margin-right: 8px;*/
 }
 
 .dark .details div,
@@ -186,7 +189,7 @@ h2.header a {
 
 .details div span {
 	color: #fff;
-	font-size: 15px;
+	font-size: 16px;
 	font-weight: 400;
 	padding-right: 5px;
 }
@@ -325,15 +328,15 @@ h2.header a {
 	transition: margin-left .3s cubic-bezier(.4, 0, .2, 1);
 }
 
-.forecast .item {
+.forecast .item { // used to decide how many hours of forcast
 	color: white;
-	margin: 5px;
+	margin: 2px;
 	min-width: 50px;
-	font-size: 15px;
-	padding: 5px 8px;
+	font-size: 13px;
+	padding: 5px 3px;
 	text-align: center;
 	display: inline-block;
-	width: calc(20% - 10px);
+	width: calc(25% - 10px);
 	height: calc(100% - 10px);
 }
 
@@ -364,7 +367,7 @@ h2.header a {
 }
 
 .forecast .period {
-	font-size: 15px;
+	font-size: 13px;
 	text-transform: uppercase;
 }
 
