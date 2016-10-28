@@ -47,20 +47,45 @@
             <div class="col s9 white-text" id="N2">
                 <div class="row" id="news">
                     <div class="col s3 Vcenter vertical-divider headline-padding">
-                        <p>House lawmakers heap blistering criticism on Wells Fargo CEO</p>
+                        <p id="CNN"></p>
                     </div>
                     <div class="col s3 Vcenter vertical-divider headline-padding">
-                        <p>Clinton struggling to win over the young voters she needs</p>
+                        <p id="USA"></p>
                     </div>
                     <div class="col s3 Vcenter vertical-divider headline-padding">
-                        <p>Americans need short memory in the Ryder Cup</p>
+                        <p id="ESPN"></p>
                     </div>
                     <div class="col s3 Vcenter vertical-divider headline-padding">
-                        <p>Obama signs short-term bill to fund government past election</p>
+                        <p id="BLUM"></p>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- We should probably move this... -->
+        <script>
+          var apiKey = "7322bfbd152e4050b6054c1bd4601106"
+
+          // Top CNN headline
+          $.get("https://newsapi.org/v1/articles?source=cnn&sortBy=top&apiKey=" + apiKey, function(headlines) {
+            document.getElementById('CNN').innerHTML = "CNN: " + headlines['articles'][0]['title']
+          });
+
+          // Top USA Today headline
+          $.get("https://newsapi.org/v1/articles?source=usa-today&sortBy=top&apiKey=" + apiKey, function(headlines) {
+            document.getElementById('USA').innerHTML = "USA Today: " + headlines['articles'][0]['title']
+          });
+
+          // Top ESPN headline
+          $.get("https://newsapi.org/v1/articles?source=espn&sortBy=top&apiKey=" + apiKey, function(headlines) {
+            document.getElementById('ESPN').innerHTML = "ESPN: " + headlines['articles'][0]['title']
+          });
+
+          // Top Blumberg headline
+          $.get("https://newsapi.org/v1/articles?source=bloomberg&sortBy=top&apiKey=" + apiKey, function(headlines) {
+            document.getElementById('BLUM').innerHTML = "Blumberg: " + headlines['articles'][0]['title']
+          });
+        </script>
 
         <!-- Row 1 -->
         <div class="row">
