@@ -160,18 +160,20 @@
                               // look at google keep to see available icons to be able to handle them all
                               // consider giphy for current
                               function checkIcon(darkskyname) {
-                                var icon = "";
-                                if(darkskyname == "cloudy"){ return darkskyname;}
-                                if(darkskyname == "partly-cloudy-day"){return "partlycloudy";}
-                                if(darkskyname == "clear-day"){return "sunny";}
-                                if(darkskyname == "clear-night"){return darkskyname;}
-                                if(darkskyname == "partly-cloudy-night"){return "partlycloudy-night";}
-                                if(darkskyname == "rain"){return darkskyname;}
-                                if(darkskyname == "wind"){return darkskyname;}
-                                if(darkskyname == "fog"){return "cloudy";}
-                                if(darkskyname == "thunderstorms"){return "tstorms";}
-                                if(darkskyname == "snow"){return "lightsnow";}
-                                if(darkskyname == "sleet"){return "lightrain-snow";}
+                                var d = new Date();
+                                var hour = d.toString("h");
+                                var nightHour = 6;
+                                if(darkskyname == "cloudy"){ if(nightHour <= hour){ return "cloudy-night";} return darkskyname;}
+                                if(darkskyname == "partly-cloudy-day"){  return "partlycloudy";}
+                                if(darkskyname == "partly-cloudy-night"){return "partlycloudy-night";} 
+                                if(darkskyname == "clear-day"){          return darkskyname;}
+                                if(darkskyname == "clear-night"){        return darkskyname;}    
+                                if(darkskyname == "rain"){              if(nightHour <= hour){ return "rainy-night";}   return darkskyname;}
+                                if(darkskyname == "wind"){              if(nightHour <= hour){ return "windy-night";}   return darkskyname;}
+                                if(darkskyname == "fog") {              if(nightHour <= hour){ return "foggy-night";}   return darkskyname;}
+                                if(darkskyname == "thunderstorms"){     if(nightHour <= hour){ return "thunder-night";} return darkskyname;}
+                                if(darkskyname == "snow"){              if(nightHour <= hour){ return "snow-night";}    return darkskyname;}
+                                if(darkskyname == "sleet"){             if(nightHour <= hour){ return "sleet-night";}   return darkskyname;}
                               }
                               weather(current);
                               // weather updates every 15 min or until reload of the page
