@@ -70,7 +70,6 @@ h2.header a {
 	white-space: nowrap;
 	vertical-align: top;
 	display: inline-block;
-	font-family: Open Sans, sans-serif;
 }
 
 .current .temp {
@@ -173,7 +172,7 @@ h2.header a {
 }
 
 .details div {
-	font-size: 15px;
+	font-size: 16px;
 	/*font-weight: 500;*/
 	text-align: right;
 	display: inline-block;
@@ -319,6 +318,7 @@ h2.header a {
 	overflow: hidden;
 	position: absolute;
 	white-space: nowrap;
+	margin-top: -10px;
 }
 
 .forecast .items .pull {

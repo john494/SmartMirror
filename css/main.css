@@ -1,6 +1,7 @@
 html {
 	background-color: #000;
 	color: #fff;
+	font-family: Roboto;
 }
 
 #N1 {height:auto;background-color: ;}
@@ -13,7 +14,7 @@ html {
 /* -- Row 2 -- */
 #clock {
 	height:auto;
-	font-size: 40px;
+	font-size: 50px;
 }
 
 #clock p {
@@ -36,17 +37,21 @@ html {
 }
 
 #news {
-<<<<<<< HEAD
-	padding-top: 10px;
+	/*padding-top: 10px;
 	padding-left: 50px;
-	padding-right: 50px;
-	font-size: 11px;
-=======
+	padding-right: 50px;*/
+	font-size: 15px;
+}
 
->>>>>>> 7c0751d1809c8bbbc2685524e1c4a4399b3d9c7d
+ul li {
+	padding-bottom: 7px;
+	padding-left: 7px;
 }
 
 /* -- Row 1 -- */
+#location {
+	font-size: 1.3rem;
+}
 #weather h3 {
 	margin: 0.82rem 0 0.656rem 0;
 }
@@ -61,7 +66,7 @@ html {
 }
 
 #weather {
-	padding-bottom:20px;
+	/*padding-bottom:20px;*/
 }
 
 #precipitation {
@@ -84,10 +89,13 @@ html {
 	height: 100px;
 }
 
-.headline-padding  p{
-	padding-left: 5px;
-	padding-right: 5px;
+.headline-padding p{
+ 	margin: 0px 0px 8px 10px;
 	text-align: left;
+}
+
+.head-icon {
+	margin-top: 3px;
 }
 
 .undefined {height: 100px; background-color: cyan;}

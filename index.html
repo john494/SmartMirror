@@ -36,29 +36,28 @@
 
         <!-- Row 0 -->
         <div class="row">
-            <div class="col s3 white-text" id="N1">
+            <div class="col s4 white-text" id="N1">
                 <div id="clock" class="thin">
                     <div id="time"></div>
-                    <!--<p id="time">9:25<span style="font-size:25px;">PM</span></p>-->
                     <p id="when"></p>
                 </div>
             </div>
-            <div class="col s9 white-text" id="N2">
-                <div class="row" id="news">
-                    <div class="col s3 Vcenter vertical-divider headline-padding">
-                      <p id="CNN"></p>
-                    </div>
-                    <div class="col s3 Vcenter vertical-divider headline-padding">
-                      <p id="USA"></p>
-                    </div>
-                    <div class="col s3 Vcenter vertical-divider headline-padding">
-                      <p id="ESPN"></p>
-                    </div>
-                    <div class="col s3 Vcenter vertical-divider headline-padding">
-                      <p id="BLUM"></p>
-                    </div>
-                </div>
+            <div class="col s8 white-text" id="N2">
+              <div class="row headline-padding" id="news">
+                  <ul>
+                    <li id="CNN"></li>
+                    <li id="USA"></li>
+                    <li id="ESPN"></li>
+                    <li id="BLUM"></li>
+                  </ul>
+              </div>
             </div>
+            <style>
+              ul {
+                  list-style-image: url('img/newspaper.png');
+                  margin-left: 28px;
+              }
+            </style>
         </div>
 
         <!-- We should probably move this... -->
@@ -251,7 +250,7 @@
 
         <!-- Row 2 -->
         <div class="row">
-            <div class="col s3 black-text" id="L2">
+            <div class="col s3 white-text" id="L2">
                 <div id="stocks">
                     <div class="list">
                       <!-- Stock 1 -->
@@ -342,9 +341,8 @@
 
                 </div>
             </div>
-            <div class="col s3 offset-s6" id="R2">
+            <div class="col s3 offset-s6 white-text" id="R2">
                 <div class="undefined">
-
 
                 </div>
             </div>
