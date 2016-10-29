@@ -144,11 +144,17 @@
                                   var hour = (new Date(hourly['data'][i]['time'] * 1000)).getHours();
                                   if (hour > 12) {
                                     hour = hour - 12;
+                                    ampm = 'PM';
+                                  } else if (hour == 12) {
+                                    ampm = 'PM';
+                                  } else if (hour == 0) {
+                                    hour = 12;
+                                    ampm = 'AM';
                                   }
                                   document.getElementById('hour'+i).innerHTML = hour +" "+ ampm;
                                 }
 
-                                // Temperature/ Precip each hour
+                                // Temperature/Precip each hour
                                 for(i = 1; i <= 4; i ++){
                                   document.getElementById('temp'+i).innerHTML   = Math.round(hourly['data'][i]['apparentTemperature'])+"°";
                                   document.getElementById('precip'+i).innerHTML = (hourly['data'][i]['precipProbability'] * 100) + "%";
