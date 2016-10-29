@@ -1,6 +1,7 @@
 package com.example.smartmirror;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
+import java.net.InterfaceAddress;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
@@ -41,11 +43,13 @@ public class MainActivity extends AppCompatActivity {
     EditText username;
     EditText password;
     TextView pleaseSignIn;
+    Bundle saved;
 
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        saved = savedInstanceState;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in);
         //setContentView(R.layout.activity_main);
@@ -93,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             nameValuePairs.add(new BasicNameValuePair("fname", "Grant is testing"));
             nameValuePairs.add(new BasicNameValuePair("fphone", "(716) 123-4567"));
             nameValuePairs.add(new BasicNameValuePair("femail", "mynameisgrant@buffalo.edu"));
-            nameValuePairs.add(new BasicNameValuePair("fcomment", "hewwo mi amigo"));
+            nameValuePairs.add(new BasicNameValuePair("fcomment", "yoyoyoyo"));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             httpclient.execute(httppost);
 
@@ -109,7 +113,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public int startCalendar(View v){
 
+        Intent myIntent = new Intent(getBaseContext(),calendar.class);
+        startActivity(myIntent);
+
+        //calendar calendar = new calendar();
+        //calendar.onCreate(saved);
+
+        return 0;
+    }
 
 
 

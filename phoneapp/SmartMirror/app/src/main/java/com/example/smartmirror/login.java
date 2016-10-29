@@ -29,10 +29,6 @@ public class login {
 
 
     public int start(EditText username, EditText password, Context context, TextView pleaseSignIn){
-
-        /*
-        EditText editText =  findViewById(R.id.name);
-        String message = editText.getText().toString();*/
         String user = username.getText().toString();
         String pass = password.getText().toString();
         HttpResponse response;
@@ -45,8 +41,6 @@ public class login {
 
             nameValuePairs.add(new BasicNameValuePair("fname", user));
             nameValuePairs.add(new BasicNameValuePair("fpass", pass));
-            //nameValuePairs.add(new BasicNameValuePair("femail", "mynameisgrant@buffalo.edu"));
-            //nameValuePairs.add(new BasicNameValuePair("fcomment", "hewwo"));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             response = httpclient.execute(httppost);
 
@@ -58,41 +52,14 @@ public class login {
             return 1;
         }
 
-        //Log.wtf("", String.valueOf(response));
-        //System.out.println(String.valueOf(response));
-
         int status = response.getStatusLine().getStatusCode();
 
-        /*
-        File file = new File("test");
-        FileOutputStream fos;
-        try {
-            fos = context.openFileOutput(file.getName(), Context.MODE_APPEND);
-            fos.write(String.valueOf(status).getBytes());
-            fos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
         if (status == 410){
             pleaseSignIn.setText("Incorrect UserName or Password");
             return 1;
         }
 
-
-        /*if(response.equals(404)){
-            return 1;
-        }*/
-
-        //TextView textView = (TextView) findViewById(R.id.textView2);
-
-        //helloworld.setText("yoyoyo");
-
-        //System.out.print(response);
-
         return 0;
-
-        //return 0;
     }
 
 }
