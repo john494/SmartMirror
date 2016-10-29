@@ -53,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             // TODO Auto-generated catch block
         }
-        Log.i("main", "huh?");
         Facebook();
 
     }
