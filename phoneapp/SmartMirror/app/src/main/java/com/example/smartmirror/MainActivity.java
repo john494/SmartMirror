@@ -1,6 +1,7 @@
 package com.example.smartmirror;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -56,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
-
         Button button1 = (Button)findViewById(R.id.button);
         EditText editText = (EditText) findViewById(R.id.editText);
         EditText editText2 = (EditText) findViewById(R.id.editText2);
@@ -113,6 +113,12 @@ public class MainActivity extends AppCompatActivity {
             return 1;
         }
         return 0;
+    }
+
+    private void twitter()
+    {
+        Intent intent = new Intent(MainActivity.this, Twitter_fncts.class);
+        MainActivity.this.startActivity(intent);
     }
 }
 
