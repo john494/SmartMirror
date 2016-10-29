@@ -29,6 +29,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
+import java.net.InterfaceAddress;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
@@ -37,18 +38,19 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    final String TAG = "SmartMirror";
     Button sumbit;
     EditText username;
     EditText password;
     TextView pleaseSignIn;
-    final String TAG = "SmartMirror";
-
+    Bundle saved;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         Log.d(TAG, "App started on build version " + Build.VERSION.SDK_INT);
+        saved = savedInstanceState;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in);
         //setContentView(R.layout.activity_main);
@@ -101,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
             nameValuePairs.add(new BasicNameValuePair("femail", "mynameisJohn@buffalo.edu"));
             nameValuePairs.add(new BasicNameValuePair("fcomment", "It worked!!!! :)"));
             Log.i(TAG, "Items: " + nameValuePairs);
+
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             httpclient.execute(httppost);
 
@@ -115,10 +118,24 @@ public class MainActivity extends AppCompatActivity {
         return 0;
     }
 
-    private void twitter()
+
+    public int twitter(View v)
     {
-        Intent intent = new Intent(MainActivity.this, Twitter_fncts.class);
+        Intent intent = new Intent(getBaseContext(), Twitter_fncts.class);
         MainActivity.this.startActivity(intent);
+
+        return 0;
+    }
+
+    public int startCalendar(View v){
+
+        Intent myIntent = new Intent(getBaseContext(),calendar.class);
+        startActivity(myIntent);
+
+        //calendar calendar = new calendar();
+        //calendar.onCreate(saved);
+
+        return 0;
     }
 }
 
