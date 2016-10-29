@@ -14,7 +14,8 @@ html {
 /* -- Row 2 -- */
 #clock {
 	height:auto;
-	font-size: 50px;
+	font-size: 55px;
+	float: left;
 }
 
 #clock p {
@@ -28,7 +29,7 @@ html {
 }
 
 #day {
-	font-size: 22px;
+	font-size: 20px;
 	padding-left: 4px;
 }
 
@@ -37,9 +38,6 @@ html {
 }
 
 #news {
-	/*padding-top: 10px;
-	padding-left: 50px;
-	padding-right: 50px;*/
 	font-size: 15px;
 }
 
