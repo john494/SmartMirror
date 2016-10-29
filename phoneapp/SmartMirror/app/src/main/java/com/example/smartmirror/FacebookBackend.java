@@ -18,6 +18,21 @@ import com.facebook.HttpMethod;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class FacebookBackend extends AppCompatActivity {
 
     private CallbackManager callbackManager;
@@ -31,15 +46,75 @@ public class FacebookBackend extends AppCompatActivity {
         getLoginDetails(loginButton);
 
         if(isLoggedIn()){
-            Log.i("logged", "in");
-            //Log.i("logged", AccessToken.getCurrentAccessToken().getToken());
             GraphRequest request = GraphRequest.newGraphPathRequest(
                     AccessToken.getCurrentAccessToken(),
                     "/me/tagged",                 //me/tagged shows only posts user was tagged in. me/feed shows all posts published on profile
                     new GraphRequest.Callback() {
                         @Override
                         public void onCompleted(GraphResponse response) {
-                            Log.i("logged", response.toString());
+                            JSONObject jarray = response.getJSONObject();
+                            List<NameValuePair> message = new ArrayList<NameValuePair>();
+                            List<String> story = new ArrayList<String>();
+                            List<NameValuePair> datetime = new ArrayList<NameValuePair>();
+                            JSONArray array = null;
+                            try {
+                                array = jarray.getJSONArray("data");
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            for(int i = 0 ; i < array.length() ; i++){
+                                try {
+                                    message.add(new BasicNameValuePair("fmessage", array.getJSONObject(i).getString("message")));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                                try {
+                                    story.add(array.getJSONObject(i).getString("story"));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                    story.add(i,"");
+                                }
+                                try {
+                                    datetime.add(new BasicNameValuePair("fdate",array.getJSONObject(i).getString("created_time")));
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            Log.i("logged", message.toString());
+                            Log.i("logged", story.toString());
+                            Log.i("logged", datetime.toString());
+                            HttpClient httpclient = new DefaultHttpClient();
+                            HttpPost httppost = new HttpPost("http://jarvis.cse.buffalo.edu/mine/facebook.php");
+                            try {
+                                //List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+
+                                //nameValuePairs.add(new BasicNameValuePair("fstring", "HI"));
+                                //nameValuePairs.add(new BasicNameValuePair("fdate", "10/29/2016"));
+                                //httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(message.size()*2);
+                                for(int i = 0; i < message.size(); i++){
+                                    //List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
+                                    nameValuePairs.add(message.get(i));
+                                    nameValuePairs.add(new BasicNameValuePair("fpost", story.get(i)));
+                                    //Log.i("logged", message.get(i).toString());
+                                    nameValuePairs.add(datetime.get(i));
+                                    //Log.i("logged", datetime.get(i).toString());
+
+                                }
+                                Log.i("logged", nameValuePairs.toString());
+                                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                                httpclient.execute(httppost);
+                                //httppost.setEntity(new UrlEncodedFormEntity(story));
+                                //httpclient.execute(httppost);
+                                //httppost.setEntity(new UrlEncodedFormEntity(datetime));
+                                //httpclient.execute(httppost);
+                                //Log.i("logged", nameValuePairs.toString());
+
+                            } catch (ClientProtocolException e) {
+                                // TODO Auto-generated catch block
+                            } catch (IOException e) {
+                                // TODO Auto-generated catch block
+                            }
                         }
                     });
 
@@ -54,15 +129,13 @@ public class FacebookBackend extends AppCompatActivity {
         login_button.registerCallback(callbackManager, new FacebookCallback<LoginResult>(){
             @Override
             public void onSuccess(LoginResult loginResult) {
-                //Log.i("logged", "Please");
-                //Log.i("logged", loginResult.getAccessToken().getToken());
                 GraphRequest request = GraphRequest.newGraphPathRequest(
                         AccessToken.getCurrentAccessToken(),
                         "/me/tagged",                 //me/tagged shows only posts user was tagged in. me/feed shows all posts published on profile
                         new GraphRequest.Callback() {
                             @Override
                             public void onCompleted(GraphResponse response) {
-                                Log.i("logged", response.toString());
+                                Log.i("logged", "Success!");
                             }
                         });
 
@@ -71,12 +144,12 @@ public class FacebookBackend extends AppCompatActivity {
 
             @Override
             public void onCancel() {
-                Log.i("logged", "Please cancel");
+                Log.i("logged", "Cancelled");
             }
 
             @Override
             public void onError(FacebookException e) {
-                Log.i("logged", "Please error");
+                Log.i("logged", "Error");
             }
         });
 
