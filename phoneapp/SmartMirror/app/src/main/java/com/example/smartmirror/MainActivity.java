@@ -53,13 +53,12 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             // TODO Auto-generated catch block
         }
-        Facebook();
 
     }
 
     public void Facebook(){
         FacebookSdk.sdkInitialize(this.getApplicationContext());
-        Intent intent = new Intent(MainActivity.this, FacebookBackend.class);
+        Intent intent = new Intent(getBaseContext(), FacebookBackend.class);
         MainActivity.this.startActivity(intent);
     }
 
