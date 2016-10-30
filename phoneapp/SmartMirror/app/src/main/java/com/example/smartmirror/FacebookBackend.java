@@ -64,7 +64,7 @@ public class FacebookBackend extends AppCompatActivity {
                             }
                             for(int i = 0 ; i < array.length() ; i++){
                                 try {
-                                    message.add(new BasicNameValuePair("fmessage", array.getJSONObject(i).getString("message")));
+                                    message.add(new BasicNameValuePair("fpost", array.getJSONObject(i).getString("message")));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -80,35 +80,23 @@ public class FacebookBackend extends AppCompatActivity {
                                     e.printStackTrace();
                                 }
                             }
-                            Log.i("logged", message.toString());
-                            Log.i("logged", story.toString());
-                            Log.i("logged", datetime.toString());
+
                             HttpClient httpclient = new DefaultHttpClient();
                             HttpPost httppost = new HttpPost("http://jarvis.cse.buffalo.edu/mine/facebook.php");
                             try {
-                                //List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-
-                                //nameValuePairs.add(new BasicNameValuePair("fstring", "HI"));
-                                //nameValuePairs.add(new BasicNameValuePair("fdate", "10/29/2016"));
-                                //httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(message.size()*2);
                                 for(int i = 0; i < message.size(); i++){
-                                    //List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
+
                                     nameValuePairs.add(message.get(i));
-                                    nameValuePairs.add(new BasicNameValuePair("fpost", story.get(i)));
-                                    //Log.i("logged", message.get(i).toString());
+                                    nameValuePairs.add(new BasicNameValuePair("fmessage", story.get(i)));
+
                                     nameValuePairs.add(datetime.get(i));
-                                    //Log.i("logged", datetime.get(i).toString());
+
+                                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                                    httpclient.execute(httppost);
 
                                 }
                                 Log.i("logged", nameValuePairs.toString());
-                                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                                httpclient.execute(httppost);
-                                //httppost.setEntity(new UrlEncodedFormEntity(story));
-                                //httpclient.execute(httppost);
-                                //httppost.setEntity(new UrlEncodedFormEntity(datetime));
-                                //httpclient.execute(httppost);
-                                //Log.i("logged", nameValuePairs.toString());
 
                             } catch (ClientProtocolException e) {
                                 // TODO Auto-generated catch block
