@@ -1,0 +1,18 @@
+date: October 21, 2016
+meeting_type: ta # meeting_type can "group", "ta", or "instructor"
+attendance: [johnmcki, ntkabala, grantwra, ajkirsch, mdkulbac]
+absent: []
+excused_absences: [ # Any legitamite excuses for absent team members
+  ]
+task_progress: [ # All group members must be included here even if they haven't made any progress since the last meeting
+  {ubit: johnmcki, progress: Broke out tasks},
+  {ubit: mdkulbac, progress: Jquery error stuff},
+  {ubit: ajkirsch, progress: looked at taskes},
+  {ubit: grantwra, progress: Broke out tasks and started android},
+  {ubit: ntkabala, progress: Jquery error stuff}
+  ]
+issues: [ # Post any issues here. Issues that cannot be addressed by the group should especially be included
+  #{ubit: <ubit2>, issue: Needs to contact customer to clarify requirements that have not yet been discussed.},
+  ]
+
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
