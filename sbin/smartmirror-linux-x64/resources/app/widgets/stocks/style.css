@@ -22,11 +22,16 @@ h2.header {
 	padding-top: 20px;
 	padding-left: 15px;
 	padding-right: 15px;
+<<<<<<< HEAD
 	padding-bottom: 30px;
 	line-height: 20px;
 }
 
 .border-top {
+=======
+	padding-bottom: 40px;
+	line-height: 20px;
+>>>>>>> 293bc7155324e96b2d611121b6f56615e435d1b2
 	border-top: 1px solid #fff;
 }
 

@@ -14,8 +14,12 @@ html {
 /* -- Row 2 -- */
 #clock {
 	height:auto;
+<<<<<<< HEAD
 	font-size: 55px;
 	float: left;
+=======
+	font-size: 50px;
+>>>>>>> 293bc7155324e96b2d611121b6f56615e435d1b2
 }
 
 #clock p {
@@ -29,7 +33,11 @@ html {
 }
 
 #day {
+<<<<<<< HEAD
 	font-size: 20px;
+=======
+	font-size: 22px;
+>>>>>>> 293bc7155324e96b2d611121b6f56615e435d1b2
 	padding-left: 4px;
 }
 
@@ -38,6 +46,12 @@ html {
 }
 
 #news {
+<<<<<<< HEAD
+=======
+	/*padding-top: 10px;
+	padding-left: 50px;
+	padding-right: 50px;*/
+>>>>>>> 293bc7155324e96b2d611121b6f56615e435d1b2
 	font-size: 15px;
 }
 

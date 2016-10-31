@@ -64,7 +64,11 @@ h2.header a {
 }
 
 .temp {
+<<<<<<< HEAD
 	font-size: 55px;
+=======
+	font-size: 50px;
+>>>>>>> 293bc7155324e96b2d611121b6f56615e435d1b2
 	font-weight: 300;
 	/*line-height: 112px;*/
 	white-space: nowrap;
