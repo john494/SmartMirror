@@ -116,10 +116,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void Facebook(){
+    public int facebook(View v){
         FacebookSdk.sdkInitialize(this.getApplicationContext());
         Intent intent = new Intent(getBaseContext(), FacebookBackend.class);
         MainActivity.this.startActivity(intent);
+        return 0;
     }
 
     public int startCalendar(View v){

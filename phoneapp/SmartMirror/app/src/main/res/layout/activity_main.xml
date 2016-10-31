@@ -25,13 +25,23 @@
         android:layout_centerHorizontal="true" />
 
     <Button
+        android:text="Facebook Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/launchTwitter"
+        android:layout_alignLeft="@+id/launchTwitter"
+        android:layout_alignStart="@+id/launchTwitter"
+        android:id="@+id/facebookLogin"
+        android:onClick="facebook" />
+
+    <Button
         android:text="Twitter Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/launchTwitter"
+        android:onClick="twitter"
         android:layout_above="@+id/button2"
         android:layout_alignLeft="@+id/button2"
-        android:layout_alignStart="@+id/button2"
-        android:onClick="twitter" />
+        android:layout_alignStart="@+id/button2" />
 
 </RelativeLayout>
