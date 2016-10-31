@@ -7,6 +7,10 @@ import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -22,39 +26,95 @@ import java.util.List;
 import com.facebook.FacebookSdk;
 
 public class MainActivity extends AppCompatActivity {
-
+    final String TAG = "SmartMirror";
+    Button sumbit;
+    EditText username;
+    EditText password;
+    TextView pleaseSignIn;
+    Bundle saved;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Log.d(TAG, "App started on build version " + Build.VERSION.SDK_INT);
+        saved = savedInstanceState;
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.sign_in);
+        //setContentView(R.layout.activity_main);
         if (android.os.Build.VERSION.SDK_INT > 9)
         {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
+        Button button1 = (Button)findViewById(R.id.button);
+        EditText editText = (EditText) findViewById(R.id.editText);
+        EditText editText2 = (EditText) findViewById(R.id.editText2);
+        sumbit = button1;
+        username = editText;
+        password = editText2;
+
+        TextView textView = (TextView) findViewById(R.id.textView);
+        pleaseSignIn = textView;
+
+    }
+
+    public void clicked(View v){
+        Log.d(TAG, "Button %s has been clicked");
+        login login = new login();
+        int test1 = login.start(username,password,this,pleaseSignIn);
+        if(test1 != 0){ return; }
 
 
+        int test = post();
+        if (test == 0){
+            setContentView(R.layout.activity_main);
+        }
+        else { return; }
+
+        //setContentView(R.layout.activity_main);
+        //return 0;
+    }
+
+    private int post()
+    {
+        final String server = "http://jarvis.cse.buffalo.edu/mine/mypage.php";
+        Log.d(TAG, "Post to server");
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://jarvis.cse.buffalo.edu/mine/mypage.php");
+        HttpPost httppost = new HttpPost(server);
         try {
+            Log.i(TAG, "Attempting to post to: "+server);
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
 
-            nameValuePairs.add(new BasicNameValuePair("fname", "TEST"));
-            nameValuePairs.add(new BasicNameValuePair("fphone", "(716) 456-4567"));
-            nameValuePairs.add(new BasicNameValuePair("femail", "nope@buffalo.edu"));
-            nameValuePairs.add(new BasicNameValuePair("fcomment", "It worked!!!! Fuck yeah! :)"));
+            nameValuePairs.add(new BasicNameValuePair("fname", "John"));
+            nameValuePairs.add(new BasicNameValuePair("fphone", "no #"));
+            nameValuePairs.add(new BasicNameValuePair("femail", "mynameisJohn@buffalo.edu"));
+            nameValuePairs.add(new BasicNameValuePair("fcomment", "It worked!!!! :)"));
+            Log.i(TAG, "Items: " + nameValuePairs);
+
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             httpclient.execute(httppost);
 
         } catch (ClientProtocolException e) {
+
             // TODO Auto-generated catch block
+            return 1;
         } catch (IOException e) {
             // TODO Auto-generated catch block
+            return 1;
         }
-
+        return 0;
     }
+
+
+    public int twitter(View v)
+    {
+        Intent intent = new Intent(getBaseContext(), Twitter_fncts.class);
+        MainActivity.this.startActivity(intent);
+
+        return 0;
+    }
+
 
     public void Facebook(){
         FacebookSdk.sdkInitialize(this.getApplicationContext());
@@ -62,8 +122,16 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.startActivity(intent);
     }
 
+    public int startCalendar(View v){
 
+        Intent myIntent = new Intent(getBaseContext(),calendar.class);
+        startActivity(myIntent);
 
+        //calendar calendar = new calendar();
+        //calendar.onCreate(saved);
+
+        return 0;
+    }
 }
 
 
