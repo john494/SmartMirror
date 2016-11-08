@@ -38,8 +38,8 @@ $(document).ready(function() {
   var d, c, ampm;
   updateStock();
   function updateStock() {
-      d = new Date()
-      c = d.toString("h:mm")
+      d    = new Date()
+      c    = d.toString("hmm")
       ampm = d.toString("tt")
       var t = setTimeout(updateStock, 500)
 
@@ -50,13 +50,13 @@ $(document).ready(function() {
           daym = "0" + daym
       var dayarray = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
 
-      if("9:00AM" == (c+ampm) && (dayarray[day] != "Saturday" && dayarray[day] != "Sunday")){
+      if("900AM" == (c+ampm) && (dayarray[day] != "Saturday" && dayarray[day] != "Sunday")){
         stocks();
         stockInt = setInterval(stocks, 10000)
       }
-      if("4:30PM" == (c+ampm)){
+
+      if("430PM" == (c+ampm) || (("PM" == ampm) && (c >= 430)) || (("AM" == ampm) && (c < 900))){
         clearInterval(stockInt)
-        console.log("closed for the day");
       }
   };
 });
