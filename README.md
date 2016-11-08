@@ -15,4 +15,4 @@
 - [DateJS] (http://www.datejs.com/) which is also protected under the MIT License
 
 ## Layout
-![UI Layout](/img/layout.png)
+![UI Layout](/UI/img/layout.png)
