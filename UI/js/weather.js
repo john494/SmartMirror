@@ -83,7 +83,6 @@ $(document).ready(function() {
       var t = setTimeout(updateWeather, 500)
       if(mm == "00"){
         weather(current);
-        console.log("new hour update")
       }
   };
 
