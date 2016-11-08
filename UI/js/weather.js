@@ -60,7 +60,7 @@ $(document).ready(function() {
     var nightHour = 6;
     if(darkskyname == "cloudy"){ if(nightHour <= hour){ return "cloudy-night";} return darkskyname;}
     if(darkskyname == "partly-cloudy-day"){  return "partlycloudy";}
-    if(darkskyname == "partly-cloudy-night"){return "partlycloudy-night";}
+    if(darkskyname == "partly-cloudy-night"){return "cloudy-night";}
     if(darkskyname == "clear-day"){          return darkskyname;}
     if(darkskyname == "clear-night"){        return darkskyname;}
     if(darkskyname == "rain"){               if(nightHour <= hour){ return "rainy-night";}   return darkskyname;}
