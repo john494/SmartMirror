@@ -1,11 +1,17 @@
 $(document).ready(function() {
-  
+  startClock();
+  getDate();
+
   function startClock() {
       var d = new Date()
       var c = d.toString("h:mm");
+      var mm = d.toString("mm");
       var ampm = d.toString("tt");
       document.getElementById('time').innerHTML = c +" <sup style='font-size:20px;top:0.0em'>"+ ampm + "</sup>";
       var t = setTimeout(startClock, 500);
+      if(mm == "00"){
+        getDate();
+      }
   };
 
   function getDate() {
@@ -22,8 +28,4 @@ $(document).ready(function() {
     var montharray = new Array("January","February","March","April","May","June","July","August","September","October","November","December")
     document.getElementById('when').innerHTML = "<p id='day'>"+dayarray[day]+"</p><p id='date'>"+montharray[month]+" "+daym+", "+year+"</p>";
   }
-
-  startClock();
-  getDate();
-
 });

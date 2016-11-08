@@ -70,8 +70,21 @@ $(document).ready(function() {
     if(darkskyname == "snow"){               if(nightHour <= hour){ return "snow-night";}    return darkskyname;}
     if(darkskyname == "sleet"){              if(nightHour <= hour){ return "sleet-night";}   return darkskyname;}
   }
-  weather(current);
-  // weather updates every 15 min or until reload of the page
-  setInterval(weather,90000);
+
+  weather();
+  setInterval(weather,90000); // 15 min
+
+  // each hour the weather forcefully updates
+  var d, c, ampm;
+  updateWeather();
+  function updateWeather() {
+      d = new Date()
+      mm = d.toString("mm")
+      var t = setTimeout(updateWeather, 500)
+      if(mm == "00"){
+        weather(current);
+        console.log("new hour update")
+      }
+  };
 
 });

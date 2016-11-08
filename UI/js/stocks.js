@@ -1,6 +1,5 @@
 $(document).ready(function() {
   function stocks(){
-    console.log("called it");
     getStock("AAPL", 1);
     getStock("FB", 2);
     getStock("NKE", 3);
@@ -33,10 +32,31 @@ $(document).ready(function() {
 
     }
   }
-  setInterval(stocks(), 6000);
-  // setInterval(getStock("AAPL", 1),10000);
-  // setInterval(getStock("FB", 2),  10000);
-  // setInterval(getStock("NKE", 3), 10000);
-  // setInterval(getStock("TSLA", 4),10000);
+  stocks();
+  var stockInt = setInterval(stocks, 10000); //10 seconds
 
+  var d, c, ampm;
+  updateStock();
+  function updateStock() {
+      d = new Date()
+      c = d.toString("h:mm")
+      ampm = d.toString("tt")
+      var t = setTimeout(updateStock, 500)
+
+      var mydate = new Date()
+      var day   = mydate.getDay()
+      var daym  = mydate.getDate()
+      if (daym < 10)
+          daym = "0" + daym
+      var dayarray = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
+
+      if("9:00AM" == (c+ampm) && (dayarray[day] != "Saturday" && dayarray[day] != "Sunday")){
+        stocks();
+        stockInt = setInterval(stocks, 10000)
+      }
+      if("4:30PM" == (c+ampm)){
+        clearInterval(stockInt)
+        console.log("closed for the day");
+      }
+  };
 });
