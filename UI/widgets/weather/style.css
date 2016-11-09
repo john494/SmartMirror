@@ -119,7 +119,7 @@ h2.header a {
 	This list is missing .cond.sunny because that's the default icon
 */
 .cond.rain				{ background-image: url(icons/rain.png); }
-.cond.rain-night		{ background-image: url(icons/rainy-night.png); }
+.cond.rainy-night		{ background-image: url(icons/rainy-night.png); }
 .cond.wind				{ background-image: url(icons/wind.png); }
 .cond.windy-night		{ background-image: url(icons/windy-night.png); }
 .cond.fog				{ background-image: url(icons/fog.png); }
