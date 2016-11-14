@@ -6,7 +6,6 @@ import android.os.Build;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.net.http.*;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,34 +20,24 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.InterfaceAddress;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.facebook.FacebookSdk;
 
 public class MainActivity extends AppCompatActivity {
-
+    final String TAG = "SmartMirror";
     Button sumbit;
     EditText username;
     EditText password;
     TextView pleaseSignIn;
     Bundle saved;
 
-
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Log.d(TAG, "App started on build version " + Build.VERSION.SDK_INT);
         saved = savedInstanceState;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in);
@@ -58,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
-
         Button button1 = (Button)findViewById(R.id.button);
         EditText editText = (EditText) findViewById(R.id.editText);
         EditText editText2 = (EditText) findViewById(R.id.editText2);
@@ -72,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clicked(View v){
+        Log.d(TAG, "Button %s has been clicked");
         login login = new login();
         int test1 = login.start(username,password,this,pleaseSignIn);
         if(test1 != 0){ return; }
@@ -87,30 +76,51 @@ public class MainActivity extends AppCompatActivity {
         //return 0;
     }
 
-    public int post(){
-
+    private int post()
+    {
+        final String server = "http://jarvis.cse.buffalo.edu/mine/mypage.php";
+        Log.d(TAG, "Post to server");
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://jarvis.cse.buffalo.edu/mine/mypage.php");
+        HttpPost httppost = new HttpPost(server);
         try {
+            Log.i(TAG, "Attempting to post to: "+server);
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
 
-            nameValuePairs.add(new BasicNameValuePair("fname", "Grant is testing"));
-            nameValuePairs.add(new BasicNameValuePair("fphone", "(716) 123-4567"));
-            nameValuePairs.add(new BasicNameValuePair("femail", "mynameisgrant@buffalo.edu"));
-            nameValuePairs.add(new BasicNameValuePair("fcomment", "yoyoyoyo"));
+            nameValuePairs.add(new BasicNameValuePair("fname", "John"));
+            nameValuePairs.add(new BasicNameValuePair("fphone", "no #"));
+            nameValuePairs.add(new BasicNameValuePair("femail", "mynameisJohn@buffalo.edu"));
+            nameValuePairs.add(new BasicNameValuePair("fcomment", "It worked!!!! :)"));
+            Log.i(TAG, "Items: " + nameValuePairs);
+
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             httpclient.execute(httppost);
 
         } catch (ClientProtocolException e) {
+
             // TODO Auto-generated catch block
             return 1;
         } catch (IOException e) {
             // TODO Auto-generated catch block
             return 1;
         }
+        return 0;
+    }
+
+
+    public int twitter(View v)
+    {
+        Intent intent = new Intent(getBaseContext(), Twitter_fncts.class);
+        MainActivity.this.startActivity(intent);
 
         return 0;
+    }
 
+
+    public int facebook(View v){
+        FacebookSdk.sdkInitialize(this.getApplicationContext());
+        Intent intent = new Intent(getBaseContext(), FacebookBackend.class);
+        MainActivity.this.startActivity(intent);
+        return 0;
     }
 
     public int startCalendar(View v){
@@ -123,9 +133,6 @@ public class MainActivity extends AppCompatActivity {
 
         return 0;
     }
-
-
-
 }
 
 
