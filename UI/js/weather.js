@@ -9,6 +9,7 @@ $(document).ready(function() {
     $.get("https://api.darksky.net/forecast/" + key + "/" + buff_lat + "," + buff_lon, function(data) {
       current = data['currently'];
       hourly = data['hourly'];
+      var winddegree = current['windBearing']
       var currIcon = current['icon'];
       currIcon = checkIcon(currIcon);
 
@@ -16,6 +17,13 @@ $(document).ready(function() {
       document.getElementById('description').innerHTML   = (hourly['summary']).slice(0,-1);
       document.getElementById('precipitation').innerHTML = (current['precipProbability'] * 100) + "%";
       document.getElementById('currIcon').innerHTML      = "<div class='cond " + currIcon + "'></div>";
+      if(winddegree == 0){winddegree = "N"}  if(0 < winddegree < 90){winddegree = "NE"}
+      if(winddegree == 90){winddegree = "E"} if(90 < winddegree < 180){winddegree = "SE"}
+      if(winddegree == 180){winddegree = "S"}if(180 < winddegree < 270){winddegree = "SW"}
+      if(winddegree == 270){winddegree = "W"}if(270 < winddegree < 360){winddegree = "NW"}
+      if((Math.round(current['windSpeed'])) == 0){windegree == ""}
+      
+      document.getElementById('windspeed').innerHTML = winddegree +" "+Math.round(current['windSpeed'])+" mph";
 
       // Getting AM or PM
       var d = new Date();
@@ -55,20 +63,22 @@ $(document).ready(function() {
   // will translate the icon from DarkSky to what we have locally
   // consider giphy for current
   function checkIcon(darkskyname) {
+    var sunset = 17;
+    var sunrise = 04
     var d = new Date();
-    var hour = d.toString("h");
-    var nightHour = 6;
-    if(darkskyname == "cloudy"){ if(nightHour <= hour){ return "cloudy-night";} return darkskyname;}
+    var hour = d.toString("hh");
+
     if(darkskyname == "partly-cloudy-day"){  return "partlycloudy";}
     if(darkskyname == "partly-cloudy-night"){return "cloudy-night";}
     if(darkskyname == "clear-day"){          return darkskyname;}
     if(darkskyname == "clear-night"){        return darkskyname;}
-    if(darkskyname == "rain"){               if(nightHour <= hour){ return "rainy-night";}   return darkskyname;}
-    if(darkskyname == "wind"){               if(nightHour <= hour){ return "windy-night";}   return darkskyname;}
-    if(darkskyname == "fog") {               if(nightHour <= hour){ return "foggy-night";}   return darkskyname;}
-    if(darkskyname == "thunderstorms"){      if(nightHour <= hour){ return "thunder-night";} return darkskyname;}
-    if(darkskyname == "snow"){               if(nightHour <= hour){ return "snow-night";}    return darkskyname;}
-    if(darkskyname == "sleet"){              if(nightHour <= hour){ return "sleet-night";}   return darkskyname;}
+    if(darkskyname == "cloudy"){             if(sunset <= hour && hour <= sunrise){ return "cloudy-night";}  return darkskyname;}
+    if(darkskyname == "rain"){               if(sunset <= hour && hour <= sunrise){ return "rainy-night";}   return darkskyname;}
+    if(darkskyname == "wind"){               if(sunset <= hour && hour <= sunrise){ return "windy-night";}   return darkskyname;}
+    if(darkskyname == "fog") {               if(sunset <= hour && hour <= sunrise){ return "foggy-night";}   return darkskyname;}
+    if(darkskyname == "thunderstorms"){      if(sunset <= hour && hour <= sunrise){ return "thunder-night";} return darkskyname;}
+    if(darkskyname == "snow"){               if(sunset <= hour && hour <= sunrise){ return "snow-night";}    return darkskyname;}
+    if(darkskyname == "sleet"){              if(sunset <= hour && hour <= sunrise){ return "sleet-night";}   return darkskyname;}
   }
 
   weather();
