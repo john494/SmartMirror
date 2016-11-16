@@ -12,6 +12,7 @@ import java.util.List;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
+import twitter4j.conf.Configuration;
 import twitter4j.conf.ConfigurationBuilder;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
