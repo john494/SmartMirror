@@ -177,6 +177,7 @@ public class Twitter_fncts extends AppCompatActivity {
                     List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
 
                     nameValuePairs.add(new BasicNameValuePair("fusername", statuses.get(i).getUser().getName()));
+                    nameValuePairs.add(new BasicNameValuePair("fscrnname", statuses.get(i).getUser().getScreenName()));
                     nameValuePairs.add(new BasicNameValuePair("ffavcount", String.valueOf(statuses.get(i).getFavoriteCount())));
                     nameValuePairs.add(new BasicNameValuePair("frtcount", String.valueOf(statuses.get(i).getRetweetCount())));
                     nameValuePairs.add(new BasicNameValuePair("ftext", statuses.get(i).getText()));
