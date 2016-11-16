@@ -52,30 +52,34 @@ public class FacebookBackend extends AppCompatActivity {
                     new GraphRequest.Callback() {
                         @Override
                         public void onCompleted(GraphResponse response) {
-                            JSONObject jarray = response.getJSONObject();
+                            JSONObject jobj = response.getJSONObject();
                             List<NameValuePair> message = new ArrayList<NameValuePair>();
                             List<String> story = new ArrayList<String>();
                             List<NameValuePair> datetime = new ArrayList<NameValuePair>();
                             JSONArray array = null;
                             try {
-                                array = jarray.getJSONArray("data");
+                                array = jobj.getJSONArray("data");
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
+                            Log.i("logged", array.toString());
+
                             for(int i = 0 ; i < array.length() ; i++){
                                 try {
                                     message.add(new BasicNameValuePair("fpost", array.getJSONObject(i).getString("message")));
+                                    Log.i("logged", Integer.toString(message.size()));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
                                 try {
                                     story.add(array.getJSONObject(i).getString("story"));
+
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                     story.add(i,"");
                                 }
                                 try {
-                                    datetime.add(new BasicNameValuePair("fdate",array.getJSONObject(i).getString("created_time")));
+                                    datetime.add(new BasicNameValuePair("fdate",array.getJSONObject(i).getString("tagged_time")));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
@@ -96,7 +100,6 @@ public class FacebookBackend extends AppCompatActivity {
                                     httpclient.execute(httppost);
 
                                 }
-                                Log.i("logged", nameValuePairs.toString());
 
                             } catch (ClientProtocolException e) {
                                 // TODO Auto-generated catch block
