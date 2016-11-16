@@ -19,19 +19,57 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    <EditText
+        android:id="@+id/stock3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Stock 3"
+        android:layout_above="@+id/stock4"
+        android:layout_alignLeft="@+id/stock4"
+        android:layout_alignStart="@+id/stock4" />
+
+    <EditText
+        android:id="@+id/stock2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Stock 2"
+        android:layout_above="@+id/stock3"
+        android:layout_alignLeft="@+id/stock3"
+        android:layout_alignStart="@+id/stock3" />
 
     <EditText
         android:id="@+id/stock1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="text"
         android:hint="Stock 1"
-        android:layout_marginTop="88dp"
-        android:layout_below="@+id/textView3"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp" />
+        android:layout_above="@+id/stock2"
+        android:layout_alignLeft="@+id/stock2"
+        android:layout_alignStart="@+id/stock2" />
+
+    <Button
+        android:text="ENTER"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button5"
+        android:layout_marginLeft="26dp"
+        android:layout_marginStart="26dp"
+        android:layout_below="@+id/stock3"
+        android:layout_toRightOf="@+id/stock4"
+        android:layout_toEndOf="@+id/stock4"
+        android:onClick="getStocks"/>
+
+    <EditText
+        android:id="@+id/stock4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:hint="Stock 4"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="201dp" />
 
 
 </RelativeLayout>
