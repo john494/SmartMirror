@@ -23,4 +23,11 @@
         android:id="@+id/invalid_pw"
         android:visibility="invisible"
         android:textSize="30sp" />
+
+    <Button
+        android:text="Regenerate Token"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rst"
+        android:visibility="invisible" />
 </LinearLayout>
