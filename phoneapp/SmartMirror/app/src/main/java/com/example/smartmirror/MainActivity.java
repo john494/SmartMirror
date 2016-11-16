@@ -6,7 +6,6 @@ import android.os.Build;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.net.http.*;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,21 +20,10 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.InterfaceAddress;
-import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-
+import com.facebook.FacebookSdk;
 
 public class MainActivity extends AppCompatActivity {
     final String TAG = "SmartMirror";
@@ -124,6 +112,14 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getBaseContext(), Twitter_fncts.class);
         MainActivity.this.startActivity(intent);
 
+        return 0;
+    }
+
+
+    public int facebook(View v){
+        FacebookSdk.sdkInitialize(this.getApplicationContext());
+        Intent intent = new Intent(getBaseContext(), FacebookBackend.class);
+        MainActivity.this.startActivity(intent);
         return 0;
     }
 
