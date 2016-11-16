@@ -46,6 +46,7 @@ public class FacebookBackend extends AppCompatActivity {
         getLoginDetails(loginButton);
 
         if(isLoggedIn()){
+
             GraphRequest request = GraphRequest.newGraphPathRequest(
                     AccessToken.getCurrentAccessToken(),
                     "/me/tagged",                 //me/tagged shows only posts user was tagged in. me/feed shows all posts published on profile
@@ -53,6 +54,7 @@ public class FacebookBackend extends AppCompatActivity {
                         @Override
                         public void onCompleted(GraphResponse response) {
                             JSONObject jobj = response.getJSONObject();
+                            Log.i("logged", jobj.toString());
                             List<NameValuePair> message = new ArrayList<NameValuePair>();
                             List<String> story = new ArrayList<String>();
                             List<NameValuePair> datetime = new ArrayList<NameValuePair>();

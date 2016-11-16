@@ -37,7 +37,7 @@ dependencies {
     compile 'com.facebook.android:audience-network-sdk:4.+'
     // Account Kit
     compile 'com.facebook.android:account-kit-sdk:4.+'
-    compile 'com.facebook.android:facebook-android-sdk:4.0.0'
+    //compile 'com.facebook.android:facebook-android-sdk:4.0.0'
     compile project(':twitter4j-core-4.0.4.0')
     compile 'com.google.android.gms:play-services-auth:8.4.0'
     compile 'pub.devrel:easypermissions:0.1.5'
