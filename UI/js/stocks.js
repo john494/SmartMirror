@@ -54,11 +54,12 @@ $(document).ready(function() {
   //see if name updates on new stocks being added in
   stockName();
 
-  var d, c, ampm;
+  var d, c, ampm, h;
   updateStock();
   function updateStock() {
       d    = new Date()
       c    = d.toString("hmm")
+      h    = d.toString("h")
       ampm = d.toString("tt")
       var t = setTimeout(updateStock, 500)
 
@@ -74,7 +75,7 @@ $(document).ready(function() {
         stockInt = setInterval(stocks, 10000)
       }
 
-      if("430PM" == (c+ampm) || (("PM" == ampm) && (c >= 430)) || (("AM" == ampm) && (c < 900))){
+      if("430PM" == (c+ampm) || (("PM" == ampm) && (c >= 430)) || (("AM" == ampm) && (c < 900)) || (("AM" == ampm) && (h == 12))){
         clearInterval(stockInt)
       }
   };

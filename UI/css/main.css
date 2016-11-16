@@ -4,12 +4,13 @@ html {
 	font-family: Roboto;
 }
 
-#N1 {height:auto;background-color: ;}
-#N2 {height:auto;background-color: ;}
-#L1 {height:auto;background-color: ;}
-#R1 {height:auto;background-color: ;}
-#L2 {height:auto;color: ;}
-#R2 {height:auto;background-color: ;}
+#N1 {height:auto;}
+#N2 {height:auto;}
+#L1 {height:auto;}
+#R1 {height:auto;}
+#L2 {height:auto;}
+#R2 {height:auto;}
+#B1 {height:auto;}
 
 /* -- Row 2 -- */
 #clock {
@@ -46,10 +47,10 @@ ul li {
 	padding-left: 7px;
 }
 
-/* -- Row 1 -- */
 #location {
 	font-size: 1.3rem;
 }
+
 #weather h3 {
 	margin: 0.82rem 0 0.656rem 0;
 }
@@ -75,6 +76,16 @@ ul li {
 	height: auto;
 }
 
+.twitimg {float: left;padding-right: 10px;}
+.tweet {
+	padding-bottom: 0px;padding-top: 5px;
+	margin-bottom: 5px;
+  border-top: 1px solid #a7a7a7;
+	border-radius: 10px;
+	background: white;
+	color:black;
+}
+.heart {margin-left: 10px;}
 /* -- Custom Classes -- */
 .Vcenter {
 	display: flex;

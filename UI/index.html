@@ -9,13 +9,15 @@
     <title>Smart Mirror Home</title>
 
     <!-- Custom CSS -->
-    <link href="css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css" />
     <!-- Materialize CSS -->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
     <!-- Weather Widget CSS -->
     <link rel="stylesheet" href="widgets/weather/style.css" />
     <!-- Stock Widget CSS -->
     <link rel="stylesheet" href="widgets/stocks/style.css" />
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="css/animate.css" >
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -26,15 +28,15 @@
         delete window.exports;
         delete window.module;
     </script>
-    <script window.$ = window.jQuery = require('js/jquery-2.1.1.min.js');></script>
-    <script src="jquery.js"></script>
+    <script window.$ = window.jQuery = require('jquery-2.1.1.min.js');></script>
+    <script src="js/jquery-2.1.1.min.js"></script>
 </head>
 
 <body>
     <div class="container-fluid">
         <!-- Row 0 -->
         <div class="row">
-            <div class="col s5 white-text" id="N1">
+            <div class="col s6 white-text wow fadeInLeft" id="N1">
                 <div id="clock">
                     <div class="thin" id="time"></div>
                 </div>
@@ -42,7 +44,7 @@
                     <p id="when"></p>
                 </div>
             </div>
-            <div class="col s7 white-text" id="N2">
+            <div class="col s6 white-text" id="N2">
 
             </div>
         </div>
@@ -51,7 +53,7 @@
         <div class="row">
             <div class="col s3 white-text" id="L1">
                 <div id="weather">
-                  <div class="content">
+                  <div class="content  wow fadeInLeft">
                       <div class="location">
                           <h5 class="header" id="location"></h5>
                           <div class="current thin">
@@ -107,59 +109,81 @@
             </div>
             <div class="col s3 offset-s6" id="R1">
                 <div id="calendar">
-                    <h5 class="Vcenter white-text">Calendar</h5>
-                    <div class="row">
-                        <div class="col s12 white-text">
-                            <table class="centered">
-                            <thead>
-                                <tr>
-                                    <th data-field="cTime">Time</th>
-                                    <th data-field="eventList">Event</th>
-                                    <th data-field="cLocation">Place</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>12 AM</td>
-                                    <td>CSE 489</td>
-                                    <td>NSC 210</td>
-                                </tr>
-                                <tr>
-                                    <td>1 PM</td>
-                                    <td>CSE 410</td>
-                                    <td>Norton 213</td>
-                                </tr>
-                                <tr>
-                                    <td>2 PM</td>
-                                    <td>CSE 442</td>
-                                    <td>O'Brian 119</td>
-                                </tr>
-                            </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
+                  <div class="wow fadeInRight">
+                      <h5 class="Vcenter white-text">Calendar</h5>
+                      <div class="row">
+                          <div class="col s12 white-text">
+                              <table class="centered">
+                              <thead>
+                                  <tr>
+                                      <th data-field="cTime">Time</th>
+                                      <th data-field="eventList">Event</th>
+                                      <th data-field="cLocation">Place</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>12 AM</td>
+                                      <td>CSE 489</td>
+                                      <td>NSC 210</td>
+                                  </tr>
+                                  <tr>
+                                      <td>1 PM</td>
+                                      <td>CSE 410</td>
+                                      <td>Norton 213</td>
+                                  </tr>
+                                  <tr>
+                                      <td>2 PM</td>
+                                      <td>CSE 442</td>
+                                      <td>O'Brian 119</td>
+                                  </tr>
+                              </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
             </div>
         </div>
 
         <!-- Row 2 -->
         <div class="row">
             <div class="col s3 white-text" id="L2">
-              <div id="news">
-                <div class="row headline-padding">
-                  <ul>
-                    <li id="CNN"></li>
-                    <li id="USA"></li>
-                    <li id="ESPN"></li>
-                    <li id="BLUM"></li>
-                  </ul>
-                  <style>#news ul {list-style-image: url('img/newspaper.png');margin-left: 28px;}</style>
-                </div>
+              <div id="twitter">
+                <ul>
+                  <li class="tweet">
+                    <div id="twitimg1" class="twitimg"><img src="https://twitter.com/michaelbacki/profile_image?size=normal" width="36px;"/><br></div>
+                    <div id="username1"><b>Michael Kulbacki</b></div>
+                    <div id="tweettime1">@michaelbacki</div>
+                    <div id="text1">Well this is a test tweet lets see how it goes</div>
+                    <img id="RT1" src="img/retweetb.png" width="15px" style="vertical-align:middle; padding-bottom:4px"/><span id="rt1"> 5</span>
+                    <img id="heart1" class="heart" src="img/heartb.png" width="13px" style="vertical-align:middle; padding-bottom:3px"/><span id="fave1"> 11</span>
+                    <img src="img/birdblue.png" style="vertical-align:middle;float:right;padding-top:5px;padding-right:8px;" width="20px;"/>
+                  </li>
+                  <li class="tweet">
+                    <div id="twitimg2" class="twitimg"><img src="https://twitter.com/wrazeng/profile_image?size=normal" width="36px;"/><br></div>
+                    <div id="username2"><b>Grant Wrazen</b></div>
+                    <div id="tweettime2">3:05pm</div>
+                    <div id="text2">Mike is such a gem, great guy!!</div>
+                    <img id="RT2" src="img/retweetb.png" width="15px" style="vertical-align:middle; padding-bottom:4px;"/><span id="rt2"> 2</span>
+                    <img id="heart2" class="heart" src="img/heartb.png" width="13px" style="vertical-align:middle; padding-bottom:3px"/><span id="fave2"> 6</span>
+                    <img src="img/birdblue.png" style="vertical-align:middle;float:right;padding-top:5px;padding-right:8px;" width="20px;"/>
+                  </li>
+                  <li class="tweet">
+                    <div id="twitimg3" class="twitimg"><img src="https://twitter.com/nicholaskabalan/profile_image?size=normal" width="36px;"/><br></div>
+                    <div id="username3"><b>Nicholas Kabalan</b></div>
+                    <div id="tweettime3">3:08pm</div>
+                    <div id="text3">This election is the dopest meme ever</div>
+                    <img id="RT3" src="img/retweetb.png" width="15px" style="vertical-align:middle; padding-bottom:4px;"/><span id="rt3"> 1</span>
+                    <img id="heart3" class="heart" src="img/heartb.png" width="13px" style="vertical-align:middle; padding-bottom:3px"/><span id="fave3"> 9</span>
+                    <img src="img/birdblue.png" style="vertical-align:middle;float:right;padding-top:5px;padding-right:8px;" width="20px;"/>
+                  </li>
+                </ul>
               </div>
             </div>
             <div class="col s3 offset-s6 white-text" id="R2">
               <div id="stocks">
-                  <div class="list">
+                  <div class="list wow fadeInRight">
                     <!-- Stock 1 -->
                     <div class="stock border-top">
                       <div class="name">
@@ -212,18 +236,42 @@
         <!-- Row 3 -->
         <div class="row">
             <div class="col s3 white-text" id="L3">
-                <div class="undefined">
+                <div class="undefined wow fadeInLeft">
 
                 </div>
             </div>
             <div class="col s3 offset-s6" id="R3">
-                <div class="undefined">
+                <div class="undefined wow fadeInRight">
 
                 </div>
             </div>
         </div>
+
+        <!-- Row 4 -->
+        <div class="row">
+            <div class="white-text" id="B1">
+              <div id="news">
+                <div class="row headline-padding wow fadeInLeft">
+                  <ul>
+                    <li id="news1"></li>
+                    <li id="news2"></li>
+                    <li id="news3"></li>
+                    <li id="news4"></li>
+                  </ul>
+                  <style>#news ul {list-style-image: url('img/newspaper.png');margin-left: 28px;}</style>
+                </div>
+              </div>
+            </div>
+        </div>
     </div>
 </body>
+    <script src="js/effect/wow.min.js"></script>
+    <script>new WOW({boxClass:'wow',
+                      animateClass:'animated',
+                      offset:0,
+                      mobile:true,
+                      live:true})
+                      .init();</script>
     <script src="js/date.js"></script>
     <script src="js/time.js"></script>
     <script src="js/location.js"></script>
