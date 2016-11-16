@@ -56,7 +56,7 @@ public class zipcode extends AppCompatActivity {
                 Log.i("logged", "Attempting to post to: "+server);
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
 
-                nameValuePairs.add(new BasicNameValuePair("fzip", zip));
+                nameValuePairs.add(new BasicNameValuePair("fzipcode", zip));
                 Log.i("logged", "Items: " + nameValuePairs);
 
                 httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
