@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
   function getTweets() {
-    $.get("http://jarvis.cse.buffalo.edu/mine/facebook.php", function(body) {
-      console.log(body);
+    $.get("http://jarvis.cse.buffalo.edu/mine/facebookinfo", function(body) {
+      // console.log(body);
     });
   }
 
