@@ -109,6 +109,11 @@ ul li {
 	float:right;
 	padding-top:5px;
 }
+
+.twitblue {
+	color: #3795e3;
+}
+
 /* -- Custom Classes -- */
 .Vcenter {
 	display: flex;
