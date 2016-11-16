@@ -75,8 +75,9 @@ ul li {
 #calendar {
 	height: auto;
 }
-
+/* -- Twitter -- */
 .twitimg {float: left;padding-right: 10px;padding-top: 3px;}
+.twitimg img {border-radius: 5px;vertical-align:middle;width:36px;}
 .tweet {
 	padding-bottom: 0px;padding-top: 5px;
 	padding-right: 5px;
@@ -86,7 +87,27 @@ ul li {
 	background: white;
 	color:black;
 }
-.heart {margin-left: 10px;}
+.heart {
+	margin-left: 10px;
+	vertical-align:middle;
+	padding-bottom:3px;
+	width:13px;
+}
+
+.RT {
+	vertical-align:middle;
+	padding-bottom:4px;
+	width:15px;
+}
+
+.social{color:#8d99a5}
+
+.bird {
+	width:14px;
+	vertical-align:middle;
+	float:right;
+	padding-top:5px;
+}
 /* -- Custom Classes -- */
 .Vcenter {
 	display: flex;

@@ -75,7 +75,7 @@ $(document).ready(function() {
         stockInt = setInterval(stocks, 10000)
       }
 
-      if("430PM" == (c+ampm) || (("PM" == ampm) && (c >= 430)) || (("AM" == ampm) && (c < 900)) || (("AM" == ampm) && (h == 12))){
+      if("430PM" == (c+ampm) || (("PM" == ampm) && (c >= 430)) || (("AM" == ampm) && (c < 900))){
         clearInterval(stockInt)
       }
   };
