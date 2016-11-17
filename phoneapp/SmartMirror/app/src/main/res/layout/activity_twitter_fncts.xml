@@ -7,6 +7,14 @@
         android:text="Logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Logout" />
+        android:id="@+id/Logout"
+        android:onClick="Twitter_logout" />
+
+    <Button
+        android:text="Fetch Timeline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gettweets"
+        android:onClick="GetTweets" />
 
 </LinearLayout>

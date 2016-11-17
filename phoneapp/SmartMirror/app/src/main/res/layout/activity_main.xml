@@ -29,7 +29,7 @@
         android:onClick="facebook" />
 
     <Button
-        android:text="Twitter Login"
+        android:text="Twitter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/launchTwitter"

@@ -62,7 +62,7 @@ public class Twitter_fncts extends AppCompatActivity {
         super.onStart();
         if(isConnected()){ //Already authorized and connected
             Log.d(TAG, "Connected");
-            doProcessing();
+//            doProcessing();
         }
         else if(_requestToken !=null){ //Authorized but not connected
             handleCallback();
@@ -90,11 +90,15 @@ public class Twitter_fncts extends AppCompatActivity {
         return mSharedPreferences.getString(Constants.PREF_KEY_TOKEN, null) != null;
     }
 
-//    private void logout()
-//    {
-//        SharedPreferences.Editor e = mSharedPreferences.edit();
-//
-//    }
+    public void Twitter_logout(View v)
+    {
+        Log.d(TAG, "LOGGING OUT");
+        SharedPreferences.Editor e = mSharedPreferences.edit();
+        e.remove(Constants.PREF_KEY_TOKEN);
+        e.remove(Constants.PREF_KEY_SECRET);
+        e.remove(Constants.PREF_KEY_USER);
+        e.commit();
+    }
     /*
 	 * This function helps in authorization
 	 */
@@ -146,6 +150,10 @@ public class Twitter_fncts extends AppCompatActivity {
         }
     }
 
+    public void GetTweets(View v)
+    {
+        doProcessing();
+    }
     private void doProcessing()
     {
         Log.d(TAG, "Entering do Processing");
