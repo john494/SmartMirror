@@ -133,6 +133,13 @@ public class MainActivity extends AppCompatActivity {
 
         return 0;
     }
+
+    public int startZip(View v){
+
+        Intent myIntent = new Intent(getBaseContext(),zipcode.class);
+        startActivity(myIntent);
+        return 0;
+    }
 }
 
 

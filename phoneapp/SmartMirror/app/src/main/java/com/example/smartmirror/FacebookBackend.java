@@ -75,7 +75,7 @@ public class FacebookBackend extends AppCompatActivity {
                                     story.add(i,"");
                                 }
                                 try {
-                                    datetime.add(new BasicNameValuePair("fdate",array.getJSONObject(i).getString("created_time")));
+                                    datetime.add(new BasicNameValuePair("fdate",array.getJSONObject(i).getString("tagged_time")));
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }

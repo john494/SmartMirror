@@ -1,0 +1,21 @@
+date: November 16, 2016
+meeting_type: group # meeting_type can "group", "ta", or "instructor"
+attendance: [johnmcki, ntkabala, ajkirsch, mdkulbac, grantwra]
+absent: []
+excused_absences: [
+  ]
+task_progress: [ # All group members must be included here even if they haven't made any progress since the last meeting
+  {ubit: johnmcki, progress: twitter login tweaks},
+  {ubit: mdkulbac, progress: UI stocks and weather tweaks},
+  {ubit: ajkirsch, progress: zip code in app complete},
+  {ubit: grantwra, progress: server changes for phone app posting},
+  {ubit: ntkabala, progress: electron UI tweaks}
+  ]
+issues: [ # Post any issues here. Issues that cannot be addressed by the group should especially be included
+  {ajkirsch: issue: Might not be possible to get person's name that posted to facebook. More research is needed.},
+  ]
+
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+-Work through zip code server code
+-Look at electron and adjust UI settings
+-Talk about possibilited for facebook posts without knowing who posted it
