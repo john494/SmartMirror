@@ -60,18 +60,15 @@ public class Twitter_fncts extends AppCompatActivity {
     @Override
     public void onStart(){
         super.onStart();
-        Log.d(TAG,"ONSTART METHOD");
-        if(isConnected()){
-            Log.d(TAG, "GOOD");
+        if(isConnected()){ //Already authorized and connected
+            Log.d(TAG, "Connected");
+            doProcessing();
         }
-        else if(_requestToken !=null){
-            Log.d(TAG, "Callback");
-
+        else if(_requestToken !=null){ //Authorized but not connected
             handleCallback();
         }
-        else
+        else //Initial time needs to authorize
         {
-            Log.d(TAG, "Needs Authorize");
             authorizeApp();
         }
     }
@@ -80,10 +77,8 @@ public class Twitter_fncts extends AppCompatActivity {
     public void onResume()
     {
         super.onResume();
-        Log.d(TAG, "RESUME");
         if(!isConnected()){
             handleCallback();
-
         }
         else{
             doProcessing();
@@ -95,7 +90,11 @@ public class Twitter_fncts extends AppCompatActivity {
         return mSharedPreferences.getString(Constants.PREF_KEY_TOKEN, null) != null;
     }
 
-
+//    private void logout()
+//    {
+//        SharedPreferences.Editor e = mSharedPreferences.edit();
+//
+//    }
     /*
 	 * This function helps in authorization
 	 */
@@ -106,13 +105,9 @@ public class Twitter_fncts extends AppCompatActivity {
         configurationBuilder.setOAuthConsumerSecret(Constants.CONSUMER_SECRET);
         Configuration configuration = configurationBuilder.build();
         Twitter t = new TwitterFactory(configuration).getInstance();
-        if(t==null)
-        {
-            Log.d(TAG, "NO TWITTER");
-        }
+
         try {
             _requestToken = t.getOAuthRequestToken(CALLBACK_URL);
-            Log.d(TAG, "Request token: " + _requestToken.toString());
             Twitter_fncts.this.startActivity(new Intent(Intent.ACTION_VIEW, Uri
                     .parse(_requestToken.getAuthenticationURL())));
 
@@ -121,7 +116,7 @@ public class Twitter_fncts extends AppCompatActivity {
         }
     }
 
-//
+
     /*
 	 * This function handle callback while authorizing with Twitter
 	 */
@@ -134,23 +129,9 @@ public class Twitter_fncts extends AppCompatActivity {
         Twitter t = new TwitterFactory(configuration).getInstance();
 
         Uri uri = getIntent().getData();
-        if(uri!=null) {
-            Log.d(TAG, "URI TOSTRING: " + uri.toString() + " CallBack URL: " + CALLBACK_URL);
-        }
         if (uri != null && uri.toString().startsWith(CALLBACK_URL)) {
             String verifier = uri.getQueryParameter(IEXTRA_OAUTH_VERIFIER);
-            if(verifier!=null)
-            {
-                Log.d(TAG, "VERIFIER: "+verifier);
-            }
-            if(_requestToken != null)
-            {
-                Log.d(TAG, "REQUEST TOKEN: " + _requestToken.toString());
-            }
-            if(t == null)
-            {
-                Log.d(TAG, "NO Twitter obj");
-            }
+
             try {
                 AccessToken accessToken = t.getOAuthAccessToken(_requestToken, verifier);
                 SharedPreferences.Editor e = mSharedPreferences.edit();
@@ -182,13 +163,10 @@ public class Twitter_fncts extends AppCompatActivity {
             Twitter twitter = tf.getInstance();
             twitter.setOAuthConsumer(Constants.CONSUMER_KEY, Constants.CONSUMER_SECRET);
 
-
-
             List<Status> statuses = twitter.getHomeTimeline();
             DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 
             for(int i =0; i< 10; ++i) {
-                Log.d(TAG, "post num "+ i);
                 try {
                     //fusername ffavcount frtcount ftext and ftime
                     List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
@@ -201,8 +179,8 @@ public class Twitter_fncts extends AppCompatActivity {
                     nameValuePairs.add(new BasicNameValuePair("ftime", df.format(statuses.get(i).getCreatedAt())));
 
                     httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                    Log.d(TAG, "Posting");
                     response = httpclient.execute(httppost);
+                    Log.d(TAG, "post num "+ i);
                     Log.d(TAG, "Posting\n" + nameValuePairs.get(1) + "\n" +nameValuePairs.get(2)+"\n"+nameValuePairs.get(3)+"\n"+nameValuePairs.get(4)+"\n"+nameValuePairs.get(5));
 
                 } catch (ClientProtocolException e) {
@@ -214,12 +192,10 @@ public class Twitter_fncts extends AppCompatActivity {
                     Log.e(TAG, "IO exception: " + e.getMessage());
                 }
             }
-//
         }
         catch (Exception e)
         {
             Log.e(TAG, "Status exception " + e.getMessage());
         }
-        Log.d(TAG, "Done ");
     }
 }
