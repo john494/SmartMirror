@@ -75,6 +75,16 @@ ul li {
 #calendar {
 	height: auto;
 }
+
+.event {padding-bottom: 55px;}
+.Gblock { height: 40px; width:6px; background-color: red;float: left;margin-right: 8px;}
+#G1{background-color: green;}#G2{background-color: purple;}#G3{background-color: cyan;}
+#G4{background-color: yellow;}
+.Gevent {float: left;}
+.Gtitle {float: left;}
+
+}
+#Cday {font-size: 20px;border-bottom: 1px solid white;}
 /* -- Twitter -- */
 .twitimg {float: left;padding-right: 10px;padding-top: 3px;}
 .twitimg img {border-radius: 5px;vertical-align:middle;width:36px;}

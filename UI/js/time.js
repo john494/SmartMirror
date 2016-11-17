@@ -27,5 +27,6 @@ $(document).ready(function() {
     var dayarray = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
     var montharray = new Array("January","February","March","April","May","June","July","August","September","October","November","December")
     document.getElementById('when').innerHTML = "<p id='day'>"+dayarray[day]+"</p><p id='date'>"+montharray[month]+" "+daym+", "+year+"</p>";
+    // document.getElementById('Cday').innerHTML = "<p id='day'>"+dayarray[day]+"<br>"+montharray[month]+" "+daym+"</p>";
   }
 });

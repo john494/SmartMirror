@@ -1,62 +1,66 @@
 $(document).ready(function() {
   var key = "85f6ad9b4d64ca03f1e00f6775de0259";
-  // Temporary values, make these dynamic later
-  var buff_lat = "42.998854";
-  var buff_lon = "-78.800475";
-  var current;
+  var lat, lng, zipcode, current
 
   function weather() {
-    $.get("https://api.darksky.net/forecast/" + key + "/" + buff_lat + "," + buff_lon, function(data) {
-      current = data['currently'];
-      hourly = data['hourly'];
-      var winddegree = current['windBearing']
-      var currIcon = current['icon'];
-      currIcon = checkIcon(currIcon);
+    $.get("http://jarvis.cse.buffalo.edu/mine/zipcode", function(zip){
+      zipcode = zip;
+      $.get("http://maps.googleapis.com/maps/api/geocode/json?address="+zipcode, function(loca){
+        lat = loca['results'][0]['geometry']['location']['lat'];
+        lng = loca['results'][0]['geometry']['location']['lng'];
+        $.get("https://api.darksky.net/forecast/" + key + "/" + lat + "," + lng, function(data) {
+          current = data['currently'];
+          hourly = data['hourly'];
+          var winddegree = current['windBearing']
+          var currIcon = current['icon'];
+          currIcon = checkIcon(currIcon);
 
-      document.getElementById('temp').innerHTML          = Math.round(current['apparentTemperature']);
-      document.getElementById('description').innerHTML   = (hourly['summary']).slice(0,-1);
-      document.getElementById('precipitation').innerHTML = (current['precipProbability'] * 100) + "%";
-      document.getElementById('currIcon').innerHTML      = "<div class='cond " + currIcon + "'></div>";
-      if(winddegree == 0){winddegree = "N"}  if(0 < winddegree < 90){winddegree = "NE"}
-      if(winddegree == 90){winddegree = "E"} if(90 < winddegree < 180){winddegree = "SE"}
-      if(winddegree == 180){winddegree = "S"}if(180 < winddegree < 270){winddegree = "SW"}
-      if(winddegree == 270){winddegree = "W"}if(270 < winddegree < 360){winddegree = "NW"}
-      if((Math.round(current['windSpeed'])) == 0){windegree == ""}
-      
-      document.getElementById('windspeed').innerHTML = winddegree +" "+Math.round(current['windSpeed'])+" mph";
+          document.getElementById('temp').innerHTML          = Math.round(current['apparentTemperature']);
+          document.getElementById('description').innerHTML   = (hourly['summary']).slice(0,-1);
+          document.getElementById('precipitation').innerHTML = (current['precipProbability'] * 100) + "%";
+          document.getElementById('currIcon').innerHTML      = "<div class='cond " + currIcon + "'></div>";
+          if(winddegree == 0){winddegree = "N"}  if(0 < winddegree < 90){winddegree = "NE"}
+          if(winddegree == 90){winddegree = "E"} if(90 < winddegree < 180){winddegree = "SE"}
+          if(winddegree == 180){winddegree = "S"}if(180 < winddegree < 270){winddegree = "SW"}
+          if(winddegree == 270){winddegree = "W"}if(270 < winddegree < 360){winddegree = "NW"}
+          if((Math.round(current['windSpeed'])) == 0){windegree == ""}
 
-      // Getting AM or PM
-      var d = new Date();
-      var ampm = d.toString("tt");
+          document.getElementById('windspeed').innerHTML = winddegree +" "+Math.round(current['windSpeed'])+" mph";
 
-      // Icon per hour
-      for(i = 1; i <= 4; i ++){
-        var icon = hourly['data'][i]['icon'];
-        icon = checkIcon(icon);
-        document.getElementById('icon'+i).innerHTML = "<div class='cond " + icon + "'></div>";
-      }
+          // Getting AM or PM
+          var d = new Date();
+          var ampm = d.toString("tt");
 
-      // Each actual hour
-      for(i = 1; i <= 4; i++){
-        var hour = (new Date(hourly['data'][i]['time'] * 1000)).getHours();
-        if (hour > 12) {
-          hour = hour - 12;
-          ampm = 'PM';
-        } else if (hour == 12) {
-          ampm = 'PM';
-        } else if (hour == 0) {
-          hour = 12;
-          ampm = 'AM';
-        }
-        document.getElementById('hour'+i).innerHTML = hour +" "+ ampm;
-      }
+          // Icon per hour
+          for(i = 1; i <= 4; i ++){
+            var icon = hourly['data'][i]['icon'];
+            icon = checkIcon(icon);
+            document.getElementById('icon'+i).innerHTML = "<div class='cond " + icon + "'></div>";
+          }
 
-      // Temperature/Precip each hour
-      for(i = 1; i <= 4; i ++){
-        document.getElementById('temp'+i).innerHTML   = Math.round(hourly['data'][i]['apparentTemperature'])+"°";
-        document.getElementById('precip'+i).innerHTML = Math.round(hourly['data'][i]['precipProbability'] * 100) + "%";
-      }
+          // Each actual hour
+          for(i = 1; i <= 4; i++){
+            var hour = (new Date(hourly['data'][i]['time'] * 1000)).getHours();
+            if (hour > 12) {
+              hour = hour - 12;
+              ampm = 'PM';
+            } else if (hour == 12) {
+              ampm = 'PM';
+            } else if (hour == 0) {
+              hour = 12;
+              ampm = 'AM';
+            }
+            document.getElementById('hour'+i).innerHTML = hour +" "+ ampm;
+          }
 
+          // Temperature/Precip each hour
+          for(i = 1; i <= 4; i ++){
+            document.getElementById('temp'+i).innerHTML   = Math.round(hourly['data'][i]['apparentTemperature'])+"°";
+            document.getElementById('precip'+i).innerHTML = Math.round(hourly['data'][i]['precipProbability'] * 100) + "%";
+          }
+
+        });
+      });
     });
   }
 
