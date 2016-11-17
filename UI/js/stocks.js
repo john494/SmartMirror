@@ -23,7 +23,7 @@ $(document).ready(function() {
         var percentchange = body[0]['cp'];
 
         document.getElementById('ticker'+i).innerHTML = tickername;
-        document.getElementById('curprice'+i).innerHTML  = price;
+        document.getElementById('curprice'+i).innerHTML  = price +" USD";
 
         // choose appropriate color
         if (pointchange < 0) {
@@ -47,6 +47,9 @@ $(document).ready(function() {
         for(i = 0; i < 4; i++){
           companyname = body['query']['results']['quote'][i]['Name'];
           companyname = companyname.substring(0, companyname.indexOf('Inc') + 'Inc'.length); // remove unwanted text
+          if(companyname.length >= 17){
+            companyname = companyname.substring(0, 13)+"...";
+          }
           document.getElementById('stockname'+(i+1)).innerHTML = companyname;
         }
       });
