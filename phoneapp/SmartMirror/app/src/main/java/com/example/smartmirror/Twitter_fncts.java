@@ -38,16 +38,14 @@ import java.util.ArrayList;
 import java.io.IOException;
 
 import static com.example.smartmirror.Constants.CALLBACK_URL;
+import static com.example.smartmirror.Constants.CONSUMER_KEY;
+import static com.example.smartmirror.Constants.CONSUMER_SECRET;
 import static com.example.smartmirror.Constants.IEXTRA_OAUTH_VERIFIER;
 import static com.example.smartmirror.Constants.PREF_KEY_USER;
 
 public class Twitter_fncts extends AppCompatActivity {
 
-//    private final String _tokenURL = "https://api.twitter.com/oauth/access_token";
-//    private final String _requestURL = "https://api.twitter.com/oauth/request_token";
     private final String TAG = "SmartMirrorTwitter";
-    private static Twitter _t;
-    private ConfigurationBuilder _cb;
     private static SharedPreferences mSharedPreferences;
     private static RequestToken _requestToken=null;
 
@@ -65,8 +63,6 @@ public class Twitter_fncts extends AppCompatActivity {
         Log.d(TAG,"ONSTART METHOD");
         if(isConnected()){
             Log.d(TAG, "GOOD");
-            Log.d(TAG, "USER: "+ mSharedPreferences.getString(Constants.PREF_KEY_USER, "NOT VALID"));
-
         }
         else if(_requestToken !=null){
             Log.d(TAG, "Callback");
@@ -109,19 +105,17 @@ public class Twitter_fncts extends AppCompatActivity {
         configurationBuilder.setOAuthConsumerKey(Constants.CONSUMER_KEY);
         configurationBuilder.setOAuthConsumerSecret(Constants.CONSUMER_SECRET);
         Configuration configuration = configurationBuilder.build();
-        _t = new TwitterFactory(configuration).getInstance();
-        if(_t==null)
+        Twitter t = new TwitterFactory(configuration).getInstance();
+        if(t==null)
         {
             Log.d(TAG, "NO TWITTER");
         }
         try {
-            _requestToken = _t.getOAuthRequestToken(CALLBACK_URL);
+            _requestToken = t.getOAuthRequestToken(CALLBACK_URL);
             Log.d(TAG, "Request token: " + _requestToken.toString());
             Twitter_fncts.this.startActivity(new Intent(Intent.ACTION_VIEW, Uri
                     .parse(_requestToken.getAuthenticationURL())));
-//            Intent intent= new Intent(Intent.ACTION_VIEW, Uri.parse(_requestToken.getAuthenticationURL()));
-//            this.startActivity(intent);
-//            finish();
+
         } catch (TwitterException e) {
             e.printStackTrace();
         }
@@ -131,148 +125,45 @@ public class Twitter_fncts extends AppCompatActivity {
     /*
 	 * This function handle callback while authorizing with Twitter
 	 */
-protected void handleCallback() {
+    protected void handleCallback() {
 
-    Uri uri = getIntent().getData();
-    if(uri!=null) {
-        Log.d(TAG, "URI TOSTRING: " + uri.toString() + " CallBack URL: " + CALLBACK_URL);
+        ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
+        configurationBuilder.setOAuthConsumerKey(Constants.CONSUMER_KEY);
+        configurationBuilder.setOAuthConsumerSecret(Constants.CONSUMER_SECRET);
+        Configuration configuration = configurationBuilder.build();
+        Twitter t = new TwitterFactory(configuration).getInstance();
+
+        Uri uri = getIntent().getData();
+        if(uri!=null) {
+            Log.d(TAG, "URI TOSTRING: " + uri.toString() + " CallBack URL: " + CALLBACK_URL);
+        }
+        if (uri != null && uri.toString().startsWith(CALLBACK_URL)) {
+            String verifier = uri.getQueryParameter(IEXTRA_OAUTH_VERIFIER);
+            if(verifier!=null)
+            {
+                Log.d(TAG, "VERIFIER: "+verifier);
+            }
+            if(_requestToken != null)
+            {
+                Log.d(TAG, "REQUEST TOKEN: " + _requestToken.toString());
+            }
+            if(t == null)
+            {
+                Log.d(TAG, "NO Twitter obj");
+            }
+            try {
+                AccessToken accessToken = t.getOAuthAccessToken(_requestToken, verifier);
+                SharedPreferences.Editor e = mSharedPreferences.edit();
+                e.putString(Constants.PREF_KEY_TOKEN, accessToken.getToken());
+                e.putString(Constants.PREF_KEY_SECRET, accessToken.getTokenSecret());
+                e.putString(Constants.PREF_KEY_USER, accessToken.getScreenName());
+                e.commit();
+
+            } catch (Exception e) {
+                Log.e(TAG, e.getMessage());
+            }
+        }
     }
-    if (uri != null && uri.toString().startsWith(CALLBACK_URL)) {
-        String verifier = uri.getQueryParameter(IEXTRA_OAUTH_VERIFIER);
-        if(verifier!=null)
-        {
-            Log.d(TAG, "VERIFIER: "+verifier);
-        }
-        if(_requestToken != null)
-        {
-            Log.d(TAG, "REQUEST TOKEN: " + _requestToken.toString());
-        }
-        if(_t == null)
-        {
-            Log.d(TAG, "NO Twitter obj");
-        }
-        try {
-            AccessToken accessToken = _t.getOAuthAccessToken(_requestToken, verifier);
-            SharedPreferences.Editor e = mSharedPreferences.edit();
-            e.putString(Constants.PREF_KEY_TOKEN, accessToken.getToken());
-            e.putString(Constants.PREF_KEY_SECRET, accessToken.getTokenSecret());
-            e.putString(Constants.PREF_KEY_USER, accessToken.getScreenName());
-            e.commit();
-
-            Log.d(TAG, "USER: "+ mSharedPreferences.getString(Constants.PREF_KEY_USER, "NOT VALID"));
-
-        } catch (Exception e) {
-            Log.e(TAG, e.getMessage());
-        }
-    }
-
-
-}
-
-
-//    /**
-//     * Gets the request token for the user, gets ready for user to submit entered token
-//     */
-//    private void setReqTok()
-//    {
-//        try
-//        {
-//            _requestToken = _t.getOAuthRequestToken();
-//        }
-//        catch (Exception e)
-//        {
-//            Log.e(TAG, "Request token exception "+e.getMessage());
-//        }
-//        if(_requestToken != null)
-//        {
-//            Log.d(TAG, "OLD Request token: " + _requestToken.toString());
-//            Twitter_fncts.this.startActivity(new Intent(Intent.ACTION_VIEW, Uri
-//                    .parse(_requestToken.getAuthenticationURL())));
-//            setContentView(R.layout.activity_twitter_fncts);
-//            Button enter = (Button) findViewById(R.id.Submit);
-//            enter.setOnClickListener(new View.OnClickListener() {
-//
-//                @Override
-//                public void onClick(View arg0) {
-//                    // Call login twitter function
-//                    Log.d(TAG, "Button Clicked");
-//                    getToken();
-//                }
-//            });
-//
-//        }
-//        else
-//        {
-//            Log.e(TAG, "Request token Null");
-//        }
-//    }
-
-    /**
-     * Checks entered token to one generated by twitter if match save, else regen
-     */
-//    private void getToken(){
-//        AccessToken accessToken = null;
-//        Log.d(TAG, "NEW Request token: " + _requestToken.toString());
-//
-//        try {
-//            Log.d(TAG, "Pin: " + ((EditText) findViewById(R.id.token)).getText().toString());
-//            if (((EditText) findViewById(R.id.token)).getText().toString().length() > 0) {
-//                accessToken = _t.getOAuthAccessToken(_requestToken, ((EditText) findViewById(R.id.token)).getText().toString());
-//
-//                SharedPreferences.Editor e = mSharedPreferences.edit();
-//                e.putString(Constants.PREF_KEY_TOKEN, accessToken.getToken());
-//                e.putString(Constants.PREF_KEY_SECRET,
-//                        accessToken.getTokenSecret());
-//                e.putString(Constants.PREF_KEY_USER,
-//                        accessToken.getScreenName());
-//                e.commit();
-//            } else {
-//                accessToken = _t.getOAuthAccessToken();
-//            }
-//        } catch (Exception e) {
-//            Log.e(TAG, "AccessToken exception: " + e.getMessage());
-//        }
-//        if(accessToken != null)
-//        {
-//            Log.d(TAG, "AccessToken: " + accessToken.toString());
-//
-//        }
-//        else{
-//            Log.e(TAG, "ACCESS TOKEN NULL");
-//        }
-//
-//        if (accessToken != null && accessToken.getScreenName() != null) {
-//            Log.d(TAG, "AccessToken: " + accessToken.toString());
-//            setContentView(R.layout.activity_main);
-//            doProcessing();
-//        }
-//        else {
-//            findViewById(R.id.Submit).setVisibility(View.INVISIBLE);
-//            findViewById(R.id.invalid_pw).setVisibility(View.VISIBLE);
-//            Button rst = (Button) findViewById(R.id.rst);
-//            rst.setVisibility(View.VISIBLE);
-//            rst.setOnClickListener(new View.OnClickListener() {
-//
-//                @Override
-//                public void onClick(View arg0) {
-////                     Call login twitter function
-//                    Log.d(TAG, "Reset Button Clicked");
-//                    if (Build.VERSION.SDK_INT >= 11) {
-//                        recreate();
-//                    } else {
-//                        Intent intent = getIntent();
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-//                        finish();
-//                        overridePendingTransition(0, 0);
-//
-//                        startActivity(intent);
-//                        overridePendingTransition(0, 0);
-//                    }
-//                }
-//            });
-//            Log.e(TAG, "No token");
-//        }
-//    }
 
     private void doProcessing()
     {
@@ -283,7 +174,17 @@ protected void handleCallback() {
 
         try
         {
-            List<Status> statuses = _t.getHomeTimeline();
+            ConfigurationBuilder cb = new ConfigurationBuilder();
+            cb.setDebugEnabled(true)
+                    .setOAuthAccessToken(mSharedPreferences.getString(Constants.PREF_KEY_TOKEN, "null"))
+                    .setOAuthAccessTokenSecret(mSharedPreferences.getString(Constants.PREF_KEY_SECRET, "null"));
+            TwitterFactory tf = new TwitterFactory(cb.build());
+            Twitter twitter = tf.getInstance();
+            twitter.setOAuthConsumer(Constants.CONSUMER_KEY, Constants.CONSUMER_SECRET);
+
+
+
+            List<Status> statuses = twitter.getHomeTimeline();
             DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
 
             for(int i =0; i< 10; ++i) {
@@ -302,7 +203,7 @@ protected void handleCallback() {
                     httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                     Log.d(TAG, "Posting");
                     response = httpclient.execute(httppost);
-                    Log.d(TAG, "Posting\n" + nameValuePairs.get(1) + "\n" +nameValuePairs.get(2)+"\n"+nameValuePairs.get(3)+"\n"+nameValuePairs.get(4));
+                    Log.d(TAG, "Posting\n" + nameValuePairs.get(1) + "\n" +nameValuePairs.get(2)+"\n"+nameValuePairs.get(3)+"\n"+nameValuePairs.get(4)+"\n"+nameValuePairs.get(5));
 
                 } catch (ClientProtocolException e) {
                     // TODO Auto-generated catch block
