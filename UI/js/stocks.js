@@ -1,8 +1,8 @@
 $(document).ready(function() {
-  var stock1 = "AAPL"
-  var stock2 = "FB"
-  var stock3 = "NKE"
-  var stock4 = "TSLA"
+  var stock1 = "COOL"
+  var stock2 = "BOOM"
+  var stock3 = "PZZA"
+  var stock4 = "CAKE"
   //make get request to get these names
 
   function stocks(){
@@ -46,9 +46,9 @@ $(document).ready(function() {
         var companyname = "";
         for(i = 0; i < 4; i++){
           companyname = body['query']['results']['quote'][i]['Name'];
-          companyname = companyname.substring(0, companyname.indexOf('Inc') + 'Inc'.length); // remove unwanted text
+          // companyname = companyname.substring(0, companyname.indexOf('Inc') + 'Inc'.length); // remove unwanted text
           if(companyname.length >= 17){
-            companyname = companyname.substring(0, 13)+"...";
+            companyname = companyname.substring(0, 12)+"...";
           }
           document.getElementById('stockname'+(i+1)).innerHTML = companyname;
         }
