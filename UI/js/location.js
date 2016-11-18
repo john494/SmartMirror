@@ -1,11 +1,12 @@
 $(document).ready(function() {
-  var zipcode = 14228
+  var zipcode = 0
   var lat, lng
 
   // now make a request to see what the user inputted in the app
   function getLocation() {
     $.get("http://jarvis.cse.buffalo.edu/mine/zipcode", function(zip){
       zipcode = zip;
+      if(zipcode == 0){zipcode = 14086;}
       $.get("http://maps.googleapis.com/maps/api/geocode/json?address="+zipcode, function(loca){
         lat = loca['results'][0]['geometry']['location']['lat'];
         lng = loca['results'][0]['geometry']['location']['lng'];

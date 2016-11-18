@@ -1,6 +1,6 @@
 $(document).ready(function() {
   var stock1 = "COOL"
-  var stock2 = "BOOM"
+  var stock2 = "RACE"
   var stock3 = "PZZA"
   var stock4 = "CAKE"
   //make get request to get these names

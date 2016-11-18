@@ -1,10 +1,12 @@
 $(document).ready(function() {
   var key = "85f6ad9b4d64ca03f1e00f6775de0259";
-  var lat, lng, zipcode, current
+  var lat, lng, current
+  var zipcode = 0
 
   function weather() {
     $.get("http://jarvis.cse.buffalo.edu/mine/zipcode", function(zip){
       zipcode = zip;
+      if(zipcode == 0){zipcode = 14086;}
       $.get("http://maps.googleapis.com/maps/api/geocode/json?address="+zipcode, function(loca){
         lat = loca['results'][0]['geometry']['location']['lat'];
         lng = loca['results'][0]['geometry']['location']['lng'];

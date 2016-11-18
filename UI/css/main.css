@@ -76,10 +76,8 @@ ul li {
 	height: auto;
 }
 
-.event {padding-bottom: 55px;}
-.Gblock { height: 40px; width:6px; background-color: red;float: left;margin-right: 8px;}
-#G1{background-color: green;}#G2{background-color: purple;}#G3{background-color: cyan;}
-#G4{background-color: yellow;}
+.event  {padding-bottom: 55px;}
+.Gblock {height: 40px; width:6px;float: left;margin-right: 8px;}
 .Gevent {float: left;}
 .Gtitle {float: left;}
 
@@ -92,7 +90,7 @@ ul li {
 	padding-bottom: 0px;padding-top: 5px;
 	padding-right: 5px;
 	margin-bottom: 5px;
-  border-top: 1px solid #a7a7a7;
+  /*border-top: 1px solid #a7a7a7;*/
 	border-radius: 8px;
 	background: white;
 	color:black;
@@ -110,8 +108,7 @@ ul li {
 	width:15px;
 }
 .socialrf{color:#8d99a5;padding-left: 5px;}
-
-.social{color:#8d99a5}
+.social  {color:#8d99a5}
 
 .bird {
 	width:14px;
