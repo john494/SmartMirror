@@ -30,22 +30,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".FacebookBackend"></activity>
+        <activity android:name=".FacebookBackend" />
         <activity android:name=".Twitter_fncts">
-            <!--android:launchMode="singleTask" android:theme="@android:style/Theme.Translucent.NoTitleBar">-->
+
+            <!-- android:launchMode="singleTask" android:theme="@android:style/Theme.Translucent.NoTitleBar"> -->
 
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="x-oauthflow-twitter" android:host="callback" />
+
+                <data
+                    android:host="callback"
+                    android:scheme="x-oauthflow-twitter" />
             </intent-filter>
         </activity>
-
         <activity android:name=".calendar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -58,7 +61,8 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity android:name=".zipcode"></activity>
+        <activity android:name=".zipcode" />
+        <activity android:name=".NewsHeadlines"></activity>
     </application>
 
 </manifest>

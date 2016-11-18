@@ -106,7 +106,12 @@ public class MainActivity extends AppCompatActivity {
         return 0;
     }
 
-
+    public int news(View v)
+    {
+        Intent intent = new Intent(getBaseContext(), NewsHeadlines.class);
+        MainActivity.this.startActivity(intent);
+        return 0;
+    }
     public int twitter(View v)
     {
         Intent intent = new Intent(getBaseContext(), Twitter_fncts.class);
