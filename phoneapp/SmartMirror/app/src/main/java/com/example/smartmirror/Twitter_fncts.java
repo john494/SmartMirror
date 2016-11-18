@@ -166,12 +166,16 @@ public class Twitter_fncts extends AppCompatActivity {
 
             List<Status> statuses = twitter.getHomeTimeline();
             DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add((new BasicNameValuePair("ffirst", "yes")));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            response = httpclient.execute(httppost);
 
             for(int i =0; i< 10; ++i) {
                 try {
                     //fusername ffavcount frtcount ftext and ftime
-                    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
-
+                    nameValuePairs = new ArrayList<NameValuePair>();
+                    nameValuePairs.add(new BasicNameValuePair("ffirst", ""));
                     nameValuePairs.add(new BasicNameValuePair("fusername", statuses.get(i).getUser().getName()));
                     nameValuePairs.add(new BasicNameValuePair("fscrnname", statuses.get(i).getUser().getScreenName()));
                     nameValuePairs.add(new BasicNameValuePair("ffavcount", String.valueOf(statuses.get(i).getFavoriteCount())));
