@@ -52,7 +52,7 @@ public class NewsHeadlines extends AppCompatActivity implements AdapterView.OnIt
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
 
             nameValuePairs.add(new BasicNameValuePair("fnews", parent.getItemAtPosition(pos).toString()));
-
+            Log.d(TAG, "Posting " + nameValuePairs.get(0));
             httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
             response = httpclient.execute(httppost);
 
