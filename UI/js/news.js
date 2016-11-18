@@ -2,7 +2,6 @@ $(document).ready(function() {
 
   function getNews(pref) {
 
-
     $.get("http://jarvis.cse.buffalo.edu/mine/news", function(pref) {
 
       var apiKey = "7322bfbd152e4050b6054c1bd4601106"
@@ -162,7 +161,8 @@ $(document).ready(function() {
 
   }
 
-  getNews();
+  getNews()
+  updateNews()
 
   // each 30 min mark the app will update news
   var d, mm
