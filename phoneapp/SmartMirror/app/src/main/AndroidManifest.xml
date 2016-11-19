@@ -33,11 +33,6 @@
         <activity android:name=".FacebookBackend" />
         <activity android:name=".Twitter_fncts" />
         <activity android:name=".calendar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data
@@ -45,7 +40,8 @@
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".zipcode" />
-        <activity android:name=".stocks"></activity>
+        <activity android:name=".stocks">
+        </activity>
     </application>
 
 </manifest>
