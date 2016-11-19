@@ -50,11 +50,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".calendar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data
@@ -63,6 +58,8 @@
 
         <activity android:name=".zipcode" />
         <activity android:name=".NewsHeadlines"></activity>
+        <activity android:name=".stocks">
+        </activity>
     </application>
 
 </manifest>

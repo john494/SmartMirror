@@ -145,6 +145,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(myIntent);
         return 0;
     }
+
+    public int startStock(View v){
+
+        Intent myIntent = new Intent(getBaseContext(),stocks.class);
+        startActivity(myIntent);
+        return 0;
+    }
 }
 
 
