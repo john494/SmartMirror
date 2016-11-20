@@ -11,6 +11,7 @@ def main():
     count = 0
     while True:
         i=GPIO.input(11)
+        tvstatus=0                             #comment this out
         #Uncomment this code if tv works to power off. My tests show samsung works
         #insignia does not
         # if i==0:                 #When output from motion sensor is LOW
