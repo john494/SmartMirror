@@ -1,0 +1,22 @@
+date: November 20, 2016
+meeting_type: group # meeting_type can "group", "ta", or "instructor"
+attendance: [johnmcki, ntkabala, ajkirsch, mdkulbac, grantwra]
+absent: []
+excused_absences: [
+  ]
+task_progress: [ # All group members must be included here even if they haven't made any progress since the last meeting
+  {ubit: johnmcki, progress: UI layout choices in app},
+  {ubit: mdkulbac, progress: Different UI layout files},
+  {ubit: ajkirsch, progress: complete stocks in app},
+  {ubit: grantwra, progress: calendar api implemented},
+  {ubit: ntkabala, progress: calendar tasks pulled from server to UI}
+  ]
+issues: [ # Post any issues here. Issues that cannot be addressed by the group should especially be included
+ 
+  ]
+
+Notes:  | # Anything covered in the meeting that doesn't fit elsewhere.
+-Facebook scrapped
+-Create service for twitter and calendar to update
+-test layouts
+-create youtube video
