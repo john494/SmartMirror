@@ -48,4 +48,34 @@
         android:layout_alignStart="@+id/button2"
         android:onClick="startZip"/>
 
+    <Button
+        android:text="News Setup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/news"
+        android:layout_above="@+id/facebookLogin"
+        android:layout_alignLeft="@+id/facebookLogin"
+        android:layout_alignStart="@+id/facebookLogin"
+        android:onClick="news" />
+    <Button
+        android:text="Stocks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button4"
+        android:layout_below="@+id/button3"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_alignStart="@+id/button3"
+        android:onClick="startStock"/>
+
+    <Button
+        android:text="Layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/news"
+        android:onClick="startLayout"
+        android:layout_below="@+id/button4"
+        android:layout_alignLeft="@+id/button4"
+        android:layout_alignStart="@+id/button4" />
+
+
 </RelativeLayout>

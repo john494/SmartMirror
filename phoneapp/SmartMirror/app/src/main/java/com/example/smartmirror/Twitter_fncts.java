@@ -1,8 +1,6 @@
 package com.example.smartmirror;
 
-import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import twitter4j.Twitter;
@@ -24,8 +22,6 @@ import android.net.Uri;
 
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -38,10 +34,7 @@ import java.util.ArrayList;
 import java.io.IOException;
 
 import static com.example.smartmirror.Constants.CALLBACK_URL;
-import static com.example.smartmirror.Constants.CONSUMER_KEY;
-import static com.example.smartmirror.Constants.CONSUMER_SECRET;
 import static com.example.smartmirror.Constants.IEXTRA_OAUTH_VERIFIER;
-import static com.example.smartmirror.Constants.PREF_KEY_USER;
 
 public class Twitter_fncts extends AppCompatActivity {
 
@@ -173,12 +166,16 @@ public class Twitter_fncts extends AppCompatActivity {
 
             List<Status> statuses = twitter.getHomeTimeline();
             DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add((new BasicNameValuePair("ffirst", "yes")));
+            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+            response = httpclient.execute(httppost);
 
             for(int i =0; i< 10; ++i) {
                 try {
                     //fusername ffavcount frtcount ftext and ftime
-                    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);
-
+                    nameValuePairs = new ArrayList<NameValuePair>();
+                    nameValuePairs.add(new BasicNameValuePair("ffirst", ""));
                     nameValuePairs.add(new BasicNameValuePair("fusername", statuses.get(i).getUser().getName()));
                     nameValuePairs.add(new BasicNameValuePair("fscrnname", statuses.get(i).getUser().getScreenName()));
                     nameValuePairs.add(new BasicNameValuePair("ffavcount", String.valueOf(statuses.get(i).getFavoriteCount())));

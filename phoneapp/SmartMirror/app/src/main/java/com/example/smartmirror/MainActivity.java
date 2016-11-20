@@ -109,7 +109,12 @@ public class MainActivity extends AppCompatActivity {
         return 0;
     }
 
-
+    public int news(View v)
+    {
+        Intent intent = new Intent(getBaseContext(), NewsHeadlines.class);
+        MainActivity.this.startActivity(intent);
+        return 0;
+    }
     public int twitter(View v)
     {
         Intent intent = new Intent(getBaseContext(), Twitter_fncts.class);
@@ -118,6 +123,11 @@ public class MainActivity extends AppCompatActivity {
         return 0;
     }
 
+    public int startLayout(View v){
+        Intent intent = new Intent(getBaseContext(), layout.class);
+        MainActivity.this.startActivity(intent);
+        return 0;
+    }
 
     public int facebook(View v){
         FacebookSdk.sdkInitialize(this.getApplicationContext());
@@ -142,6 +152,13 @@ public class MainActivity extends AppCompatActivity {
     public int startZip(View v){
 
         Intent myIntent = new Intent(getBaseContext(),zipcode.class);
+        startActivity(myIntent);
+        return 0;
+    }
+
+    public int startStock(View v){
+
+        Intent myIntent = new Intent(getBaseContext(),stocks.class);
         startActivity(myIntent);
         return 0;
     }
