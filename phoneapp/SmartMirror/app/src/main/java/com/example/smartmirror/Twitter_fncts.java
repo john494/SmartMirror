@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.io.IOException;
 
 import static com.example.smartmirror.Constants.CALLBACK_URL;
+import static com.example.smartmirror.Constants.CONSUMER_SECRET;
 import static com.example.smartmirror.Constants.IEXTRA_OAUTH_VERIFIER;
 
 public class Twitter_fncts extends AppCompatActivity {
@@ -48,6 +49,7 @@ public class Twitter_fncts extends AppCompatActivity {
         setContentView(R.layout.activity_twitter_fncts);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mSharedPreferences = getSharedPreferences(Constants.PREFERENCE_NAME, MODE_PRIVATE);
+
     }
 
     @Override
@@ -74,11 +76,12 @@ public class Twitter_fncts extends AppCompatActivity {
             handleCallback();
         }
         else{
-            doProcessing();
+            startService();
+//            doProcessing();
         }
     }
 
-    private boolean isConnected()
+    public static boolean isConnected()
     {
         return mSharedPreferences.getString(Constants.PREF_KEY_TOKEN, null) != null;
     }
@@ -91,6 +94,8 @@ public class Twitter_fncts extends AppCompatActivity {
         e.remove(Constants.PREF_KEY_SECRET);
         e.remove(Constants.PREF_KEY_USER);
         e.commit();
+
+        stopService();
     }
     /*
 	 * This function helps in authorization
@@ -135,7 +140,10 @@ public class Twitter_fncts extends AppCompatActivity {
                 e.putString(Constants.PREF_KEY_TOKEN, accessToken.getToken());
                 e.putString(Constants.PREF_KEY_SECRET, accessToken.getTokenSecret());
                 e.putString(Constants.PREF_KEY_USER, accessToken.getScreenName());
+                e.putString("ConsumerKey", Constants.CONSUMER_KEY);
+                e.putString("ConsumerSecret", CONSUMER_SECRET);
                 e.commit();
+                startService();
 
             } catch (Exception e) {
                 Log.e(TAG, e.getMessage());
@@ -143,13 +151,14 @@ public class Twitter_fncts extends AppCompatActivity {
         }
     }
 
-    public void GetTweets(View v)
+    public static void GetTweets(View v)
     {
-        doProcessing();
+        doProcessing(mSharedPreferences.getString("oauth_token", "null"),mSharedPreferences.getString("oauth_token_secret", "null"));
     }
-    private void doProcessing()
+    public static void doProcessing(String aTok, String aSec)
     {
-        Log.d(TAG, "Entering do Processing");
+        final String tag = "SmartMirrorTwitter";
+        Log.d(tag, "Entering do Processing");
         HttpPost httppost = new HttpPost("http://jarvis.cse.buffalo.edu/mine/twitter.php");
         HttpResponse response;
         HttpClient httpclient = new DefaultHttpClient();
@@ -158,11 +167,11 @@ public class Twitter_fncts extends AppCompatActivity {
         {
             ConfigurationBuilder cb = new ConfigurationBuilder();
             cb.setDebugEnabled(true)
-                    .setOAuthAccessToken(mSharedPreferences.getString(Constants.PREF_KEY_TOKEN, "null"))
-                    .setOAuthAccessTokenSecret(mSharedPreferences.getString(Constants.PREF_KEY_SECRET, "null"));
+                    .setOAuthAccessToken(aTok)
+                    .setOAuthAccessTokenSecret(aSec);
             TwitterFactory tf = new TwitterFactory(cb.build());
             Twitter twitter = tf.getInstance();
-            twitter.setOAuthConsumer(Constants.CONSUMER_KEY, Constants.CONSUMER_SECRET);
+            twitter.setOAuthConsumer("re9qydT5OuyzZN606kKamGDrP", "8evqR5CvNRxc7LnA4SsHjKymFblvIWOVVGGlCcJF6PgRBD9n9P");
 
             List<Status> statuses = twitter.getHomeTimeline();
             DateFormat df = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
@@ -185,22 +194,32 @@ public class Twitter_fncts extends AppCompatActivity {
 
                     httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                     response = httpclient.execute(httppost);
-                    Log.d(TAG, "post num "+ i);
-                    Log.d(TAG, "Posting\n" + nameValuePairs.get(1) + "\n" +nameValuePairs.get(2)+"\n"+nameValuePairs.get(3)+"\n"+nameValuePairs.get(4)+"\n"+nameValuePairs.get(5));
+                    Log.d(tag, "post num "+ i);
+                    Log.d(tag, "Posting\n" + nameValuePairs.get(1) + "\n" +nameValuePairs.get(2)+"\n"+nameValuePairs.get(3)+"\n"+nameValuePairs.get(4)+"\n"+nameValuePairs.get(5));
 
                 } catch (ClientProtocolException e) {
                     // TODO Auto-generated catch block
-                    Log.e(TAG, "Protocol exception: "+ e.getMessage());
+                    Log.e(tag, "Protocol exception: "+ e.getMessage());
 
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
-                    Log.e(TAG, "IO exception: " + e.getMessage());
+                    Log.e(tag, "IO exception: " + e.getMessage());
                 }
             }
         }
         catch (Exception e)
         {
-            Log.e(TAG, "Status exception " + e.getMessage());
+            Log.e(tag, "Status exception " + e.getMessage());
         }
+    }
+
+    public void startService()
+    {
+        startService(new Intent(getBaseContext(), TwitterService.class));
+    }
+
+    public void stopService()
+    {
+        stopService(new Intent(getBaseContext(), TwitterService.class));
     }
 }
