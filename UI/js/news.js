@@ -168,9 +168,10 @@ $(document).ready(function() {
   var d, mm
   function updateNews() {
       d = new Date()
-      mm = d.toString("mm")
+      mm = d.toString("mm:ss")
       var t = setTimeout(updateNews, 500)
-      if(mm == "00" || mm == "30"){
+
+      if(mm == "00:00" || mm == "35:00"){
         getNews();
       }
   };

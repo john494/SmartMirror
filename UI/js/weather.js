@@ -95,9 +95,9 @@ $(document).ready(function() {
   updateWeather();
   function updateWeather() {
       d = new Date()
-      mm = d.toString("mm")
+      mm = d.toString("mm:ss")
       var t = setTimeout(updateWeather, 500)
-      if(mm == "00"){
+      if(mm == "00:00"){
         weather(current);
       }
   };
