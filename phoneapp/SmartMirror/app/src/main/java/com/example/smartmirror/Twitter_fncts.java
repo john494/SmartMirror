@@ -96,6 +96,8 @@ public class Twitter_fncts extends AppCompatActivity {
         e.commit();
 
         stopService();
+        setContentView(R.layout.activity_main);
+        finish();
     }
     /*
 	 * This function helps in authorization

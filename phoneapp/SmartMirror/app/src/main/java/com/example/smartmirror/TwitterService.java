@@ -19,14 +19,14 @@ public class TwitterService extends Service {
                 {
 //                    if(Twitter_fncts.isConnected())
 //                    {
-                        if(tok !=null && sec !=null &&!tok.equals("") && !sec.equals("")){
+                        if(tok !=null && sec !=null && tok != "" && sec != ""){
 //                        Log.d("SERVICE",getSharedPreferences("twitter_oauth", MODE_PRIVATE).getString("oauth_token", "null"));
 //                        Log.d("SERVICE", getSharedPreferences("twitter_oauth", MODE_PRIVATE).getString("oauth_token_secret", "null"));
                             Twitter_fncts.doProcessing(tok,sec);
                         }
 // }
                     try {
-                        Thread.sleep(30000);
+                        Thread.sleep(60000);
 
                     }
                     catch (Exception e)
@@ -56,6 +56,8 @@ public class TwitterService extends Service {
     public void onDestroy()
     {
         Log.d("SERVICE", "Stopping ");
+        tok = "";
+        sec = "";
         super.onDestroy();
     }
     @Override
