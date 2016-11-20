@@ -38,12 +38,23 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,6 +65,9 @@ import pub.devrel.easypermissions.EasyPermissions;
 
 public class calendar extends Activity
         implements EasyPermissions.PermissionCallbacks {
+
+    int authorized;
+
     GoogleAccountCredential mCredential;
     private TextView mOutputText;
     private Button mCallApiButton;
@@ -67,6 +81,7 @@ public class calendar extends Activity
     private static final String BUTTON_TEXT = "Call Google Calendar API";
     private static final String PREF_ACCOUNT_NAME = "accountName";
     private static final String[] SCOPES = { CalendarScopes.CALENDAR_READONLY };
+    Context context;
 
     /**
      * Create the main activity.
@@ -75,6 +90,7 @@ public class calendar extends Activity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = MainActivity.context;
         LinearLayout activityLayout = new LinearLayout(this);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -112,15 +128,20 @@ public class calendar extends Activity
         mProgress = new ProgressDialog(this);
         mProgress.setMessage("Calling Google Calendar API ...");
 
-        setContentView(activityLayout);
+        if(authorized != 1){
+            setContentView(activityLayout);
+        }
+
 
         // Initialize credentials and service object.
         mCredential = GoogleAccountCredential.usingOAuth2(
                 getApplicationContext(), Arrays.asList(SCOPES))
                 .setBackOff(new ExponentialBackOff());
+
+        if(MainActivity.calendarAuth == 1){
+            mCallApiButton.performClick();
+        }
     }
-
-
 
     /**
      * Attempt to call the API, after verifying that all the preconditions are
@@ -343,6 +364,7 @@ public class calendar extends Activity
          */
         @Override
         protected List<String> doInBackground(Void... params) {
+
             try {
                 return getDataFromApi();
             } catch (Exception e) {
@@ -379,6 +401,65 @@ public class calendar extends Activity
                 eventStrings.add(
                         String.format("%s (%s)", event.getSummary(), start));
             }
+
+
+            File file = new File(context.getFilesDir().getPath() + "/test");
+            FileOutputStream fos;
+            try {
+                fos = context.openFileOutput(file.getName(), Context.MODE_APPEND);
+                fos.write(("test" + "\n").getBytes());
+                //fos.write(("Mem total: " + total + "\n").getBytes());
+                //fos.write(("Mem at start: " + memNow + "\n").getBytes());
+                //fos.write(("Mem after heap allocation: " + memafter + "\n").getBytes());
+                //fos.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+            String clear = "1";
+            int count  = 0;
+            for(String s : eventStrings) {
+                if(count > 0){ clear = ""; }
+                final String server = "http://jarvis.cse.buffalo.edu/mine/calendar.php";
+                //Log.d(TAG, "Post to server");
+                HttpClient httpclient = new DefaultHttpClient();
+                HttpPost httppost = new HttpPost(server);
+                try {
+                    //Log.i(TAG, "Attempting to post to: "+server);
+                    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+
+                    nameValuePairs.add(new BasicNameValuePair("fevent", s));
+                    nameValuePairs.add(new BasicNameValuePair("fclear", clear));
+                    //nameValuePairs.add(new BasicNameValuePair("femail", "mynameisJohn@buffalo.edu"));
+                    //nameValuePairs.add(new BasicNameValuePair("fcomment", "It worked!!!! :)"));
+                    //Log.i(TAG, "Items: " + nameValuePairs);
+
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    httpclient.execute(httppost);
+                    count++;
+
+                } catch (ClientProtocolException e) {
+
+                    // TODO Auto-generated catch block
+
+                    //return 1;
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    //return 1;
+                }
+            }
+
+            authorized = 1;
+
+            //Intent intent = null;
+            //CalendarService calendarService = new CalendarService();
+            //calendarService.startServ(context,intent);
+
+            //Thread thread1 = new Thread();
+
+            setContentView(R.layout.activity_main);
+
             return eventStrings;
         }
 

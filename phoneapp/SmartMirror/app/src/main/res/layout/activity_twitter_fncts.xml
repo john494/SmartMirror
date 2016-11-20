@@ -3,24 +3,18 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <EditText
+    <Button
+        android:text="Logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/token"
-        android:inputType="text" />
+        android:id="@+id/Logout"
+        android:onClick="Twitter_logout" />
 
     <Button
-        android:text="Enter"
+        android:text="Fetch Timeline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/Submit" />
+        android:id="@+id/gettweets"
+        android:onClick="GetTweets" />
 
-    <TextView
-        android:text="Invalid Pin Number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/invalid_pw"
-        android:visibility="invisible"
-        android:textSize="30sp" />
 </LinearLayout>

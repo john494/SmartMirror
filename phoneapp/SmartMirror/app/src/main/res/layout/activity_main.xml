@@ -9,12 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.smartmirror.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:id="@+id/textView2" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -35,7 +29,7 @@
         android:onClick="facebook" />
 
     <Button
-        android:text="Twitter Login"
+        android:text="Twitter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/launchTwitter"
@@ -43,5 +37,45 @@
         android:layout_above="@+id/button2"
         android:layout_alignLeft="@+id/button2"
         android:layout_alignStart="@+id/button2" />
+
+    <Button
+        android:text="Zip Code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3"
+        android:layout_below="@+id/button2"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignStart="@+id/button2"
+        android:onClick="startZip"/>
+
+    <Button
+        android:text="News Setup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/news"
+        android:layout_above="@+id/facebookLogin"
+        android:layout_alignLeft="@+id/facebookLogin"
+        android:layout_alignStart="@+id/facebookLogin"
+        android:onClick="news" />
+    <Button
+        android:text="Stocks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button4"
+        android:layout_below="@+id/button3"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_alignStart="@+id/button3"
+        android:onClick="startStock"/>
+
+    <Button
+        android:text="Layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/news"
+        android:onClick="startLayout"
+        android:layout_below="@+id/button4"
+        android:layout_alignLeft="@+id/button4"
+        android:layout_alignStart="@+id/button4" />
+
 
 </RelativeLayout>

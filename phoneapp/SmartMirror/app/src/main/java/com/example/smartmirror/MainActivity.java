@@ -1,6 +1,7 @@
 package com.example.smartmirror;
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.StrictMode;
@@ -20,10 +21,14 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import com.facebook.FacebookSdk;
+
+import static com.example.smartmirror.R.id.button2;
 
 public class MainActivity extends AppCompatActivity {
     final String TAG = "SmartMirror";
@@ -32,11 +37,15 @@ public class MainActivity extends AppCompatActivity {
     EditText password;
     TextView pleaseSignIn;
     Bundle saved;
+    static Context context;
+    static int calendarAuth;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        calendarAuth = 0;
+        context = this;
         Log.d(TAG, "App started on build version " + Build.VERSION.SDK_INT);
         saved = savedInstanceState;
         super.onCreate(savedInstanceState);
@@ -69,6 +78,17 @@ public class MainActivity extends AppCompatActivity {
         int test = post();
         if (test == 0){
             setContentView(R.layout.activity_main);
+
+            File dbFile = this.getFileStreamPath("test");
+            boolean check = dbFile.exists();
+            if(check){
+                calendarAuth = 1;
+                //button2.performClick();
+                Button btn;
+                btn = (Button)findViewById(R.id.button2);
+                btn.performClick();
+            }
+
         }
         else { return; }
 
@@ -106,7 +126,12 @@ public class MainActivity extends AppCompatActivity {
         return 0;
     }
 
-
+    public int news(View v)
+    {
+        Intent intent = new Intent(getBaseContext(), NewsHeadlines.class);
+        MainActivity.this.startActivity(intent);
+        return 0;
+    }
     public int twitter(View v)
     {
         Intent intent = new Intent(getBaseContext(), Twitter_fncts.class);
@@ -115,6 +140,11 @@ public class MainActivity extends AppCompatActivity {
         return 0;
     }
 
+    public int startLayout(View v){
+        Intent intent = new Intent(getBaseContext(), layout.class);
+        MainActivity.this.startActivity(intent);
+        return 0;
+    }
 
     public int facebook(View v){
         FacebookSdk.sdkInitialize(this.getApplicationContext());
@@ -125,12 +155,28 @@ public class MainActivity extends AppCompatActivity {
 
     public int startCalendar(View v){
 
+        //calendar c = new calendar();
+        //c.passContext(this);
         Intent myIntent = new Intent(getBaseContext(),calendar.class);
         startActivity(myIntent);
 
         //calendar calendar = new calendar();
         //calendar.onCreate(saved);
 
+        return 0;
+    }
+
+    public int startZip(View v){
+
+        Intent myIntent = new Intent(getBaseContext(),zipcode.class);
+        startActivity(myIntent);
+        return 0;
+    }
+
+    public int startStock(View v){
+
+        Intent myIntent = new Intent(getBaseContext(),stocks.class);
+        startActivity(myIntent);
         return 0;
     }
 }

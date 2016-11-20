@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">SmartMirror</string>
     <string name="facebook_app_id">1303121873066587</string>
+    <string-array name="news_arrays">
+        <item>Default</item>
+        <item>Politics</item>
+        <item>Sports</item>
+        <item>Technology</item>
+    </string-array>
+
+    <string-array name="layout_arrays">
+        <item>Minimal</item>
+        <item>Social</item>
+        <item>Busy</item>
+        <item>Business</item>
+    </string-array>
 </resources>
