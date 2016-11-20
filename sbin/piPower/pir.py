@@ -23,7 +23,7 @@ def main():
         #         tvstatus=0
         #     count=count+1
         #     time.sleep(0.1)
-        i==1:               #When output from motion sensor is HIGH
+        if i==1:               #When output from motion sensor is HIGH
             print "Intruder detected",i
             if tvstatus==0:
                 turn_on()
