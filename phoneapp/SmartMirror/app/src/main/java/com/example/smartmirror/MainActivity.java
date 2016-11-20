@@ -120,6 +120,11 @@ public class MainActivity extends AppCompatActivity {
         return 0;
     }
 
+    public int startLayout(View v){
+        Intent intent = new Intent(getBaseContext(), layout.class);
+        MainActivity.this.startActivity(intent);
+        return 0;
+    }
 
     public int facebook(View v){
         FacebookSdk.sdkInitialize(this.getApplicationContext());

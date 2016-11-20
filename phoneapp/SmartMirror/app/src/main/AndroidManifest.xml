@@ -49,17 +49,16 @@
                     android:scheme="x-oauthflow-twitter" />
             </intent-filter>
         </activity>
-        <activity android:name=".calendar">
-        </activity>
+        <activity android:name=".calendar"></activity>
 
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
         <activity android:name=".zipcode" />
-        <activity android:name=".NewsHeadlines"></activity>
-        <activity android:name=".stocks">
-        </activity>
+        <activity android:name=".NewsHeadlines" />
+        <activity android:name=".stocks"></activity>
+        <activity android:name=".layout"></activity>
     </application>
 
 </manifest>
