@@ -9,9 +9,9 @@
     </string-array>
 
     <string-array name="layout_arrays">
-        <item>Default</item>
         <item>Minimal</item>
-        <item>Business</item>
+        <item>Social</item>
         <item>Busy</item>
+        <item>Business</item>
     </string-array>
 </resources>
