@@ -57,13 +57,15 @@
 
         <activity android:name=".zipcode" />
         <activity android:name=".NewsHeadlines" />
-        <activity android:name=".stocks" />
-        <activity android:name=".layout" />
 
         <service
             android:name=".TwitterService"
             android:enabled="true"
             android:exported="true"></service>
+
+        <activity android:name=".stocks"></activity>
+        <activity android:name=".layout"></activity>
+        <service android:enabled="true" android:name=".CalendarService" />
     </application>
 
 </manifest>

@@ -1,6 +1,12 @@
 <?php
 
  $filename="calanderinfo";
+ if(!empty($_POST['fclear']))
+ {
+        unlink($filename);
+        $fh = fopen($filename, 'w') or die("Can't create file");
+ }
+
 # unlink($filename);
 # $fh = fopen($filename, 'w') or die("Can't create file");
  file_put_contents($filename,$_POST["fevent"]."\n",FILE_APPEND);
