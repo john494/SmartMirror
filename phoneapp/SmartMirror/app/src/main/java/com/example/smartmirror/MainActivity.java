@@ -1,6 +1,7 @@
 package com.example.smartmirror;
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.StrictMode;
@@ -32,11 +33,13 @@ public class MainActivity extends AppCompatActivity {
     EditText password;
     TextView pleaseSignIn;
     Bundle saved;
+    static Context context;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        context = this;
         Log.d(TAG, "App started on build version " + Build.VERSION.SDK_INT);
         saved = savedInstanceState;
         super.onCreate(savedInstanceState);
@@ -135,6 +138,8 @@ public class MainActivity extends AppCompatActivity {
 
     public int startCalendar(View v){
 
+        //calendar c = new calendar();
+        //c.passContext(this);
         Intent myIntent = new Intent(getBaseContext(),calendar.class);
         startActivity(myIntent);
 
