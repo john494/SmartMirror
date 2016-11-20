@@ -1,12 +1,17 @@
 $(document).ready(function() {
 
+  var stock1 = 'aapl'
+  var stock2 = 'goog'
+  var stock3 = 'tsla'
+  var stock3 = 'cake'
+
   $.get("http://jarvis.cse.buffalo.edu/mine/stocksinfo", function(body) {
     body = body.split('\n')
 
-    var stock1 = body[0]
-    var stock2 = body[1]
-    var stock3 = body[2]
-    var stock4 = body[3]
+    stock1 = body[0]
+    stock2 = body[1]
+    stock3 = body[2]
+    stock4 = body[3]
     //make get request to get these names
 
     function stocks(){
