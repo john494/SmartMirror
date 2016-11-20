@@ -406,27 +406,32 @@ public class calendar extends Activity
             }
             */
 
+            String clear = "1";
+            int count  = 0;
             for(String s : eventStrings) {
+                if(count > 0){ clear = ""; }
                 final String server = "http://jarvis.cse.buffalo.edu/mine/calendar.php";
                 //Log.d(TAG, "Post to server");
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpPost httppost = new HttpPost(server);
                 try {
                     //Log.i(TAG, "Attempting to post to: "+server);
-                    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+                    List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
 
                     nameValuePairs.add(new BasicNameValuePair("fevent", s));
-                    //nameValuePairs.add(new BasicNameValuePair("fphone", "no #"));
+                    nameValuePairs.add(new BasicNameValuePair("fclear", clear));
                     //nameValuePairs.add(new BasicNameValuePair("femail", "mynameisJohn@buffalo.edu"));
                     //nameValuePairs.add(new BasicNameValuePair("fcomment", "It worked!!!! :)"));
                     //Log.i(TAG, "Items: " + nameValuePairs);
 
                     httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
                     httpclient.execute(httppost);
+                    count++;
 
                 } catch (ClientProtocolException e) {
 
                     // TODO Auto-generated catch block
+
                     //return 1;
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
