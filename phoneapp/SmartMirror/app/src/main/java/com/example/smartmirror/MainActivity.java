@@ -21,10 +21,14 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import com.facebook.FacebookSdk;
+
+import static com.example.smartmirror.R.id.button2;
 
 public class MainActivity extends AppCompatActivity {
     final String TAG = "SmartMirror";
@@ -34,11 +38,13 @@ public class MainActivity extends AppCompatActivity {
     TextView pleaseSignIn;
     Bundle saved;
     static Context context;
+    static int calendarAuth;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        calendarAuth = 0;
         context = this;
         Log.d(TAG, "App started on build version " + Build.VERSION.SDK_INT);
         saved = savedInstanceState;
@@ -72,6 +78,17 @@ public class MainActivity extends AppCompatActivity {
         int test = post();
         if (test == 0){
             setContentView(R.layout.activity_main);
+
+            File dbFile = this.getFileStreamPath("test");
+            boolean check = dbFile.exists();
+            if(check){
+                calendarAuth = 1;
+                //button2.performClick();
+                Button btn;
+                btn = (Button)findViewById(R.id.button2);
+                btn.performClick();
+            }
+
         }
         else { return; }
 

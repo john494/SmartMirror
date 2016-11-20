@@ -59,6 +59,7 @@
         <activity android:name=".NewsHeadlines" />
         <activity android:name=".stocks"></activity>
         <activity android:name=".layout"></activity>
+        <service android:enabled="true" android:name=".CalendarService" />
     </application>
 
 </manifest>

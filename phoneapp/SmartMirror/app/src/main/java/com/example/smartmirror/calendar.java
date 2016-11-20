@@ -65,6 +65,9 @@ import pub.devrel.easypermissions.EasyPermissions;
 
 public class calendar extends Activity
         implements EasyPermissions.PermissionCallbacks {
+
+    int authorized;
+
     GoogleAccountCredential mCredential;
     private TextView mOutputText;
     private Button mCallApiButton;
@@ -125,12 +128,19 @@ public class calendar extends Activity
         mProgress = new ProgressDialog(this);
         mProgress.setMessage("Calling Google Calendar API ...");
 
-        setContentView(activityLayout);
+        if(authorized != 1){
+            setContentView(activityLayout);
+        }
+
 
         // Initialize credentials and service object.
         mCredential = GoogleAccountCredential.usingOAuth2(
                 getApplicationContext(), Arrays.asList(SCOPES))
                 .setBackOff(new ExponentialBackOff());
+
+        if(MainActivity.calendarAuth == 1){
+            mCallApiButton.performClick();
+        }
     }
 
     /**
@@ -354,6 +364,7 @@ public class calendar extends Activity
          */
         @Override
         protected List<String> doInBackground(Void... params) {
+
             try {
                 return getDataFromApi();
             } catch (Exception e) {
@@ -391,8 +402,8 @@ public class calendar extends Activity
                         String.format("%s (%s)", event.getSummary(), start));
             }
 
-            /*
-            File file = new File(context.getFilesDir().getPath() + "/time");
+
+            File file = new File(context.getFilesDir().getPath() + "/test");
             FileOutputStream fos;
             try {
                 fos = context.openFileOutput(file.getName(), Context.MODE_APPEND);
@@ -404,7 +415,7 @@ public class calendar extends Activity
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            */
+
 
             String clear = "1";
             int count  = 0;
@@ -438,6 +449,16 @@ public class calendar extends Activity
                     //return 1;
                 }
             }
+
+            authorized = 1;
+
+            //Intent intent = null;
+            //CalendarService calendarService = new CalendarService();
+            //calendarService.startServ(context,intent);
+
+            //Thread thread1 = new Thread();
+
+            setContentView(R.layout.activity_main);
 
             return eventStrings;
         }
