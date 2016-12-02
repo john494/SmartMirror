@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Smart Mirror">
+    <meta name="author" content="Team: Pied Piper">
+    <title>Smart Mirror Home</title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/main.css" />
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <!-- Weather Widget CSS -->
+    <link rel="stylesheet" href="widgets/weather/style.css" />
+    <!-- Stock Widget CSS -->
+    <link rel="stylesheet" href="widgets/stocks/style.css" />
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="css/animate.css" >
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- To get rid of 'require jquery module' error -->
+    <script>
+        window.nodeRequire = require;
+        delete window.require;
+        delete window.exports;
+        delete window.module;
+    </script>
+    <script window.$ = window.jQuery = require('jquery-2.1.1.min.js');></script>
+    <script src="js/jquery-2.1.1.min.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!-- Row 0 -->
+        <div class="row" style="margin-bottom:5px;">
+            <div class="col s6 white-text wow fadeInLeft" id="N1">
+                <div id="clock">
+                    <div class="thin" id="time"></div>
+                </div>
+                <div class="thin" id="clock" style="padding-left:15px;">
+                    <p id="when"></p>
+                </div>
+            </div>
+            <div class="col s6 white-text" id="N2">
+
+            </div>
+        </div>
+
+        <!-- Row 1 -->
+        <div class="row">
+            <div class="col s3 white-text" id="L1">
+                <div id="weather">
+                  <div class="content  wow fadeInLeft">
+                      <div class="location">
+                          <h5 class="header" id="location"></h5>
+                          <div class="current thin">
+                              <div id="currIcon"></div>
+                              <div class="temp thin">
+                                  <span id ="temp"></span>
+                                  <sup>
+                                      <span data-units="imperial" class="active" style="font-size:55%">°F</span>
+                                  </sup>
+                              </div>
+                              <div class="details thin">
+                                  <div class="status thin" id="description"></div>
+                                  <div class="precip">
+                                    <img  id="umbrella" src="widgets/weather/icons/umbrella.png" width="15px"/>
+                                    <span id="precipitation"></span>
+                                  </div>
+                                  <div class="wind">
+                                    <img  src="widgets/weather/icons/windicon.png" width="24px"  style="vertical-align:middle; padding-bottom:5px"/>
+                                    <span id="windspeed"></span>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="forecast daily" tabindex="-1">
+                              <div class="items">
+                                  <div class="pull"></div>
+                                  <div class="item" style="margin-left:7px;">
+                                      <div class="period" id="hour1"></div>
+                                      <div id="icon1"></div>
+                                      <span class="high" id="temp1">°</span>/ <span id="precip1"></span>
+                                  </div>
+                                  <div class="item">
+                                      <div class="period" id="hour2"></div>
+                                      <div id="icon2"></div>
+                                      <span class="high" id="temp2">°</span>/ <span id="precip2"></span>
+                                  </div>
+                                  <div class="item">
+                                      <div class="period" id="hour3"></div>
+                                      <div id="icon3"></div>
+                                      <span class="high" id="temp3">°</span>/ <span id="precip3"></span>
+                                  </div>
+                                  <div class="item">
+                                      <div class="period" id="hour4"></div>
+                                      <div id="icon4"></div>
+                                      <span class="high" id="temp4">°</span>/ <span id="precip4"></span>
+                                  </div>
+                                  <!-- if we want 5 things see line 328 in weather style CSS, 20% -->
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="resize"></div>
+                </div>
+            </div>
+            <div class="col s3 offset-s6 white-text" id="R1">
+                <!-- TOP RIGHT -->
+            </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="row">
+            <div class="col s3 white-text" id="L2">
+            </div>
+            <div class="col s3 offset-s6 white-text" id="R2">
+              <div id="stocks">
+              </div>
+            </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="row">
+            <div class="col s3 white-text" id="L3">
+            </div>
+            <div class="col s3 offset-s6" id="R3">
+            </div>
+        </div>
+
+        <!-- Row 4 -->
+        <div class="row">
+            <div class="white-text" id="B1">
+            </div>
+        </div>
+    </div>
+</body>
+    <script src="js/effect/wow.min.js"></script>
+    <script>new WOW({boxClass:'wow',
+                      animateClass:'animated',
+                      offset:0,
+                      mobile:true,
+                      live:true})
+                      .init();</script>
+    <script src="js/date.js"></script>
+    <script src="js/time.js"></script>
+    <script src="js/location.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/facebook.js"></script>
+    <script src="js/materialize.min.js"></script>
+</html>
