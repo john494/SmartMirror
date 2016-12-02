@@ -13,5 +13,11 @@
     <script src="js/jquery-2.1.1.min.js"></script>
 </head>
 
+<script>
+  $.get("http://jarvis.cse.buffalo.edu/mine/layout", function (choice) {
+    window.location.replace(choice.slice(0,-1).toLowerCase() + '.html')
+  });
+</script>
+
 <script src="js/theme.js"></script>
 </html>
