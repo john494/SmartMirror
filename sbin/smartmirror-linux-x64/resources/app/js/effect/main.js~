@@ -1,0 +1,49 @@
+/* ========================================================================= */
+/*  Preloader Script
+/* =========================================================================
+
+window.onload = function () {
+    document.getElementById('loading-mask').style.display = 'none';
+} */
+
+$(function(){
+
+
+/* ========================================================================= */
+/*  On scroll fade/bounce fffect
+/* ========================================================================= */
+
+    wow = new WOW({
+        animateClass: 'animated',
+        offset: 100,
+        mobile: false
+    });
+    wow.init();
+
+/* ---------------------------------------------------------------------- */
+/*      Progress Bars
+/* ---------------------------------------------------------------------- */
+
+initProgress('.progress');
+
+function initProgress(el){
+    jQuery(el).each(function(){
+        var pData = jQuery(this).data('progress');
+        progress(pData,jQuery(this));
+    });
+}
+
+
+            
+function progress(percent, $element) {
+    var progressBarWidth = 0;
+    
+    (function myLoop (i,max) {
+        progressBarWidth = i * $element.width() / 100;
+        setTimeout(function () {   
+        $element.find('div').find('small').html(i+'%');
+        $element.find('div').width(progressBarWidth);
+        if (++i<=max) myLoop(i,max);     
+        }, 10)
+    })(0,percent);  
+});   

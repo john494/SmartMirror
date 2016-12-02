@@ -16,22 +16,20 @@ h2.header {
 }
 
 .list .stock {
-	color: #fff;
+	color: #000;
 	cursor: pointer;
 	font-size: 14px;
-	padding-top: 20px;
-	padding-left: 15px;
-	padding-right: 15px;
-<<<<<<< HEAD
-	padding-bottom: 30px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 	line-height: 20px;
+	border-radius: 8px;
+	padding-right: 5px;
+	padding-left: 7px;
+	margin-bottom: 5px;
+	background: white;
 }
 
 .border-top {
-=======
-	padding-bottom: 40px;
-	line-height: 20px;
->>>>>>> 293bc7155324e96b2d611121b6f56615e435d1b2
 	border-top: 1px solid #fff;
 }
 
@@ -50,18 +48,19 @@ h2.header {
 }*/
 
 .list .stock div {
-	display: inline-block;
+	/*display: inline-block;*/
 }
 
 .list .stock div.name {
-	width: 60%;
+	/*width: 60%;*/
+	float:left;
 }
 
 .list .stock .price {
-	width: 40%;
+	/*width: 40%;*/
 	float: right;
 	text-align: right;
-	margin-bottom: 10px;
+	/*margin-bottom: 10px;*/
 }
 
 .list .stock .name .name,
