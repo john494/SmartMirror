@@ -5,9 +5,10 @@ $(document).ready(function() {
   var stock3 = 'tsla'
   var stock3 = 'cake'
 
+  function requestStocks(){
+
   $.get("http://jarvis.cse.buffalo.edu/mine/stocksinfo", function(body) {
     body = body.split('\n')
-
     stock1 = body[0]
     stock2 = body[1]
     stock3 = body[2]
@@ -59,7 +60,7 @@ $(document).ready(function() {
             if(companyname.length >= 17){
               companyname = companyname.substring(0, 12)+"...";
             }
-            document.getElementById('stockname'+(i+1)).innerHTML = companyname;
+            // document.getElementById('stockname'+(i+1)).innerHTML = companyname;
           }
         });
     }
@@ -92,5 +93,7 @@ $(document).ready(function() {
         }
     };
   });
-
+}
+requestStocks();
+setInterval(requestStocks, 10000);
 });

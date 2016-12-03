@@ -1,8 +1,14 @@
 $(document).ready(function() {
-  function getLayout(){
-    console.log('Updating layout')
+
+  function getLayout() {
     $.get("http://jarvis.cse.buffalo.edu/mine/layout", function (choice) {
-      window.location.replace(choice.slice(0,-1).toLowerCase() + '.html')
+
+      var setTo = window.location.pathname.split('/')
+      setTo = setTo[setTo.length - 1]
+
+      if (choice.slice(0,-1).toLowerCase() + '.html' != setTo) {
+        window.location.replace(choice.slice(0,-1).toLowerCase() + '.html')
+      }
     });
   }
 
