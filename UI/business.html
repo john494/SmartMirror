@@ -119,6 +119,14 @@
                       </div>
                   </div>
               </div>
+              <div id="quoteOTD">
+                <div class="wow fadeInRight">
+                  <div class="row">
+                    <p id="quote"></p>
+                    <p id="author"></p>
+                  </div>
+                </div>
+              </div>
             </div>
         </div>
 
@@ -126,11 +134,11 @@
         <div class="row">
             <div class="col s3 white-text" id="L2">
               <div id="stocks">
-                  <div class="list wow fadeInRight">
+                  <div class="list wow fadeInLeft">
                     <!-- Stock 1 -->
                     <div class="stock border-top">
                       <div>
-                        <span id="ticker1"></span>
+                        <span id="ticker1">Unable to find ticker information</span>
                         <span class="price" id="curprice1"></span>
                       </div>
                       <div>
@@ -141,7 +149,7 @@
                     <!-- Stock 2 -->
                     <div class="stock">
                       <div>
-                        <span id="ticker2"></span>
+                        <span id="ticker2">Unable to find ticker information</span>
                         <span class="price" id="curprice2"></span>
                       </div>
                       <div>
@@ -152,7 +160,7 @@
                     <!-- Stock 3 -->
                     <div class="stock">
                       <div>
-                        <span id="ticker3"></span>
+                        <span id="ticker3">Unable to find ticker information</span>
                         <span class="price" id="curprice3"></span>
                       </div>
                       <div>
@@ -163,7 +171,7 @@
                     <!-- Stock 4 -->
                     <div class="stock">
                       <div>
-                        <span id="ticker4"></span>
+                        <span id="ticker4">Unable to find ticker information</span>
                         <span class="price" id="curprice4"></span>
                       </div>
                       <div>
@@ -175,6 +183,7 @@
               </div>
             </div>
             <div class="col s3 offset-s6 white-text" id="R2">
+
             </div>
         </div>
 
@@ -191,24 +200,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- Row 4 -->
-        <!-- <div class="row">
-            <div class="white-text" id="B1">
-              <div id="news">
-                <div class="row headline-padding wow fadeInLeft">
-                  <ul>
-                    <li id="news1"></li>
-                    <li id="news2"></li>
-                    <li id="news3"></li>
-                    <li id="news4"></li>
-                  </ul>
-                  <style>#news ul {list-style-image: url('img/newspaper.png');margin-left: 28px;}</style>
-                </div>
-              </div>
-            </div>
-        </div>
-    </div> -->
     <footer class="page-footer white-text" style="background-color: #000; position: absolute; bottom: 0">
       <div class="row">
         <div id="news">
@@ -234,6 +225,7 @@
                       .init();</script>
     <script src="js/date.js"></script>
     <script src="js/time.js"></script>
+    <script src="js/quotesB.js"></script>
     <script src="js/location.js"></script>
     <script src="js/stocks.js"></script>
     <script src="js/weather.js"></script>
