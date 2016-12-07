@@ -37,9 +37,9 @@ $(document).ready(function() {
 
           // choose appropriate color
           if (pointchange < 0) {
-            document.getElementById('shift'+i).innerHTML = "<span style='color:red;'>▼ "  + pointchange + " (" + percentchange + "%)</span>";
+            document.getElementById('shift'+i).innerHTML = "<span style='color:red;'>"  + pointchange + " (" + percentchange + "%) ▼</span>";
           } else {
-            document.getElementById('shift'+i).innerHTML = "<span style='color:green;'>▲ "+ pointchange + " (" + percentchange + "%)</span>";
+            document.getElementById('shift'+i).innerHTML = "<span style='color:green;'>"+ pointchange + " (" + percentchange + "%) ▲</span>";
           };
 
         });
