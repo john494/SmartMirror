@@ -30,7 +30,7 @@ public class login {
         HttpResponse response;
 
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost("http://jarvis.cse.buffalo.edu/mine/pass.php");
+        HttpPost httppost = new HttpPost(MainActivity.serverName + "pass.php");
 
         try {
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(4);

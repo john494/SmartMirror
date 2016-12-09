@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.smartmirror.MainActivity.serverName;
+
 public class layout extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private final String TAG = "SmartMirrorNews";
@@ -45,7 +47,7 @@ public class layout extends AppCompatActivity implements AdapterView.OnItemSelec
                                int pos, long id) {
         // An item was selected. You can retrieve the selected item using
         Log.d(TAG, parent.getItemAtPosition(pos).toString());
-        HttpPost httppost = new HttpPost("http://jarvis.cse.buffalo.edu/mine/layout.php");
+        HttpPost httppost = new HttpPost(MainActivity.serverName + "layout.php");
         HttpResponse response;
         HttpClient httpclient = new DefaultHttpClient();
         try {

@@ -48,7 +48,7 @@ public class zipcode extends AppCompatActivity {
         else {
             Snackbar mySnackbar = Snackbar.make(v, "Zip code " + zip + " accepted!", Snackbar.LENGTH_LONG);
             mySnackbar.show();
-            final String server = "http://jarvis.cse.buffalo.edu/mine/zipcode.php";
+            final String server = MainActivity.serverName + "zipcode.php";
             Log.d("logged", "Post to server");
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(server);

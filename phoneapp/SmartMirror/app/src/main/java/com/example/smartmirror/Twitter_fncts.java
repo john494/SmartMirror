@@ -161,7 +161,7 @@ public class Twitter_fncts extends AppCompatActivity {
     {
         final String tag = "SmartMirrorTwitter";
         Log.d(tag, "Entering do Processing");
-        HttpPost httppost = new HttpPost("http://jarvis.cse.buffalo.edu/mine/twitter.php");
+        HttpPost httppost = new HttpPost(MainActivity.serverName + "twitter.php");
         HttpResponse response;
         HttpClient httpclient = new DefaultHttpClient();
 

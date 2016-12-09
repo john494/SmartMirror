@@ -421,7 +421,7 @@ public class calendar extends Activity
             int count  = 0;
             for(String s : eventStrings) {
                 if(count > 0){ clear = ""; }
-                final String server = "http://jarvis.cse.buffalo.edu/mine/calendar.php";
+                final String server = MainActivity.serverName + "calendar.php";
                 //Log.d(TAG, "Post to server");
                 HttpClient httpclient = new DefaultHttpClient();
                 HttpPost httppost = new HttpPost(server);

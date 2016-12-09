@@ -56,7 +56,7 @@ public class stocks extends AppCompatActivity {
         text3.setText("");
         text4.setText("");
 
-        final String server = "http://jarvis.cse.buffalo.edu/mine/stocks.php";
+        final String server = MainActivity.serverName + "stocks.php";
         Log.d("logged", "Post to server");
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost(server);
