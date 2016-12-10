@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     Bundle saved;
     static Context context;
     static int calendarAuth;
+    static EditText serverNameEditText;
+    static String serverName;
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -56,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
+        serverNameEditText = (EditText) findViewById(R.id.serverName);
+        serverName = serverNameEditText.getText().toString();
         Button button1 = (Button)findViewById(R.id.button);
         EditText editText = (EditText) findViewById(R.id.editText);
         EditText editText2 = (EditText) findViewById(R.id.editText2);
@@ -98,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
     private int post()
     {
-        final String server = "http://jarvis.cse.buffalo.edu/mine/mypage.php";
+        final String server = serverName + "mypage.php";
         Log.d(TAG, "Post to server");
         HttpClient httpclient = new DefaultHttpClient();
         HttpPost httppost = new HttpPost(server);

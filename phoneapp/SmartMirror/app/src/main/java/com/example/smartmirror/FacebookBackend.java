@@ -82,7 +82,7 @@ public class FacebookBackend extends AppCompatActivity {
                             }
 
                             HttpClient httpclient = new DefaultHttpClient();
-                            HttpPost httppost = new HttpPost("http://jarvis.cse.buffalo.edu/mine/facebook.php");
+                            HttpPost httppost = new HttpPost(MainActivity.serverName + "facebook.php");
                             try {
                                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(message.size()*2);
                                 for(int i = 0; i < message.size(); i++){

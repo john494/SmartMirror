@@ -44,7 +44,7 @@ public class NewsHeadlines extends AppCompatActivity implements AdapterView.OnIt
                                int pos, long id) {
         // An item was selected. You can retrieve the selected item using
         Log.d(TAG, parent.getItemAtPosition(pos).toString());
-        HttpPost httppost = new HttpPost("http://jarvis.cse.buffalo.edu/mine/news.php");
+        HttpPost httppost = new HttpPost(MainActivity.serverName + "news.php");
         HttpResponse response;
         HttpClient httpclient = new DefaultHttpClient();
         try {
