@@ -21,7 +21,7 @@ fi
 
 if [ -f smartmirror ];
 then
-	sudo cp smartmirror /usr/local/sbin/SmartMirror
+	sudo cp smartmirror-linux-armv7l/smartmirror /usr/local/sbin/SmartMirror
 else 
 	echo "INSTALL FAILED: smartmirror app file not found"
 	exit 1
