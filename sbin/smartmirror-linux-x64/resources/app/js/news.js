@@ -171,7 +171,7 @@ $(document).ready(function() {
       mm = d.toString("mm:ss")
       var t = setTimeout(updateNews, 500)
 
-      if(mm == "00:00" || mm == "35:00"){
+      if(mm == "00:00" || mm == "30:00"){
         getNews();
       }
   };

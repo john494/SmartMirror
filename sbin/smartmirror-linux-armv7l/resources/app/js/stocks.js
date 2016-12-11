@@ -37,9 +37,9 @@ $(document).ready(function() {
 
           // choose appropriate color
           if (pointchange < 0) {
-            document.getElementById('shift'+i).innerHTML = "<span style='color:red;'>▼ "  + pointchange + " (" + percentchange + "%)</span>";
+            document.getElementById('shift'+i).innerHTML = "<span style='color:red;'>"  + pointchange + " (" + percentchange + "%) ▼</span>";
           } else {
-            document.getElementById('shift'+i).innerHTML = "<span style='color:green;'>▲ "+ pointchange + " (" + percentchange + "%)</span>";
+            document.getElementById('shift'+i).innerHTML = "<span style='color:green;'>"+ pointchange + " (" + percentchange + "%) ▲</span>";
           };
 
         });
@@ -55,7 +55,7 @@ $(document).ready(function() {
 
           var companyname = "";
           for(i = 0; i < 4; i++){
-            companyname = body['query']['results']['quote'][i]['Name'];
+            //companyname = body['query']['results']['quote'][i]['Name'];
             // companyname = companyname.substring(0, companyname.indexOf('Inc') + 'Inc'.length); // remove unwanted text
             if(companyname.length >= 17){
               companyname = companyname.substring(0, 12)+"...";

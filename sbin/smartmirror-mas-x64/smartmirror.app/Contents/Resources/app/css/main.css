@@ -72,6 +72,21 @@ ul li {
 	padding-left: 4px;
 }
 
+#quoteOTD .row {
+	margin-bottom: -10px;
+	/*Un-comment if you want a background image on the quote
+	background-image: url(https://theysaidso.com/img/bgs/man_on_the_mountain.jpg);
+	background-size: cover;
+	border-radius: 8px;
+	padding-left: 10px;padding-top: 5px;*/
+	padding-right: 5px;
+}
+
+#quoteOTD p {
+	color: white;
+  text-shadow: 2px 2px 7px #000000;
+}
+
 #calendar {
 	height: auto;
 }
