@@ -21,7 +21,7 @@ fi
 
 if [ -f smartmirror ];
 then
-	sudo cp smartmirror-linux-armv7l/smartmirror /usr/local/sbin/SmartMirror
+	sudo cp -r smartmirror-linux-armv7l /usr/local/sbin/SmartMirror
 else 
 	echo "INSTALL FAILED: smartmirror app file not found"
 	exit 1
@@ -30,8 +30,8 @@ fi
 if [ -f /etc/rc.local ];
 then	
 	sudo sed -i 's/\"exit 0/\"exit_0/g' /etc/rc.local
+	sudo sed -i '/\/usr\/local\/sbin\/SmartMirror\/smartmirror-linux-arm7l\/smartmirror/d' /etc/rc.local
+	sudo sed -i 's"exit 0"\/usr\/local\/sbin\/SmartMirror\/smartmirror-linux-armv7l\/smartmirror \&\nexit 0"g' /etc/rc.local
 	sudo sed -i '/\/usr\/local\/sbin\/SmartMirror\/piPower\/pir.py/d' /etc/rc.local
-	sudo sed -i 's"exit 0"python /usr/local/sbin/SmartMirror/piPower/pir.py\nexit 0"g' /etc/rc.local
-	sudo sed -i '/\/usr\/local\/sbin\/SmartMirror\/smartmirror/d' /etc/rc.local
-	sudo sed -i 's"exit 0"/usr/local/sbin/SmartMirror/smartmirror\nexit 0"g' /etc/rc.local
+	sudo sed -i 's"exit 0"python /usr/local/sbin/SmartMirror/piPower/pir.py \&\nexit 0"g' /etc/rc.local
 fi
