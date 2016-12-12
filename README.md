@@ -4,9 +4,9 @@
 2. Raspberry Pi computer, [model 2](https://www.adafruit.com/products/2380) or [model 3](https://www.adafruit.com/products/3058) will work well here.
 3. Raspberry Pi motion sensor module (check out this one on [Amazon](https://www.amazon.com/dp/B00M1H7KBW/ref=asc_df_B00M1H7KBW4658951?smid=A1FGA0O3ZR5NRK&tag=shopz0d-20&ascsubtag=shopzilla_mp_1214-20;14813168609710505000010080301008005&linkCode=df0&creative=395105&creativeASIN=B00M1H7KBW))
 4. GPIO jumper wires, which can be found at https://www.adafruit.com/products/1949 
-5. Piece of 1-way glass (cut to the size of your television)
+5. Piece of 1-way glass (cut to the size of your television) can be ordered from [here](http://www.twowaymirrors.com/smart-mirror/)
 6. HDMI cable
-7. The SmartMirror application [EXECUTABLE](https://github.com/john494/SmartMirror/tree/master/sbin/smartmirror-linux-armv7l)
+7. The SmartMirror application contents [HERE](https://github.com/john494/SmartMirror/tree/master/sbin/smartmirror-linux-armv7l)
 8. The SmartMirror Mobile [APK](https://github.com/john494/SmartMirror/tree/master/appApk)
 9. Web server space.
 
@@ -65,6 +65,17 @@ And that is it for setting up the raspberry pi!
 * Now that the hard part is out of the way, let’s set up your HDMI-CEC-ready television. For now, unplug your Raspberry Pi if you haven’t already, and set it to the side. How you go about attaching your sheet of 1-way glass is up to you, and how you go about it will probably depend on the TV you chose (taking into account the bezel size, etc.). You could use an [adhesive] (http://tinyurl.com/jjleo9t). Alternatively (and we would recommend) building a frame that holds your TV/glass in position. This method lends itself to easier disassembly down the road, should the need to do so arise. Note that, regardless of which method you choose, you have to account for the motion sensor module.
 * Now that you have your glass mounted in front of your TV, all that’s left to do is to plug the Raspberry Pi back into the television via the HDMI cable, boot up the Pi, and run the app. Position your SmartMirror in whatever room/position you like, and you’re good to go!
 
+##Preparing the Application
+1. Download [THIS](https://github.com/john494/SmartMirror/tree/master/sbin/smartmirror-linux-armv7l) executable directory from above
+2. Download [THIS](https://github.com/john494/SmartMirror/tree/master/sbin/piPower) Directory and it's contents to the '/usr/local/sbin/' directory
+3. Add the following to '/etc/rc.local' file right before 'exit 0'
+```sh
+python /usr/local/sbin/PiPower/pir.py &
+```
+
+##Running the Application
+1. From file explorer, open file called 'smartmirror' within 'smartmirror-linux-arm7l' directory
+
 ##Preparing the web server
 
 1. Either purchase server space from an online retailer or setup your own web server
@@ -74,10 +85,12 @@ And that is it for setting up the raspberry pi!
 3. Add all these files to the root directory of the web server
 4. Use the http url to the web server root in the login screen in the phone app
 
+
 ##Install the Companion App
 
 * This step is super simple; just open this document on your Android smartphone or tablet and [click here](https://github.com/john494/SmartMirror/tree/master/appApk) to download the android apk for your device. Once the installation completes, open the app, and sign into the various services (Twitter, Google, etc.). Be sure to select a theme and supply any relevant input to personalize your SmartMirror just the way you like.  If for some reason a stock you inputted doesn’t work, please check to ensure the correct stock is typed in.
 * At this point, your SmartMirror should be ready to use! If you have any questions, or for troubleshooting, please feel free to contact the SmartMirror team through our GitHub page.
+
 ## Weather Docs
 - [Weather Icons] (https://erikflowers.github.io/weather-icons/)
 - Compatible [API-List] (https://erikflowers.github.io/weather-icons/api-list.html) for the icons
