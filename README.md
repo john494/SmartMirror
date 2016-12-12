@@ -82,9 +82,6 @@ And that is it for setting up the raspberry pi!
 - [Weather Icons] (https://erikflowers.github.io/weather-icons/)
 - Compatible [API-List] (https://erikflowers.github.io/weather-icons/api-list.html) for the icons
 
-## News
-- [News Headlines] (http://hosted2.ap.org/APDEFAULT/APNewsFeeds)
-
 ## Clock/ Date
 - [DateJS] (http://www.datejs.com/) which is also protected under the MIT License
 
