@@ -91,9 +91,27 @@ python /usr/local/sbin/PiPower/pir.py &
 * This step is super simple; just open this document on your Android smartphone or tablet and [click here](https://github.com/john494/SmartMirror/tree/master/appApk) to download the android apk for your device. Once the installation completes, open the app, and sign into the various services (Twitter, Google, etc.). Be sure to select a theme and supply any relevant input to personalize your SmartMirror just the way you like.  If for some reason a stock you inputted doesn’t work, please check to ensure the correct stock is typed in.
 * At this point, your SmartMirror should be ready to use! If you have any questions, or for troubleshooting, please feel free to contact the SmartMirror team through our GitHub page.
 
-## Weather Docs
-- [Weather Icons] (https://erikflowers.github.io/weather-icons/)
-- Compatible [API-List] (https://erikflowers.github.io/weather-icons/api-list.html) for the icons
+## SmartMirror Application
+- [Electron] (http://electron.atom.io/apps/)
+
+## Companion App
+- Android Studios
+
+## Weather
+- [Dark Sky API] (https://darksky.net/dev/)
+- We used Google's Material Icons for the weather
+
+## Stocks
+- [Google Finance](https://www.google.com/finance)
+
+## Twitter
+- [twitter4j](http://twitter4j.org/en/)
+
+## News
+- We just scrape news sites and make a JSON object that grabs the headlines
+
+## Quotes
+- [TheySaidSo](https://theysaidso.com/api/)
 
 ## Clock/ Date
 - [DateJS] (http://www.datejs.com/) which is also protected under the MIT License
